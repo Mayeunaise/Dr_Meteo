@@ -29,14 +29,48 @@
         private void InitializeComponent()
         {
             Panel_Accueil = new Panel();
+            Barre_Recherche = new TextBox();
+            Bouton_Loc = new Button();
+            Loupe = new PictureBox();
+            Panel_Accueil.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)Loupe).BeginInit();
             SuspendLayout();
             // 
             // Panel_Accueil
             // 
+            Panel_Accueil.BackColor = SystemColors.ActiveCaption;
+            Panel_Accueil.Controls.Add(Loupe);
+            Panel_Accueil.Controls.Add(Bouton_Loc);
+            Panel_Accueil.Controls.Add(Barre_Recherche);
             Panel_Accueil.Location = new Point(2, 1);
             Panel_Accueil.Name = "Panel_Accueil";
-            Panel_Accueil.Size = new Size(859, 407);
+            Panel_Accueil.Size = new Size(859, 448);
             Panel_Accueil.TabIndex = 0;
+            Panel_Accueil.Paint += Panel_Accueil_Paint;
+            // 
+            // Barre_Recherche
+            // 
+            Barre_Recherche.Location = new Point(191, 143);
+            Barre_Recherche.Name = "Barre_Recherche";
+            Barre_Recherche.Size = new Size(487, 31);
+            Barre_Recherche.TabIndex = 0;
+            // 
+            // Bouton_Loc
+            // 
+            Bouton_Loc.Image = Properties.Resources.gps__3_;
+            Bouton_Loc.Location = new Point(678, 142);
+            Bouton_Loc.Name = "Bouton_Loc";
+            Bouton_Loc.Size = new Size(33, 32);
+            Bouton_Loc.TabIndex = 1;
+            Bouton_Loc.UseVisualStyleBackColor = true;
+            // 
+            // Loupe
+            // 
+            Loupe.Location = new Point(161, 143);
+            Loupe.Name = "Loupe";
+            Loupe.Size = new Size(29, 31);
+            Loupe.TabIndex = 2;
+            Loupe.TabStop = false;
             // 
             // Form1
             // 
@@ -46,11 +80,17 @@
             Controls.Add(Panel_Accueil);
             Name = "Form1";
             Text = "Form1";
+            Panel_Accueil.ResumeLayout(false);
+            Panel_Accueil.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)Loupe).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
 
         private Panel Panel_Accueil;
+        private TextBox Barre_Recherche;
+        private PictureBox Loupe;
+        private Button Bouton_Loc;
     }
 }

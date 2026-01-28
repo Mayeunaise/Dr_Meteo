@@ -6,5 +6,10 @@ namespace Dr_Meteo
         {
             InitializeComponent();
         }
+
+        private void Panel_Accueil_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
