@@ -8,6 +8,7 @@ namespace Dr_Meteo
             InitializeComponent();
             InitializeSearchBar();
             //test lol
+            //test2
         }
 
         private void InitializeSearchBar()
