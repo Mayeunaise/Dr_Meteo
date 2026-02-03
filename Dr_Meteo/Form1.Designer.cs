@@ -46,7 +46,6 @@
             Panel_Accueil.Name = "Panel_Accueil";
             Panel_Accueil.Size = new Size(859, 448);
             Panel_Accueil.TabIndex = 0;
-            Panel_Accueil.Paint += Panel_Accueil_Paint;
             // 
             // Barre_Recherche
             // 
