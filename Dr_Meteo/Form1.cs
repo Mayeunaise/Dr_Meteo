@@ -7,8 +7,6 @@ namespace Dr_Meteo
         {
             InitializeComponent();
             InitializeSearchBar();
-            //test lol
-            //test2
         }
 
         private void InitializeSearchBar()
@@ -22,7 +20,7 @@ namespace Dr_Meteo
             Barre_Recherche.KeyDown += BarreRecherche_KeyDown;
         }
 
-        private void RetirerBaseText(object sender, EventArgs e)
+        private void RetirerBaseText(object? sender, EventArgs e)
         {
             if (Barre_Recherche.Text == BaseText)
             {
@@ -32,7 +30,7 @@ namespace Dr_Meteo
         }
 
 
-        private void RajouterBaseText(object sender, EventArgs e)
+        private void RajouterBaseText(object? sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(Barre_Recherche.Text))
             {
@@ -45,34 +43,25 @@ namespace Dr_Meteo
         private void ChargerVillesTest()
         {
             // Création de la collection
-            AutoCompleteStringCollection dataCollection = new AutoCompleteStringCollection();
+            AutoCompleteStringCollection ListeVille = new AutoCompleteStringCollection();
 
             // Ajout manuel (juste pour tester le design)
-            dataCollection.AddRange(new string[] {
+            ListeVille.AddRange(new string[] {
         "Bordeaux", "Paris", "Lyon", "Marseille", "Lille",
         "Toulouse", "Nice", "Nantes", "Strasbourg", "Montpellier", "L'Étrat"
     });
 
             // Liaison avec la barre de recherche (txtRecherche est le nom de votre TextBox)
-            Barre_Recherche.AutoCompleteCustomSource = dataCollection;
+            Barre_Recherche.AutoCompleteCustomSource = ListeVille;
+            // Indique à la TextBox d'utiliser la liste personnalisée
+            Barre_Recherche.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            // Indique comment la suggestion s'affiche (Suggestion simple ou ajout du texte)
+            Barre_Recherche.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
         }
 
-        private void BoutonLoc_Click(object sender, EventArgs e)
-        {
-            DialogResult reponse = MessageBox.Show(
-            "Pouvons-nous accéder à votre localisation ?",
-            "Demande de localisation",
-            MessageBoxButtons.YesNo,
-            MessageBoxIcon.Question);
-
-            if (reponse == DialogResult.Yes)
-            {
-                Barre_Recherche.Text = "Lille";
-            }
-        }
 
         // Fonction liée à l'événement KeyDown de votre TextBox (txtRecherche)
-        private void BarreRecherche_KeyDown(object sender, KeyEventArgs e)
+        private void BarreRecherche_KeyDown(object? sender, KeyEventArgs e)
         {
             // On vérifie si la touche appuyée est "Entrée"
             if (e.KeyCode == Keys.Enter)
@@ -107,6 +96,25 @@ namespace Dr_Meteo
 
             // Optionnel : Changer le fond de la fenêtre si nécessaire
             // this.BackgroundImage = Properties.Resources.FondPluvieux;
+        }
+
+        private void Bouton_Loc_Click(object sender, EventArgs e)
+        {
+            DialogResult reponse = MessageBox.Show(
+            "Pouvons-nous accéder à votre localisation ?",
+            "Demande de localisation",
+            MessageBoxButtons.YesNo,
+            MessageBoxIcon.Question);
+
+            if (reponse == DialogResult.Yes)
+            {
+                Barre_Recherche.Text = "Lille";
+            }
+        }
+
+        private void Loupe_Click(object sender, EventArgs e)
+        {
+
         }
 
 

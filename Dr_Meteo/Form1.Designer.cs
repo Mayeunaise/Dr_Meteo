@@ -28,10 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             Panel_Accueil = new Panel();
-            Barre_Recherche = new TextBox();
-            Bouton_Loc = new Button();
             Loupe = new PictureBox();
+            Bouton_Loc = new Button();
+            Barre_Recherche = new TextBox();
             Panel_Accueil.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)Loupe).BeginInit();
             SuspendLayout();
@@ -47,29 +48,36 @@
             Panel_Accueil.Size = new Size(859, 448);
             Panel_Accueil.TabIndex = 0;
             // 
-            // Barre_Recherche
+            // Loupe
             // 
-            Barre_Recherche.Location = new Point(191, 143);
-            Barre_Recherche.Name = "Barre_Recherche";
-            Barre_Recherche.Size = new Size(487, 31);
-            Barre_Recherche.TabIndex = 0;
+            Loupe.BackgroundImageLayout = ImageLayout.Stretch;
+            Loupe.Image = (Image)resources.GetObject("Loupe.Image");
+            Loupe.Location = new Point(674, 143);
+            Loupe.Name = "Loupe";
+            Loupe.Size = new Size(28, 31);
+            Loupe.TabIndex = 2;
+            Loupe.TabStop = false;
+            Loupe.Click += Loupe_Click;
             // 
             // Bouton_Loc
             // 
             Bouton_Loc.Image = Properties.Resources.gps__3_;
-            Bouton_Loc.Location = new Point(678, 142);
+            Bouton_Loc.Location = new Point(162, 142);
             Bouton_Loc.Name = "Bouton_Loc";
             Bouton_Loc.Size = new Size(33, 32);
             Bouton_Loc.TabIndex = 1;
             Bouton_Loc.UseVisualStyleBackColor = true;
+            Bouton_Loc.Click += Bouton_Loc_Click;
             // 
-            // Loupe
+            // Barre_Recherche
             // 
-            Loupe.Location = new Point(161, 143);
-            Loupe.Name = "Loupe";
-            Loupe.Size = new Size(29, 31);
-            Loupe.TabIndex = 2;
-            Loupe.TabStop = false;
+            Barre_Recherche.AccessibleName = "Barre_Recherche";
+            Barre_Recherche.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            Barre_Recherche.Location = new Point(191, 143);
+            Barre_Recherche.Name = "Barre_Recherche";
+            Barre_Recherche.ScrollBars = ScrollBars.Vertical;
+            Barre_Recherche.Size = new Size(487, 31);
+            Barre_Recherche.TabIndex = 0;
             // 
             // Form1
             // 
