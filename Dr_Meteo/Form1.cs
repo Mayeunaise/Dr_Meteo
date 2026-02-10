@@ -121,7 +121,7 @@ namespace Dr_Meteo
 
 
 
-        // N'oubliez pas d'appeler cette fonction dans le constructeur public Form1() !
+
 
     }
 }
