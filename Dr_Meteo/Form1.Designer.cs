@@ -43,9 +43,10 @@
             Panel_Accueil.Controls.Add(Loupe);
             Panel_Accueil.Controls.Add(Bouton_Loc);
             Panel_Accueil.Controls.Add(Barre_Recherche);
-            Panel_Accueil.Location = new Point(2, 1);
+            Panel_Accueil.Dock = DockStyle.Fill;
+            Panel_Accueil.Location = new Point(0, 0);
             Panel_Accueil.Name = "Panel_Accueil";
-            Panel_Accueil.Size = new Size(859, 448);
+            Panel_Accueil.Size = new Size(868, 450);
             Panel_Accueil.TabIndex = 0;
             // 
             // Loupe
@@ -54,13 +55,14 @@
             Loupe.Image = (Image)resources.GetObject("Loupe.Image");
             Loupe.Location = new Point(674, 143);
             Loupe.Name = "Loupe";
-            Loupe.Size = new Size(28, 31);
+            Loupe.Size = new Size(32, 32);
             Loupe.TabIndex = 2;
             Loupe.TabStop = false;
             Loupe.Click += Loupe_Click;
             // 
             // Bouton_Loc
             // 
+            Bouton_Loc.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             Bouton_Loc.Image = Properties.Resources.gps__3_;
             Bouton_Loc.Location = new Point(162, 142);
             Bouton_Loc.Name = "Bouton_Loc";
@@ -72,6 +74,7 @@
             // Barre_Recherche
             // 
             Barre_Recherche.AccessibleName = "Barre_Recherche";
+            Barre_Recherche.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             Barre_Recherche.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             Barre_Recherche.Location = new Point(191, 143);
             Barre_Recherche.Name = "Barre_Recherche";
