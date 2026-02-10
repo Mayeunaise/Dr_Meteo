@@ -1,5 +1,7 @@
 namespace Dr_Meteo
 {
+    using System.Net.Http;
+    using System.Text.Json;
     public partial class Form1 : Form
     {
         private const string BaseText = "Saisissez une Ville ou un code postal ex: Bordeaux, 33063";
@@ -98,7 +100,7 @@ namespace Dr_Meteo
             // this.BackgroundImage = Properties.Resources.FondPluvieux;
         }
 
-        private void Bouton_Loc_Click(object sender, EventArgs e)
+        private async void Bouton_Loc_Click(object sender, EventArgs e)
         {
             DialogResult reponse = MessageBox.Show(
             "Pouvons-nous accéder à votre localisation ?",
@@ -108,7 +110,16 @@ namespace Dr_Meteo
 
             if (reponse == DialogResult.Yes)
             {
-                Barre_Recherche.Text = "Lille";
+                //Barre_Recherche.Text = "Lille";
+                //Utilisation d'une API pour la position
+                using var client = new HttpClient();
+                string json = await client.GetStringAsync("https://ipinfo.io/json");
+
+                //On découpe le retour pour avoir juste city
+                JsonDocument requete_json = JsonDocument.Parse(json);
+                JsonElement root = requete_json.RootElement;
+                string ville = root.GetProperty("city").GetString();
+                Barre_Recherche.Text = ville;
             }
         }
 
