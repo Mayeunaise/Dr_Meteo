@@ -43,7 +43,7 @@ namespace Dr_Meteo
         }
         // Dans Form1.cs
 
-        private void ChargerVillesTest()
+        private async void ChargerVillesTest()
         {
             // Création de la collection
             AutoCompleteStringCollection ListeVille = new AutoCompleteStringCollection();
@@ -51,8 +51,7 @@ namespace Dr_Meteo
             // Ajout manuel (juste pour tester le design)
             ListeVille.AddRange(new string[] {
         "Bordeaux", "Paris", "Lyon", "Marseille", "Lille",
-        "Toulouse", "Nice", "Nantes", "Strasbourg", "Montpellier", "L'Étrat"
-    });
+        "Toulouse", "Nice", "Nantes", "Strasbourg", "Montpellier", "L'Étrat"});
 
             // Liaison avec la barre de recherche (txtRecherche est le nom de votre TextBox)
             Barre_Recherche.AutoCompleteCustomSource = ListeVille;
@@ -61,7 +60,7 @@ namespace Dr_Meteo
             // Indique comment la suggestion s'affiche (Suggestion simple ou ajout du texte)
             Barre_Recherche.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
         }
-
+        
 
         // Fonction liée à l'événement KeyDown de votre TextBox (txtRecherche)
         private void BarreRecherche_KeyDown(object? sender, KeyEventArgs e)
@@ -101,6 +100,8 @@ namespace Dr_Meteo
             // this.BackgroundImage = Properties.Resources.FondPluvieux;
         }
 
+        
+
         private async void Bouton_Loc_Click(object sender, EventArgs e)
         {
             DialogResult reponse = MessageBox.Show(
@@ -127,7 +128,17 @@ namespace Dr_Meteo
         {
             this.Controls.Clear();
         }
+
         
+
+
+
+
+
+
+
+
+
     }
 
 }
