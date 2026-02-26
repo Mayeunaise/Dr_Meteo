@@ -16,11 +16,40 @@ namespace Dr_Meteo
     {
         private const string BaseText = "Saisissez une Ville ou un code postal ex: Bordeaux, 33063";
         private string ville = "";
+        private Panel Panel_Meteo_Ville;
+        private Label Lbl_VilleNom;
+        private Label Lbl_Temperature;
+        private Label Lbl_MeteoDesc;
+        private PictureBox iconeMeteo = new PictureBox();
         public Form1()
         {
             InitializeComponent();
+            CreerPanelMeteo();
             Form1_Load(null, null); // Appel manuel pour éviter les soucis de timing avec le designer
             InitializeSearchBar();
+        }
+        private void CreerPanelMeteo()
+        {
+            Panel_Meteo_Ville = new Panel
+            {
+                Size = new Size(400, 250),
+                Location = new Point(50, 100), // Ajuste la position selon ton design
+                BackColor = Color.AliceBlue,
+                Visible = false
+            };
+            iconeMeteo.Size = new Size(100, 100);
+            iconeMeteo.Location = new Point(20, 20);
+            iconeMeteo.SizeMode = PictureBoxSizeMode.Zoom;
+            Lbl_VilleNom = new Label { Font = new Font("Segoe UI", 18, FontStyle.Bold), Location = new Point(20, 20), AutoSize = true };
+            Lbl_Temperature = new Label { Font = new Font("Segoe UI", 28, FontStyle.Bold), Location = new Point(20, 70), AutoSize = true };
+            Lbl_MeteoDesc = new Label { Font = new Font("Segoe UI", 14), Location = new Point(20, 140), AutoSize = true };
+
+            Panel_Meteo_Ville.Controls.Add(Lbl_VilleNom);
+            Panel_Meteo_Ville.Controls.Add(Lbl_Temperature);
+            Panel_Meteo_Ville.Controls.Add(Lbl_MeteoDesc);
+            Panel_Meteo_Ville.Controls.Add(iconeMeteo);
+
+            this.Controls.Add(Panel_Meteo_Ville);
         }
         private async void Form1_Load(object sender, EventArgs e)
         {
@@ -105,27 +134,7 @@ namespace Dr_Meteo
                 Barre_Recherche.Text = BaseText;
                 Barre_Recherche.ForeColor = Color.Green;
             }
-        }
-        // Dans Form1.cs
-
-        /*private async void ChargerVillesTest()
-        {
-            // Création de la collection
-            AutoCompleteStringCollection ListeVille = new AutoCompleteStringCollection();
-
-            // Ajout manuel (juste pour tester le design)
-            ListeVille.AddRange(new string[] {
-        "Bordeaux", "Paris", "Lyon", "Marseille", "Lille",
-        "Toulouse", "Nice", "Nantes", "Strasbourg", "Montpellier", "L'Étrat"});
-
-            // Liaison avec la barre de recherche (txtRecherche est le nom de votre TextBox)
-            Barre_Recherche.AutoCompleteCustomSource = ListeVille;
-            // Indique à la TextBox d'utiliser la liste personnalisée
-            Barre_Recherche.AutoCompleteSource = AutoCompleteSource.CustomSource;
-            // Indique comment la suggestion s'affiche (Suggestion simple ou ajout du texte)
-            Barre_Recherche.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-        }*/
-        
+        }       
 
         // Fonction liée à l'événement KeyDown de votre TextBox (txtRecherche)
         private void BarreRecherche_KeyDown(object? sender, KeyEventArgs e)
@@ -219,6 +228,16 @@ namespace Dr_Meteo
         {
             Panel_Accueil.Visible = false;
             //Affichage du panel météo
+            // Les propriétés (current_weather.temperature, etc.) sont à adapter selon comment tu as nommé les variables dans ta classe ReponseMeteo
+            Lbl_VilleNom.Text = ville;
+            Lbl_Temperature.Text = $"{reponseMeteo.current.temperature} °C";
+            Lbl_MeteoDesc.Text = TraduireCodeMeteo(reponseMeteo.current.code_meteo);
+            //On vérifie quelle image on va afficher
+            if (reponseMeteo.current.code_meteo==0)
+            {
+                iconeMeteo.Image = Properties.Resources.soleil;
+            }
+            Panel_Meteo_Ville.Visible = true;
 
         }
 
@@ -259,7 +278,8 @@ namespace Dr_Meteo
 
         private void Loupe_Click(object sender, EventArgs e)
         {
-            this.Controls.Clear();
+            string villeSaisie = Barre_Recherche.Text;
+            AfficherMeteo(villeSaisie);
         }
 
         
