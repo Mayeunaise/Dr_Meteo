@@ -235,7 +235,7 @@ namespace Dr_Meteo
             //On vérifie quelle image on va afficher
             if (reponseMeteo.current.code_meteo==0)
             {
-                iconeMeteo.Image = Properties.Resources.soleil;
+                iconeMeteo.Image = Dr_Meteo.Properties.Resources.soleil;
             }
             Panel_Meteo_Ville.Visible = true;
 
