@@ -1,7 +1,17 @@
 namespace Dr_Meteo
 {
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel;
+    using System.Linq;
+    using System.Threading.Tasks;
+    using Newtonsoft.Json;
+    using System.Data;
     using System.Net.Http;
     using System.Text.Json;
+    using System.Windows.Forms;
+    using System.Drawing;
+
     public partial class Form1 : Form
     {
         private const string BaseText = "Saisissez une Ville ou un code postal ex: Bordeaux, 33063";
@@ -9,18 +19,73 @@ namespace Dr_Meteo
         public Form1()
         {
             InitializeComponent();
+            Form1_Load(null, null); // Appel manuel pour éviter les soucis de timing avec le designer
             InitializeSearchBar();
         }
+        private async void Form1_Load(object sender, EventArgs e)
+        {
+            // On indique visuellement à l'utilisateur que l'application se prépare
+            Barre_Recherche.Enabled = false;
+            Barre_Recherche.Text = "Téléchargement des villes de France...";
 
+            GestionBdd bdd = new GestionBdd();
+
+            // 1. Crée les tables si elles n'existent pas
+            GestionBdd.InitialiserBase();
+
+            // 2. Télécharge et insère les villes (seulement si la base est vide)
+            await bdd.ImporterVillesDepuisApiGouv();
+
+            // 3. On remet la barre de recherche à la normale et on charge l'autocomplétion
+            Barre_Recherche.Enabled = true;
+            InitializeSearchBar(); // Votre méthode qui remplit l'AutoCompleteCustomSource
+        }
         private void InitializeSearchBar()
         {
             Barre_Recherche.Text = BaseText;
             Barre_Recherche.ForeColor = Color.Gray;
 
-            Barre_Recherche.GotFocus += RetirerBaseText;
-            Barre_Recherche.LostFocus += RajouterBaseText;
-            ChargerVillesTest();
-            Barre_Recherche.KeyDown += BarreRecherche_KeyDown;
+            // Événements visuels
+            Barre_Recherche.Enter += (s, e) =>
+            {
+                if (Barre_Recherche.Text == BaseText)
+                {
+                    Barre_Recherche.Text = "";
+                    Barre_Recherche.ForeColor = Color.Black;
+                }
+            };
+            Barre_Recherche.Leave += (s, e) =>
+            {
+                if (string.IsNullOrWhiteSpace(Barre_Recherche.Text))
+                {
+                    Barre_Recherche.Text = BaseText;
+                    Barre_Recherche.ForeColor = Color.Gray;
+                }
+            };
+
+            // Autocomplétion depuis la BDD
+            GestionBdd bdd = new GestionBdd();
+            var villes = GestionBdd.GetData();
+            AutoCompleteStringCollection collection = new AutoCompleteStringCollection();
+            foreach (DataRow row in villes.Rows)
+            {
+                if (row[0] != null)
+                    collection.Add(row[0].ToString());
+            }
+
+            Barre_Recherche.AutoCompleteCustomSource = collection;
+            Barre_Recherche.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            Barre_Recherche.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+
+            // Touche Entrée
+            Barre_Recherche.KeyDown += (s, e) =>
+            {
+                if (e.KeyCode == Keys.Enter)
+                {
+                    e.SuppressKeyPress = true; // Stop le "Bip"
+                    AfficherMeteo(Barre_Recherche.Text);
+                }
+            };
         }
 
         private void RetirerBaseText(object? sender, EventArgs e)
@@ -43,7 +108,7 @@ namespace Dr_Meteo
         }
         // Dans Form1.cs
 
-        private async void ChargerVillesTest()
+        /*private async void ChargerVillesTest()
         {
             // Création de la collection
             AutoCompleteStringCollection ListeVille = new AutoCompleteStringCollection();
@@ -59,7 +124,7 @@ namespace Dr_Meteo
             Barre_Recherche.AutoCompleteSource = AutoCompleteSource.CustomSource;
             // Indique comment la suggestion s'affiche (Suggestion simple ou ajout du texte)
             Barre_Recherche.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-        }
+        }*/
         
 
         // Fonction liée à l'événement KeyDown de votre TextBox (txtRecherche)
@@ -83,24 +148,92 @@ namespace Dr_Meteo
         }
 
         // Fonction personnalisée pour changer d'écran
-        private void AfficherMeteo(string ville)
+        private async void AfficherMeteo(string villeSaisie)
         {
-            // 1. Cacher l'écran d'accueil ("Tout s'efface")
+            if (string.IsNullOrWhiteSpace(villeSaisie) || villeSaisie == BaseText) return;
+
+            VilleData villeBdd = GestionBdd.RecupererVille(villeSaisie);
+
+            // --- LOGIQUE DU CACHE (30 minutes) ---
+            bool cacheValide = false;
+            if (villeBdd != null)
+            {
+                TimeSpan age = DateTime.Now - villeBdd.DerniereMaj;
+                if (age.TotalMinutes < 30 && villeBdd.DerniereMaj != DateTime.MinValue)
+                {
+                    cacheValide = true;
+                }
+            }
+
+            if (cacheValide)
+            {
+                // CAS 1 : On utilise la BDD (Pas d'internet)
+                System.Diagnostics.Debug.WriteLine("Données depuis le CACHE BDD");
+                ReponseMeteo reponseMeteo = JsonConvert.DeserializeObject<ReponseMeteo>(villeBdd.DonneesJson);
+                MettreAJourInterface(villeBdd.Nom, reponseMeteo);
+            }
+            else
+            {
+                // CAS 2 : On appelle l'API
+                System.Diagnostics.Debug.WriteLine("Appel API...");
+                ServiceMeteo service = new ServiceMeteo();
+
+                // A. On trouve les coordonnées (si on ne les a pas déjà en BDD)
+                double lat = (villeBdd != null && villeBdd.Latitude != 0) ? villeBdd.Latitude : 0;
+                double lon = (villeBdd != null && villeBdd.Longitude != 0) ? villeBdd.Longitude : 0;
+                VilleResultat geo = null;
+                if (lat == 0 || lon == 0)
+                {
+                    geo = await service.ChercherVille(villeSaisie);
+                    if (geo == null)
+                    {
+                        MessageBox.Show("Ville introuvable !");
+                        return;
+                    }
+                    lat = geo.latitude;
+                    lon = geo.longitude;
+                    // On garde le "vrai" nom officiel (ex: "Paris" avec majuscule)
+                    villeSaisie = geo.name;
+                }
+
+                // B. On prend la météo
+                var meteo = await service.ObtenirMeteo(lat, lon);
+                if (meteo != null)
+                {
+                    string json_meteo = JsonConvert.SerializeObject(meteo);
+                    string ListeCodesPostaux = "";
+                    if (geo != null && geo.codePostal != null && geo.codePostal.Count > 0)
+                    {
+                        // string.Join va créer un texte du type : "75001, 75002, 75003"
+                        ListeCodesPostaux = string.Join(", ", geo.codePostal);
+                    }
+                    // C. On sauvegarde en BDD (Mise en cache)
+                    GestionBdd.MajVille(villeSaisie, ListeCodesPostaux, lat, lon, json_meteo);
+
+                    // D. Affichage
+                    MettreAJourInterface(villeSaisie, meteo);
+                }
+            }
+        }
+        private void MettreAJourInterface(string ville, ReponseMeteo reponseMeteo)
+        {
             Panel_Accueil.Visible = false;
+            //Affichage du panel météo
 
-            // 2. Remplir les données (Simulé pour l'instant)
-            // Ici, plus tard, vous appellerez votre API
-            //lblVille.Text = ville;
-            // lblTemperature.Text = "15°C"; 
-
-            // 3. Afficher l'écran météo
-            Panel_Accueil.Visible = true;
-
-            // Optionnel : Changer le fond de la fenêtre si nécessaire
-            // this.BackgroundImage = Properties.Resources.FondPluvieux;
         }
 
-        
+        private string TraduireCodeMeteo(int code)
+        {
+            if (code == 0) return "Ciel dégagé ??";
+            if (code >= 1 && code <= 3) return "Nuageux ??";
+            if (code >= 45 && code <= 48) return "Brouillard ???";
+            if (code >= 51 && code <= 67) return "Pluie ?";
+            if (code >= 71 && code <= 77) return "Neige ??";
+            if (code >= 95) return "Orage ?";
+            return "Variable";
+        }
+
+
 
         private async void Bouton_Loc_Click(object sender, EventArgs e)
         {
