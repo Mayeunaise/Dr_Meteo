@@ -233,10 +233,16 @@ namespace Dr_Meteo
             Lbl_Temperature.Text = $"{reponseMeteo.current.temperature} °C";
             Lbl_MeteoDesc.Text = TraduireCodeMeteo(reponseMeteo.current.code_meteo);
             //On vérifie quelle image on va afficher
-            if (reponseMeteo.current.code_meteo==0)
+           /* if (reponseMeteo.current.code_meteo==0)
             {
-                iconeMeteo.Image = Properties.Resources
+                string cheminImage = System.IO.Path.Combine(Application.StartupPath, "soleil.png");
+                iconeMeteo.Image = Image.FromFile(cheminImage); 
             }
+            else if (reponseMeteo.current.code_meteo >=1 && reponseMeteo.current.code_meteo<=3)
+            {
+                string cheminImage = System.IO.Path.Combine(Application.StartupPath, "nuageux.png");
+                iconeMeteo.Image = Image.FromFile(cheminImage);
+            }*/
             Panel_Meteo_Ville.Visible = true;
 
         }
