@@ -16,11 +16,7 @@ namespace Dr_Meteo
     {
         private const string BaseText = "Saisissez une Ville ou un code postal ex: Bordeaux, 33063";
         private string ville = "";
-        private Panel Panel_Meteo_Ville;
-        private Label Lbl_VilleNom;
-        private Label Lbl_Temperature;
-        private Label Lbl_MeteoDesc;
-        private PictureBox iconeMeteo = new PictureBox();
+        
         public Form1()
         {
             InitializeComponent();
