@@ -26,13 +26,6 @@ namespace Dr_Meteo
         }
         private void CreerPanelMeteo()
         {
-            Panel_Meteo_Ville = new Panel
-            {
-                Size = new Size(400, 250),
-                Location = new Point(50, 100), // Ajuste la position selon ton design
-                BackColor = Color.AliceBlue,
-                Visible = false
-            };
             iconeMeteo.Size = new Size(100, 100);
             iconeMeteo.Location = new Point(20, 20);
             iconeMeteo.SizeMode = PictureBoxSizeMode.Zoom;
@@ -228,16 +221,17 @@ namespace Dr_Meteo
             Lbl_Temperature.Text = $"{reponseMeteo.current.temperature} °C";
             Lbl_MeteoDesc.Text = TraduireCodeMeteo(reponseMeteo.current.code_meteo);
             //On vérifie quelle image on va afficher
-           /* if (reponseMeteo.current.code_meteo==0)
-            {
-                string cheminImage = System.IO.Path.Combine(Application.StartupPath, "soleil.png");
-                iconeMeteo.Image = Image.FromFile(cheminImage); 
-            }
-            else if (reponseMeteo.current.code_meteo >=1 && reponseMeteo.current.code_meteo<=3)
-            {
-                string cheminImage = System.IO.Path.Combine(Application.StartupPath, "nuageux.png");
-                iconeMeteo.Image = Image.FromFile(cheminImage);
-            }*/
+            /* if (reponseMeteo.current.code_meteo==0)
+             {
+                 string cheminImage = System.IO.Path.Combine(Application.StartupPath, "soleil.png");
+                 iconeMeteo.Image = Image.FromFile(cheminImage); 
+             }
+             else if (reponseMeteo.current.code_meteo >=1 && reponseMeteo.current.code_meteo<=3)
+             {
+                 string cheminImage = System.IO.Path.Combine(Application.StartupPath, "nuageux.png");
+                 iconeMeteo.Image = Image.FromFile(cheminImage);
+             }*/
+            Panel_Accueil.Visible = false;
             Panel_Meteo_Ville.Visible = true;
 
         }

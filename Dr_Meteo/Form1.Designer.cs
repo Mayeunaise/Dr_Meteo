@@ -30,9 +30,10 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             Panel_Accueil = new Panel();
+            Barre_Recherche = new TextBox();
             Loupe = new PictureBox();
             Bouton_Loc = new Button();
-            Barre_Recherche = new TextBox();
+            Panel_Meteo_Ville = new Panel();
             Panel_Accueil.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)Loupe).BeginInit();
             SuspendLayout();
@@ -100,8 +101,8 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1053, 513);
-            Controls.Add(Panel_Accueil);
             Controls.Add(Panel_Meteo_Ville);
+            Controls.Add(Panel_Accueil);
             Margin = new Padding(2);
             Name = "Form1";
             Text = "Form1";
