@@ -31,10 +31,16 @@ namespace Dr_Meteo
                 {
                     command.ExecuteNonQuery();
                 }
+                createTableQuery = "CREATE TABLE IF NOT EXISTS Utilisateurs (Id INTEGER PRIMARY KEY AUTOINCREMENT, NomUtilisateur TEXT NOT NULL UNIQUE, " +
+                    "MotDePasse TEXT NOT NULL, EMail TEXT NOT NULL)";
+                using (var command = new SQLiteCommand(createTableQuery, connection))
+                {
+                    command.ExecuteNonQuery();
+                }
                 connection.Close();
             }
         }
-        public static DataTable GetData()
+        public static DataTable GetVilles()
         {
             SQLiteConnection connection = new SQLiteConnection(ConnectionString);
             connection.Open();

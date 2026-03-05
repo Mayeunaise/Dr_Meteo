@@ -16,11 +16,7 @@ namespace Dr_Meteo
     {
         private const string BaseText = "Saisissez une Ville ou un code postal ex: Bordeaux, 33063";
         private string ville = "";
-        private Panel Panel_Meteo_Ville;
-        private Label Lbl_VilleNom;
-        private Label Lbl_Temperature;
-        private Label Lbl_MeteoDesc;
-        private PictureBox iconeMeteo = new PictureBox();
+        
         public Form1()
         {
             InitializeComponent();
@@ -94,7 +90,7 @@ namespace Dr_Meteo
 
             // Autocomplétion depuis la BDD
             GestionBdd bdd = new GestionBdd();
-            var villes = GestionBdd.GetData();
+            var villes = GestionBdd.GetVilles();
             AutoCompleteStringCollection collection = new AutoCompleteStringCollection();
             foreach (DataRow row in villes.Rows)
             {
@@ -226,7 +222,6 @@ namespace Dr_Meteo
         }
         private void MettreAJourInterface(string ville, ReponseMeteo reponseMeteo)
         {
-            Panel_Accueil.Visible = false;
             //Affichage du panel météo
             // Les propriétés (current_weather.temperature, etc.) sont à adapter selon comment tu as nommé les variables dans ta classe ReponseMeteo
             Lbl_VilleNom.Text = ville;
