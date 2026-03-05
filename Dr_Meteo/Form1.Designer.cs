@@ -26,14 +26,13 @@
         ///  Required method for Designer support - do not modify
         ///  the contents of this method with the code editor.
         /// </summary>
-        private void InitializeComponent(Panel panel)
+        private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             Panel_Accueil = new Panel();
-            Barre_Recherche = new TextBox();
             Loupe = new PictureBox();
             Bouton_Loc = new Button();
-            Panel_Meteo_Ville = panel;
+            Barre_Recherche = new TextBox();
             Panel_Accueil.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)Loupe).BeginInit();
             SuspendLayout();
