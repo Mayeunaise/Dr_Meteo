@@ -46,9 +46,8 @@
             Panel_Accueil.Controls.Add(Bouton_Loc);
             Panel_Accueil.Dock = DockStyle.Fill;
             Panel_Accueil.Location = new Point(0, 0);
-            Panel_Accueil.Margin = new Padding(2);
             Panel_Accueil.Name = "Panel_Accueil";
-            Panel_Accueil.Size = new Size(1053, 513);
+            Panel_Accueil.Size = new Size(1504, 855);
             Panel_Accueil.TabIndex = 0;
             // 
             // Barre_Recherche
@@ -56,11 +55,10 @@
             Barre_Recherche.AccessibleName = "Barre_Recherche";
             Barre_Recherche.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             Barre_Recherche.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-            Barre_Recherche.Location = new Point(134, 86);
-            Barre_Recherche.Margin = new Padding(2);
+            Barre_Recherche.Location = new Point(191, 143);
             Barre_Recherche.Name = "Barre_Recherche";
             Barre_Recherche.ScrollBars = ScrollBars.Vertical;
-            Barre_Recherche.Size = new Size(787, 23);
+            Barre_Recherche.Size = new Size(1123, 31);
             Barre_Recherche.TabIndex = 0;
             // 
             // Loupe
@@ -68,10 +66,9 @@
             Loupe.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             Loupe.BackgroundImageLayout = ImageLayout.Stretch;
             Loupe.Image = (Image)resources.GetObject("Loupe.Image");
-            Loupe.Location = new Point(925, 86);
-            Loupe.Margin = new Padding(2);
+            Loupe.Location = new Point(1321, 143);
             Loupe.Name = "Loupe";
-            Loupe.Size = new Size(23, 23);
+            Loupe.Size = new Size(33, 38);
             Loupe.TabIndex = 2;
             Loupe.TabStop = false;
             Loupe.Click += Loupe_Click;
@@ -80,10 +77,9 @@
             // 
             Bouton_Loc.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             Bouton_Loc.Image = Properties.Resources.gps__3_;
-            Bouton_Loc.Location = new Point(109, 85);
-            Bouton_Loc.Margin = new Padding(2);
+            Bouton_Loc.Location = new Point(156, 142);
             Bouton_Loc.Name = "Bouton_Loc";
-            Bouton_Loc.Size = new Size(27, 24);
+            Bouton_Loc.Size = new Size(39, 40);
             Bouton_Loc.TabIndex = 1;
             Bouton_Loc.UseVisualStyleBackColor = true;
             Bouton_Loc.Click += Bouton_Loc_Click;
@@ -92,18 +88,19 @@
             // 
             Panel_Meteo_Ville.Dock = DockStyle.Fill;
             Panel_Meteo_Ville.Location = new Point(0, 0);
+            Panel_Meteo_Ville.Margin = new Padding(4, 5, 4, 5);
             Panel_Meteo_Ville.Name = "Panel_Meteo_Ville";
-            Panel_Meteo_Ville.Size = new Size(1053, 513);
+            Panel_Meteo_Ville.Size = new Size(1504, 855);
             Panel_Meteo_Ville.TabIndex = 3;
             // 
             // Form1
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1053, 513);
+            ClientSize = new Size(1504, 855);
             Controls.Add(Panel_Meteo_Ville);
             Controls.Add(Panel_Accueil);
-            Margin = new Padding(2);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Form1";
             Text = "Form1";
             Panel_Accueil.ResumeLayout(false);
