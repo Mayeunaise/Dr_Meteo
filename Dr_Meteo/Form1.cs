@@ -30,7 +30,9 @@ namespace Dr_Meteo
             iconeMeteo.Size = new Size(100, 100);
             iconeMeteo.Location = new Point(20, 20);
             iconeMeteo.SizeMode = PictureBoxSizeMode.Zoom;
-            Lbl_VilleNom = new Label { Font = new Font("Segoe UI", 18, FontStyle.Bold), Location = new Point(20, 20), AutoSize = true };
+            Lbl_VilleNom.Location = new Point(150, 20); // Décalage à droite de l'icône
+            Lbl_VilleNom.Font = new Font("Segoe UI", 18, FontStyle.Bold);
+            Lbl_VilleNom.AutoSize = true;
             Lbl_Temperature = new Label { Font = new Font("Segoe UI", 28, FontStyle.Bold), Location = new Point(20, 70), AutoSize = true };
             Lbl_MeteoDesc = new Label { Font = new Font("Segoe UI", 14), Location = new Point(20, 140), AutoSize = true };
 
