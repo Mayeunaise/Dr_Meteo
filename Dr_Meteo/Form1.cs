@@ -11,6 +11,7 @@ namespace Dr_Meteo
     using System.Text.Json;
     using System.Windows.Forms;
     using System.Drawing;
+    using System.IO;
 
     public partial class Form1 : Form
     {
@@ -223,27 +224,27 @@ namespace Dr_Meteo
             //On vérifie quelle image on va afficher
              if (reponseMeteo.current.code_meteo==0)
              {
-                 iconeMeteo.Image = Image.FromFile(@"Ressources\soleil.png"); 
+                 iconeMeteo.Image = Image.FromFile(@"Images\soleil.png"); 
              }
              else if (reponseMeteo.current.code_meteo >=1 && reponseMeteo.current.code_meteo<=3)
              {
-                 iconeMeteo.Image = Image.FromFile(@"Ressources\nuageux.png");
+                 iconeMeteo.Image = Image.FromFile(@"Images\nuageux.png");
              }
             else if (reponseMeteo.current.code_meteo >=45 && reponseMeteo.current.code_meteo<=48)
              {
-                iconeMeteo.Image = Image.FromFile(@"Ressources\brouillard.png");
+                iconeMeteo.Image = Image.FromFile(@"Images\brouillard.png");
              }
             else if (reponseMeteo.current.code_meteo >=51 && reponseMeteo.current.code_meteo<=67)
              {
-                iconeMeteo.Image = Image.FromFile(@"Ressources\pluvieux.png");
+                iconeMeteo.Image = Image.FromFile(@"Images\pluvieux.png");
              }
             else if (reponseMeteo.current.code_meteo >=71 && reponseMeteo.current.code_meteo<=77)
              {
-                iconeMeteo.Image = Image.FromFile(@"Ressources\neigeux.png");
+                iconeMeteo.Image = Image.FromFile(@"Images\neigeux.png");
              }
             else if (reponseMeteo.current.code_meteo >=95)
              {
-                iconeMeteo.Image = Image.FromFile(@"Ressources\tempete.png");
+                iconeMeteo.Image = Image.FromFile(@"Images\tempete.png");
              }
             
             Panel_Accueil.Visible = false;
