@@ -27,8 +27,6 @@ namespace Dr_Meteo
         }
         private void CreerPanelMeteo()
         {
-            iconeMeteo.Size = new Size(100, 100);
-            iconeMeteo.Location = new Point(20, 20);
             iconeMeteo.SizeMode = PictureBoxSizeMode.Zoom;
             Lbl_VilleNom.Location = new Point(150, 20); // Décalage à droite de l'icône
             Lbl_VilleNom.Font = new Font("Segoe UI", 18, FontStyle.Bold);
@@ -37,10 +35,6 @@ namespace Dr_Meteo
             Lbl_Temperature.AutoSize = true;
             Lbl_MeteoDesc = new Label { Font = new Font("Segoe UI", 14), Location = new Point(20, 140), AutoSize = true };
 
-            Panel_Meteo_Ville.Controls.Add(Lbl_VilleNom);
-            Panel_Meteo_Ville.Controls.Add(Lbl_Temperature);
-            Panel_Meteo_Ville.Controls.Add(Lbl_MeteoDesc);
-            Panel_Meteo_Ville.Controls.Add(iconeMeteo);
 
             this.Controls.Add(Panel_Meteo_Ville);
         }
