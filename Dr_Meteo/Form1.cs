@@ -250,7 +250,7 @@ namespace Dr_Meteo
             iconeMeteo.Image = ChoixImage(reponseMeteo.current.code_meteo);
 
 
-            lbl_Apres_demain.Text = "Après demain";            
+            lbl_Apres_demain.Text = "Après demain";
             Lbl_MeteoDesc_apres_demain.Text = TraduireCodeMeteo(reponseMeteo.daily.weather_code[2]);
             Lbl_Uv_apres_demain.Text = $"Indice UV : {reponseMeteo.daily.uv_index_max[2]}";
             Lbl_Uv_apres_demain.ForeColor = TraduireCodeUV(reponseMeteo.daily.uv_index_max[2]);
@@ -338,6 +338,21 @@ namespace Dr_Meteo
         }
 
         private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Lbl_Uv_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Lbl_Uv_apres_demain_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Aujourd_hui_Click(object sender, EventArgs e)
         {
 
         }
