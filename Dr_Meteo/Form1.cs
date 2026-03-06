@@ -35,13 +35,33 @@ namespace Dr_Meteo
             Lbl_VilleNom.AutoSize = true;
             Lbl_Temperature.Font = new Font("Segoe UI", 28, FontStyle.Bold);
             Lbl_Temperature.AutoSize = true;
-            Lbl_MeteoDesc = new Label { Font = new Font("Segoe UI", 14), Location = new Point(20, 140), AutoSize = true };
+            Lbl_MeteoDesc.Font = new Font("Segoe UI", 14);
+            Lbl_MeteoDesc.AutoSize = true;
+            Lbl_humidite.Font = new Font("Segeo UI", 14);
+            Lbl_humidite.AutoSize = true;
+            Lbl_Speed_wind.Font = new Font("Segeo UI", 14);
+            Lbl_Speed_wind.AutoSize = true;
+            Aujourd_hui.Font = new Font("Segoe UI", 14);
+            Aujourd_hui.AutoSize = true;
+            Aujourd_hui.Text = "Aujourd'hui";
+            Lbl_pressure.Font = new Font("Segoe UI", 14);
+            Lbl_pressure.AutoSize = true;
+            Lbl_Uv.Font = new Font("Segoe UI", 14);
+            Lbl_Uv.AutoSize = true;
+            lbl_Apres_demain.Font = new Font("Segoe UI", 14);
+            lbl_Apres_demain.AutoSize = true;
+            Lbl_MeteoDesc_apres_demain.Font = new Font("Segoe UI", 14);
+            Lbl_MeteoDesc_apres_demain.AutoSize = true;
+            Lbl_Uv_apres_demain.Font = new Font("Segoe UI", 14);
+            Lbl_Uv_apres_demain.AutoSize = true;
+            iconeMeteo_apres_demain.Size = new Size(100, 100);
+            iconeMeteo_apres_demain.Location = new Point(550, 20);
+            iconeMeteo_apres_demain.SizeMode = PictureBoxSizeMode.Zoom;
 
             Panel_Meteo_Ville.Controls.Add(Lbl_VilleNom);
             Panel_Meteo_Ville.Controls.Add(Lbl_Temperature);
             Panel_Meteo_Ville.Controls.Add(Lbl_MeteoDesc);
             Panel_Meteo_Ville.Controls.Add(iconeMeteo);
-
             this.Controls.Add(Panel_Meteo_Ville);
         }
         private async void Form1_Load(object sender, EventArgs e)
@@ -224,31 +244,19 @@ namespace Dr_Meteo
             Lbl_VilleNom.Text = ville;
             Lbl_Temperature.Text = $"{reponseMeteo.current.temperature} °C";
             Lbl_MeteoDesc.Text = TraduireCodeMeteo(reponseMeteo.current.code_meteo);
-            //On vérifie quelle image on va afficher
-            if (reponseMeteo.current.code_meteo == 0)
-            {
-                iconeMeteo.Image = Image.FromFile(@"Images\soleil.png");
-            }
-            else if (reponseMeteo.current.code_meteo >= 1 && reponseMeteo.current.code_meteo <= 3)
-            {
-                iconeMeteo.Image = Image.FromFile(@"Images\nuageux.png");
-            }
-            else if (reponseMeteo.current.code_meteo >= 45 && reponseMeteo.current.code_meteo <= 48)
-            {
-                iconeMeteo.Image = Image.FromFile(@"Images\brouillard.png");
-            }
-            else if (reponseMeteo.current.code_meteo >= 51 && reponseMeteo.current.code_meteo <= 67)
-            {
-                iconeMeteo.Image = Image.FromFile(@"Images\pluvieux.png");
-            }
-            else if (reponseMeteo.current.code_meteo >= 71 && reponseMeteo.current.code_meteo <= 77)
-            {
-                iconeMeteo.Image = Image.FromFile(@"Images\neigeux.png");
-            }
-            else if (reponseMeteo.current.code_meteo >= 95)
-            {
-                iconeMeteo.Image = Image.FromFile(@"Images\tempete.png");
-            }
+            Lbl_humidite.Text = $"{reponseMeteo.current.humidity} % d'humidité";
+            Lbl_Speed_wind.Text = $"{reponseMeteo.current.windspeed} km/h";
+            Lbl_pressure.Text = $"{reponseMeteo.current.pressure} hPa";
+            Lbl_Uv.Text = $"Indice UV : {reponseMeteo.current.uv_index}";
+            Lbl_Uv.ForeColor = TraduireCodeUV(reponseMeteo.current.uv_index);
+            iconeMeteo.Image = ChoixImage(reponseMeteo.current.code_meteo);
+
+
+            lbl_Apres_demain.Text = "Après demain";            
+            Lbl_MeteoDesc_apres_demain.Text = TraduireCodeMeteo(reponseMeteo.daily.weather_code[2]);
+            Lbl_Uv_apres_demain.Text = $"Indice UV : {reponseMeteo.daily.uv_index_max[2]}";
+            Lbl_Uv_apres_demain.ForeColor = TraduireCodeUV(reponseMeteo.daily.uv_index_max[2]);
+            iconeMeteo_apres_demain.Image = ChoixImage(reponseMeteo.daily.weather_code[2]);
 
             Panel_Accueil.Visible = false;
             Panel_Meteo_Ville.Visible = true;
@@ -266,6 +274,26 @@ namespace Dr_Meteo
             return "Variable";
         }
 
+        private Color TraduireCodeUV(double uv)
+        {
+            if (uv >= 0 && uv <= 2) return Color.Green;
+            if (uv >= 3 && uv <= 5) return Color.Orange;
+            if (uv >= 6 && uv <= 7) return Color.Red;
+            if (uv >= 8 && uv <= 10) return Color.Purple;
+            if (uv >= 11) return Color.Maroon;
+            return Color.Black;
+        }
+
+        private static Image ChoixImage(int code)
+        {
+            if (code == 0) return Image.FromFile(@"Images\soleil.png");
+            if (code >= 1 && code <= 3) return Image.FromFile(@"Images\nuageux.png");
+            if (code >= 45 && code <= 48) return Image.FromFile(@"Images\brouillard.png");
+            if (code >= 51 && code <= 67) return Image.FromFile(@"Images\pluvieux.png");
+            if (code >= 71 && code <= 77) return Image.FromFile(@"Images\neigeux.png");
+            if (code >= 95) return Image.FromFile(@"Images\tempete.png");
+            else return Image.FromFile(@"Images\soleil.png");
+        }
 
 
         private async void Bouton_Loc_Click(object sender, EventArgs e)
@@ -297,6 +325,21 @@ namespace Dr_Meteo
         }
 
         private void Panel_Meteo_Ville_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void Lbl_Temperature_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
         {
 
         }
