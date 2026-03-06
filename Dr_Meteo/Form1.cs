@@ -223,12 +223,10 @@ namespace Dr_Meteo
             //On vérifie quelle image on va afficher
             /* if (reponseMeteo.current.code_meteo==0)
              {
-                 string cheminImage = System.IO.Path.Combine(Application.StartupPath, "soleil.png");
-                 iconeMeteo.Image = Image.FromFile(cheminImage); 
+                 iconeMeteo.Image = Image.FromFile(@"Ressources\soleil.png"); 
              }
              else if (reponseMeteo.current.code_meteo >=1 && reponseMeteo.current.code_meteo<=3)
              {
-                 string cheminImage = System.IO.Path.Combine(Application.StartupPath, "nuageux.png");
                  iconeMeteo.Image = Image.FromFile(cheminImage);
              }*/
             Panel_Accueil.Visible = false;
