@@ -221,14 +221,31 @@ namespace Dr_Meteo
             Lbl_Temperature.Text = $"{reponseMeteo.current.temperature} °C";
             Lbl_MeteoDesc.Text = TraduireCodeMeteo(reponseMeteo.current.code_meteo);
             //On vérifie quelle image on va afficher
-            /* if (reponseMeteo.current.code_meteo==0)
+             if (reponseMeteo.current.code_meteo==0)
              {
                  iconeMeteo.Image = Image.FromFile(@"Ressources\soleil.png"); 
              }
              else if (reponseMeteo.current.code_meteo >=1 && reponseMeteo.current.code_meteo<=3)
              {
-                 iconeMeteo.Image = Image.FromFile(cheminImage);
-             }*/
+                 iconeMeteo.Image = Image.FromFile(@"Ressources\nuageux.png");
+             }
+            else if (reponseMeteo.current.code_meteo >=45 && reponseMeteo.current.code_meteo<=48)
+             {
+                iconeMeteo.Image = Image.FromFile(@"Ressources\brouillard.png");
+             }
+            else if (reponseMeteo.current.code_meteo >=51 && reponseMeteo.current.code_meteo<=67)
+             {
+                iconeMeteo.Image = Image.FromFile(@"Ressources\pluvieux.png");
+             }
+            else if (reponseMeteo.current.code_meteo >=71 && reponseMeteo.current.code_meteo<=77)
+             {
+                iconeMeteo.Image = Image.FromFile(@"Ressources\neigeux.png");
+             }
+            else if (reponseMeteo.current.code_meteo >=95)
+             {
+                iconeMeteo.Image = Image.FromFile(@"Ressources\tempete.png");
+             }
+            
             Panel_Accueil.Visible = false;
             Panel_Meteo_Ville.Visible = true;
 
@@ -236,12 +253,12 @@ namespace Dr_Meteo
 
         private string TraduireCodeMeteo(int code)
         {
-            if (code == 0) return "Ciel dégagé ??";
-            if (code >= 1 && code <= 3) return "Nuageux ??";
-            if (code >= 45 && code <= 48) return "Brouillard ???";
-            if (code >= 51 && code <= 67) return "Pluie ?";
-            if (code >= 71 && code <= 77) return "Neige ??";
-            if (code >= 95) return "Orage ?";
+            if (code == 0) return "Ciel dégagé";
+            if (code >= 1 && code <= 3) return "Nuageux";
+            if (code >= 45 && code <= 48) return "Brouillard";
+            if (code >= 51 && code <= 67) return "Pluie";
+            if (code >= 71 && code <= 77) return "Neige";
+            if (code >= 95) return "Orage";
             return "Variable";
         }
 
