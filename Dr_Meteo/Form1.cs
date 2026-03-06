@@ -17,7 +17,7 @@ namespace Dr_Meteo
     {
         private const string BaseText = "Saisissez une Ville ou un code postal ex: Bordeaux, 33063";
         private string ville = "";
-        
+
         public Form1()
         {
             InitializeComponent();
@@ -33,7 +33,8 @@ namespace Dr_Meteo
             Lbl_VilleNom.Location = new Point(150, 20); // Décalage à droite de l'icône
             Lbl_VilleNom.Font = new Font("Segoe UI", 18, FontStyle.Bold);
             Lbl_VilleNom.AutoSize = true;
-            Lbl_Temperature = new Label { Font = new Font("Segoe UI", 28, FontStyle.Bold), Location = new Point(20, 70), AutoSize = true };
+            Lbl_Temperature.Font = new Font("Segoe UI", 28, FontStyle.Bold);
+            Lbl_Temperature.AutoSize = true;
             Lbl_MeteoDesc = new Label { Font = new Font("Segoe UI", 14), Location = new Point(20, 140), AutoSize = true };
 
             Panel_Meteo_Ville.Controls.Add(Lbl_VilleNom);
@@ -126,7 +127,7 @@ namespace Dr_Meteo
                 Barre_Recherche.Text = BaseText;
                 Barre_Recherche.ForeColor = Color.Green;
             }
-        }       
+        }
 
         // Fonction liée à l'événement KeyDown de votre TextBox (txtRecherche)
         private void BarreRecherche_KeyDown(object? sender, KeyEventArgs e)
@@ -224,31 +225,31 @@ namespace Dr_Meteo
             Lbl_Temperature.Text = $"{reponseMeteo.current.temperature} °C";
             Lbl_MeteoDesc.Text = TraduireCodeMeteo(reponseMeteo.current.code_meteo);
             //On vérifie quelle image on va afficher
-             if (reponseMeteo.current.code_meteo==0)
-             {
-                 iconeMeteo.Image = Image.FromFile(@"Images\soleil.png"); 
-             }
-             else if (reponseMeteo.current.code_meteo >=1 && reponseMeteo.current.code_meteo<=3)
-             {
-                 iconeMeteo.Image = Image.FromFile(@"Images\nuageux.png");
-             }
-            else if (reponseMeteo.current.code_meteo >=45 && reponseMeteo.current.code_meteo<=48)
-             {
+            if (reponseMeteo.current.code_meteo == 0)
+            {
+                iconeMeteo.Image = Image.FromFile(@"Images\soleil.png");
+            }
+            else if (reponseMeteo.current.code_meteo >= 1 && reponseMeteo.current.code_meteo <= 3)
+            {
+                iconeMeteo.Image = Image.FromFile(@"Images\nuageux.png");
+            }
+            else if (reponseMeteo.current.code_meteo >= 45 && reponseMeteo.current.code_meteo <= 48)
+            {
                 iconeMeteo.Image = Image.FromFile(@"Images\brouillard.png");
-             }
-            else if (reponseMeteo.current.code_meteo >=51 && reponseMeteo.current.code_meteo<=67)
-             {
+            }
+            else if (reponseMeteo.current.code_meteo >= 51 && reponseMeteo.current.code_meteo <= 67)
+            {
                 iconeMeteo.Image = Image.FromFile(@"Images\pluvieux.png");
-             }
-            else if (reponseMeteo.current.code_meteo >=71 && reponseMeteo.current.code_meteo<=77)
-             {
+            }
+            else if (reponseMeteo.current.code_meteo >= 71 && reponseMeteo.current.code_meteo <= 77)
+            {
                 iconeMeteo.Image = Image.FromFile(@"Images\neigeux.png");
-             }
-            else if (reponseMeteo.current.code_meteo >=95)
-             {
+            }
+            else if (reponseMeteo.current.code_meteo >= 95)
+            {
                 iconeMeteo.Image = Image.FromFile(@"Images\tempete.png");
-             }
-            
+            }
+
             Panel_Accueil.Visible = false;
             Panel_Meteo_Ville.Visible = true;
 
@@ -295,16 +296,10 @@ namespace Dr_Meteo
             AfficherMeteo(villeSaisie);
         }
 
-        
+        private void Panel_Meteo_Ville_Paint(object sender, PaintEventArgs e)
+        {
 
-
-
-
-
-
-
-
-
+        }
     }
 
 }
