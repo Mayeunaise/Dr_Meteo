@@ -34,6 +34,8 @@
             Loupe = new PictureBox();
             Bouton_Loc = new Button();
             Panel_Meteo_Ville = new Panel();
+            Lbl_coucher_soleil = new Label();
+            Lbl_lever_soleil = new Label();
             Lbl_temp_min = new Label();
             Lbl_temp_max = new Label();
             iconeMeteo_demain = new PictureBox();
@@ -55,8 +57,7 @@
             lbl_Apres_demain = new Label();
             Lbl_Uv_apres_demain = new Label();
             Aujourd_hui = new Label();
-            Lbl_lever_soleil = new Label();
-            Lbl_coucher_soleil = new Label();
+            Lbl_diff_temp_ensoleilement_demain = new Label();
             Panel_Accueil.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)Loupe).BeginInit();
             Panel_Meteo_Ville.SuspendLayout();
@@ -115,6 +116,7 @@
             // 
             // Panel_Meteo_Ville
             // 
+            Panel_Meteo_Ville.Controls.Add(Lbl_diff_temp_ensoleilement_demain);
             Panel_Meteo_Ville.Controls.Add(Lbl_coucher_soleil);
             Panel_Meteo_Ville.Controls.Add(Lbl_lever_soleil);
             Panel_Meteo_Ville.Controls.Add(Lbl_temp_min);
@@ -145,6 +147,24 @@
             Panel_Meteo_Ville.Size = new Size(1203, 684);
             Panel_Meteo_Ville.TabIndex = 3;
             Panel_Meteo_Ville.Paint += Panel_Meteo_Ville_Paint;
+            // 
+            // Lbl_coucher_soleil
+            // 
+            Lbl_coucher_soleil.AutoSize = true;
+            Lbl_coucher_soleil.Location = new Point(126, 438);
+            Lbl_coucher_soleil.Name = "Lbl_coucher_soleil";
+            Lbl_coucher_soleil.Size = new Size(128, 20);
+            Lbl_coucher_soleil.TabIndex = 14;
+            Lbl_coucher_soleil.Text = "Lbl_coucher_soleil";
+            // 
+            // Lbl_lever_soleil
+            // 
+            Lbl_lever_soleil.AutoSize = true;
+            Lbl_lever_soleil.Location = new Point(125, 410);
+            Lbl_lever_soleil.Name = "Lbl_lever_soleil";
+            Lbl_lever_soleil.Size = new Size(108, 20);
+            Lbl_lever_soleil.TabIndex = 13;
+            Lbl_lever_soleil.Text = "Lbl_lever_soleil";
             // 
             // Lbl_temp_min
             // 
@@ -331,23 +351,14 @@
             Aujourd_hui.Text = "Aujourd_hui";
             Aujourd_hui.Click += Aujourd_hui_Click;
             // 
-            // Lbl_lever_soleil
+            // Lbl_diff_temp_ensoleilement_demain
             // 
-            Lbl_lever_soleil.AutoSize = true;
-            Lbl_lever_soleil.Location = new Point(125, 410);
-            Lbl_lever_soleil.Name = "Lbl_lever_soleil";
-            Lbl_lever_soleil.Size = new Size(108, 20);
-            Lbl_lever_soleil.TabIndex = 13;
-            Lbl_lever_soleil.Text = "Lbl_lever_soleil";
-            // 
-            // Lbl_coucher_soleil
-            // 
-            Lbl_coucher_soleil.AutoSize = true;
-            Lbl_coucher_soleil.Location = new Point(126, 438);
-            Lbl_coucher_soleil.Name = "Lbl_coucher_soleil";
-            Lbl_coucher_soleil.Size = new Size(128, 20);
-            Lbl_coucher_soleil.TabIndex = 14;
-            Lbl_coucher_soleil.Text = "Lbl_coucher_soleil";
+            Lbl_diff_temp_ensoleilement_demain.AutoSize = true;
+            Lbl_diff_temp_ensoleilement_demain.Location = new Point(349, 359);
+            Lbl_diff_temp_ensoleilement_demain.Name = "Lbl_diff_temp_ensoleilement_demain";
+            Lbl_diff_temp_ensoleilement_demain.Size = new Size(198, 20);
+            Lbl_diff_temp_ensoleilement_demain.TabIndex = 15;
+            Lbl_diff_temp_ensoleilement_demain.Text = "Lbl_diff_temp_ensoleilement";
             // 
             // Form1
             // 
@@ -402,5 +413,6 @@
         private Label Lbl_temp_max;
         private Label Lbl_coucher_soleil;
         private Label Lbl_lever_soleil;
+        private Label Lbl_diff_temp_ensoleilement_demain;
     }
 }

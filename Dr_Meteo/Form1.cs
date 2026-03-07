@@ -65,6 +65,8 @@ namespace Dr_Meteo
             Lbl_temp_max_demain.AutoSize = true;
             Lbl_temp_min_demain.Font = new Font("Segoe UI", 14);
             Lbl_temp_min_demain.AutoSize = true;
+            Lbl_diff_temp_ensoleilement_demain.Font = new Font("Segoe UI", 14);
+            Lbl_diff_temp_ensoleilement_demain.AutoSize = true;
 
             lbl_Apres_demain.Font = new Font("Segoe UI", 14);
             lbl_Apres_demain.AutoSize = true;
@@ -286,6 +288,7 @@ namespace Dr_Meteo
             iconeMeteo_demain.Image = ChoixImage(reponseMeteo.daily.weather_code[1]);
             Lbl_temp_max_demain.Text = $"Temperature Max : {reponseMeteo.daily.temperature_max[1]} °C";
             Lbl_temp_min_demain.Text = $"Temperature Min : {reponseMeteo.daily.temperature_min[1]} °C";
+            Lbl_diff_temp_ensoleilement_demain.Text = CalculerDiffTempEnsoleilement(reponseMeteo.daily.sunrise[1], reponseMeteo.daily.sunrise[0]) > 0 ? $"Lever du soleil plus tard de {CalculerDiffTempEnsoleilement(reponseMeteo.daily.sunrise[1], reponseMeteo.daily.sunrise[0])} minutes" : $"Lever du soleil plus tôt de {Math.Abs(CalculerDiffTempEnsoleilement(reponseMeteo.daily.sunrise[1], reponseMeteo.daily.sunrise[0]))} minutes";
 
 
             lbl_Apres_demain.Text = "Après demain";
@@ -346,6 +349,16 @@ namespace Dr_Meteo
             {
                 return heure; // En cas d'erreur, on retourne la chaîne d'origine
             }
+        }
+
+        private int CalculerDiffTempEnsoleilement(string temp_j1, string temp_j2)
+        {
+            int min_j1, min_j2;
+            DateTime dt = DateTime.Parse(temp_j1);
+            int.TryParse(dt.ToString("mm"), out min_j1);
+            DateTime dt2 = DateTime.Parse(temp_j2);
+            int.TryParse(dt2.ToString("mm"), out min_j2);
+            return min_j1 - min_j2;
         }
 
 
