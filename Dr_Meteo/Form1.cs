@@ -30,6 +30,8 @@ namespace Dr_Meteo
             iconeMeteo.SizeMode = PictureBoxSizeMode.Zoom;
             Lbl_VilleNom.Font = new Font("Segoe UI", 18, FontStyle.Bold);
             Lbl_VilleNom.AutoSize = true;
+            iconeMeteo.Location = new Point(20, 20);
+            iconeMeteo.Size = new Size(100, 100);
             Lbl_Temperature.Font = new Font("Segoe UI", 28, FontStyle.Bold);
             Lbl_Temperature.AutoSize = true;
             Lbl_MeteoDesc.Font = new Font("Segoe UI", 14);
@@ -45,6 +47,21 @@ namespace Dr_Meteo
             Lbl_pressure.AutoSize = true;
             Lbl_Uv.Font = new Font("Segoe UI", 14);
             Lbl_Uv.AutoSize = true;
+
+            Lbl_Demain.Font = new Font("Segoe UI", 14);
+            Lbl_Demain.AutoSize = true;
+            Lbl_MeteoDesc_demain.Font = new Font("Segoe UI", 14);
+            Lbl_MeteoDesc_demain.AutoSize = true;
+            Lbl_Uv_demain.Font = new Font("Segoe UI", 14);
+            Lbl_Uv_demain.AutoSize = true;
+            iconeMeteo_demain.Size = new Size(100, 100);
+            iconeMeteo_demain.Location = new Point(700, 20);
+            iconeMeteo_demain.SizeMode = PictureBoxSizeMode.Zoom;
+            Lbl_temp_max_demain.Font = new Font("Segoe UI", 14);
+            Lbl_temp_max_demain.AutoSize = true;
+            Lbl_temp_min_demain.Font = new Font("Segoe UI", 14);
+            Lbl_temp_min_demain.AutoSize = true;
+
             lbl_Apres_demain.Font = new Font("Segoe UI", 14);
             lbl_Apres_demain.AutoSize = true;
             Lbl_MeteoDesc_apres_demain.Font = new Font("Segoe UI", 14);
@@ -52,8 +69,13 @@ namespace Dr_Meteo
             Lbl_Uv_apres_demain.Font = new Font("Segoe UI", 14);
             Lbl_Uv_apres_demain.AutoSize = true;
             iconeMeteo_apres_demain.Size = new Size(100, 100);
-            iconeMeteo_apres_demain.Location = new Point(550, 20);
+            iconeMeteo_apres_demain.Location = new Point(900, 20);
             iconeMeteo_apres_demain.SizeMode = PictureBoxSizeMode.Zoom;
+            Lbl_temp_max_apres_demain.Font = new Font("Segoe UI", 14);
+            Lbl_temp_max_apres_demain.AutoSize = true;
+            Lbl_temp_min_apres_demain.Font = new Font("Segoe UI", 14);
+            Lbl_temp_min_apres_demain.AutoSize = true;
+
 
             Panel_Meteo_Ville.Controls.Add(Lbl_VilleNom);
             Panel_Meteo_Ville.Controls.Add(Lbl_Temperature);
@@ -249,11 +271,22 @@ namespace Dr_Meteo
             iconeMeteo.Image = ChoixImage(reponseMeteo.current.code_meteo);
 
 
+            Lbl_Demain.Text = "Demain";
+            Lbl_MeteoDesc_demain.Text = TraduireCodeMeteo(reponseMeteo.daily.weather_code[1]);
+            Lbl_Uv_demain.Text = $"Indice UV : {reponseMeteo.daily.uv_index_max[1]}";
+            Lbl_Uv_demain.ForeColor = TraduireCodeUV(reponseMeteo.daily.uv_index_max[1]);
+            iconeMeteo_demain.Image = ChoixImage(reponseMeteo.daily.weather_code[1]);
+            Lbl_temp_max_demain.Text = $"Temperature Max : {reponseMeteo.daily.temperature_max[1]} °C";
+            Lbl_temp_min_demain.Text = $"Temperature Min : {reponseMeteo.daily.temperature_min[1]} °C";
+
+
             lbl_Apres_demain.Text = "Après demain";
             Lbl_MeteoDesc_apres_demain.Text = TraduireCodeMeteo(reponseMeteo.daily.weather_code[2]);
             Lbl_Uv_apres_demain.Text = $"Indice UV : {reponseMeteo.daily.uv_index_max[2]}";
             Lbl_Uv_apres_demain.ForeColor = TraduireCodeUV(reponseMeteo.daily.uv_index_max[2]);
             iconeMeteo_apres_demain.Image = ChoixImage(reponseMeteo.daily.weather_code[2]);
+            Lbl_temp_max_apres_demain.Text = $"Temperature Max : {reponseMeteo.daily.temperature_max[2]} °C";
+            Lbl_temp_min_apres_demain.Text = $"Temperature Min : {reponseMeteo.daily.temperature_min[2]} °C";
 
             Panel_Accueil.Visible = false;
             Panel_Meteo_Ville.Visible = true;
@@ -352,6 +385,11 @@ namespace Dr_Meteo
         }
 
         private void Aujourd_hui_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Lbl_Speed_wind_Click(object sender, EventArgs e)
         {
 
         }
