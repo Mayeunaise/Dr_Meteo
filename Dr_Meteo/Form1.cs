@@ -28,7 +28,6 @@ namespace Dr_Meteo
         private void CreerPanelMeteo()
         {
             iconeMeteo.SizeMode = PictureBoxSizeMode.Zoom;
-            Lbl_VilleNom.Location = new Point(150, 20); // Décalage à droite de l'icône
             Lbl_VilleNom.Font = new Font("Segoe UI", 18, FontStyle.Bold);
             Lbl_VilleNom.AutoSize = true;
             Lbl_Temperature.Font = new Font("Segoe UI", 28, FontStyle.Bold);
