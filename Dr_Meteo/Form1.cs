@@ -47,6 +47,10 @@ namespace Dr_Meteo
             Lbl_pressure.AutoSize = true;
             Lbl_Uv.Font = new Font("Segoe UI", 14);
             Lbl_Uv.AutoSize = true;
+            Lbl_lever_soleil.Font = new Font("Segoe UI", 14);
+            Lbl_lever_soleil.AutoSize = true;
+            Lbl_coucher_soleil.Font = new Font("Segoe UI", 14);
+            Lbl_coucher_soleil.AutoSize = true;
 
             Lbl_Demain.Font = new Font("Segoe UI", 14);
             Lbl_Demain.AutoSize = true;
@@ -55,7 +59,7 @@ namespace Dr_Meteo
             Lbl_Uv_demain.Font = new Font("Segoe UI", 14);
             Lbl_Uv_demain.AutoSize = true;
             iconeMeteo_demain.Size = new Size(100, 100);
-            iconeMeteo_demain.Location = new Point(700, 20);
+            iconeMeteo_demain.Location = new Point(450, 20);
             iconeMeteo_demain.SizeMode = PictureBoxSizeMode.Zoom;
             Lbl_temp_max_demain.Font = new Font("Segoe UI", 14);
             Lbl_temp_max_demain.AutoSize = true;
@@ -69,7 +73,7 @@ namespace Dr_Meteo
             Lbl_Uv_apres_demain.Font = new Font("Segoe UI", 14);
             Lbl_Uv_apres_demain.AutoSize = true;
             iconeMeteo_apres_demain.Size = new Size(100, 100);
-            iconeMeteo_apres_demain.Location = new Point(900, 20);
+            iconeMeteo_apres_demain.Location = new Point(825, 20);
             iconeMeteo_apres_demain.SizeMode = PictureBoxSizeMode.Zoom;
             Lbl_temp_max_apres_demain.Font = new Font("Segoe UI", 14);
             Lbl_temp_max_apres_demain.AutoSize = true;
@@ -269,6 +273,10 @@ namespace Dr_Meteo
             Lbl_Uv.Text = $"Indice UV : {reponseMeteo.current.uv_index}";
             Lbl_Uv.ForeColor = TraduireCodeUV(reponseMeteo.current.uv_index);
             iconeMeteo.Image = ChoixImage(reponseMeteo.current.code_meteo);
+            Lbl_temp_max.Text = $"Max : {reponseMeteo.daily.temperature_max[0]} °C";
+            Lbl_temp_min.Text = $"Min : {reponseMeteo.daily.temperature_min[0]} °C";
+            Lbl_lever_soleil.Text ="Lever : " + Traduire_heures_soleil(reponseMeteo.daily.sunrise[0]);
+            Lbl_coucher_soleil.Text ="Coucher : " + Traduire_heures_soleil(reponseMeteo.daily.sunset[0]);
 
 
             Lbl_Demain.Text = "Demain";
@@ -323,6 +331,21 @@ namespace Dr_Meteo
             if (code >= 71 && code <= 77) return Image.FromFile(@"Images\neigeux.png");
             if (code >= 95) return Image.FromFile(@"Images\tempete.png");
             else return Image.FromFile(@"Images\soleil.png");
+        }
+
+        private string Traduire_heures_soleil(string heure)
+        {
+            // La fonction reçoit une heure au format "2024-06-01T05:30:00"
+            // On veut extraire "05:30"
+            try
+            {
+                DateTime dt = DateTime.Parse(heure);
+                return dt.ToString("HH:mm");
+            }
+            catch
+            {
+                return heure; // En cas d'erreur, on retourne la chaîne d'origine
+            }
         }
 
 

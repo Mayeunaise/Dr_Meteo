@@ -34,6 +34,8 @@
             Loupe = new PictureBox();
             Bouton_Loc = new Button();
             Panel_Meteo_Ville = new Panel();
+            Lbl_temp_min = new Label();
+            Lbl_temp_max = new Label();
             iconeMeteo_demain = new PictureBox();
             Lbl_Uv_demain = new Label();
             Lbl_temp_min_demain = new Label();
@@ -53,6 +55,8 @@
             lbl_Apres_demain = new Label();
             Lbl_Uv_apres_demain = new Label();
             Aujourd_hui = new Label();
+            Lbl_lever_soleil = new Label();
+            Lbl_coucher_soleil = new Label();
             Panel_Accueil.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)Loupe).BeginInit();
             Panel_Meteo_Ville.SuspendLayout();
@@ -111,6 +115,10 @@
             // 
             // Panel_Meteo_Ville
             // 
+            Panel_Meteo_Ville.Controls.Add(Lbl_coucher_soleil);
+            Panel_Meteo_Ville.Controls.Add(Lbl_lever_soleil);
+            Panel_Meteo_Ville.Controls.Add(Lbl_temp_min);
+            Panel_Meteo_Ville.Controls.Add(Lbl_temp_max);
             Panel_Meteo_Ville.Controls.Add(iconeMeteo_demain);
             Panel_Meteo_Ville.Controls.Add(Lbl_Uv_demain);
             Panel_Meteo_Ville.Controls.Add(Lbl_temp_min_demain);
@@ -138,6 +146,24 @@
             Panel_Meteo_Ville.TabIndex = 3;
             Panel_Meteo_Ville.Paint += Panel_Meteo_Ville_Paint;
             // 
+            // Lbl_temp_min
+            // 
+            Lbl_temp_min.AutoSize = true;
+            Lbl_temp_min.Location = new Point(120, 87);
+            Lbl_temp_min.Name = "Lbl_temp_min";
+            Lbl_temp_min.Size = new Size(101, 20);
+            Lbl_temp_min.TabIndex = 12;
+            Lbl_temp_min.Text = "Lbl_temp_min";
+            // 
+            // Lbl_temp_max
+            // 
+            Lbl_temp_max.AutoSize = true;
+            Lbl_temp_max.Location = new Point(119, 155);
+            Lbl_temp_max.Name = "Lbl_temp_max";
+            Lbl_temp_max.Size = new Size(104, 20);
+            Lbl_temp_max.TabIndex = 11;
+            Lbl_temp_max.Text = "Lbl_temp_max";
+            // 
             // iconeMeteo_demain
             // 
             iconeMeteo_demain.Location = new Point(339, 85);
@@ -149,7 +175,7 @@
             // Lbl_Uv_demain
             // 
             Lbl_Uv_demain.AutoSize = true;
-            Lbl_Uv_demain.Location = new Point(356, 316);
+            Lbl_Uv_demain.Location = new Point(356, 322);
             Lbl_Uv_demain.Name = "Lbl_Uv_demain";
             Lbl_Uv_demain.Size = new Size(108, 20);
             Lbl_Uv_demain.TabIndex = 9;
@@ -158,7 +184,7 @@
             // Lbl_temp_min_demain
             // 
             Lbl_temp_min_demain.AutoSize = true;
-            Lbl_temp_min_demain.Location = new Point(350, 236);
+            Lbl_temp_min_demain.Location = new Point(350, 242);
             Lbl_temp_min_demain.Name = "Lbl_temp_min_demain";
             Lbl_temp_min_demain.Size = new Size(157, 20);
             Lbl_temp_min_demain.TabIndex = 8;
@@ -167,7 +193,7 @@
             // Lbl_temp_max_demain
             // 
             Lbl_temp_max_demain.AutoSize = true;
-            Lbl_temp_max_demain.Location = new Point(350, 202);
+            Lbl_temp_max_demain.Location = new Point(350, 208);
             Lbl_temp_max_demain.Name = "Lbl_temp_max_demain";
             Lbl_temp_max_demain.Size = new Size(160, 20);
             Lbl_temp_max_demain.TabIndex = 7;
@@ -221,7 +247,7 @@
             // 
             // Lbl_MeteoDesc
             // 
-            Lbl_MeteoDesc.Location = new Point(125, 168);
+            Lbl_MeteoDesc.Location = new Point(125, 176);
             Lbl_MeteoDesc.Name = "Lbl_MeteoDesc";
             Lbl_MeteoDesc.Size = new Size(174, 23);
             Lbl_MeteoDesc.TabIndex = 0;
@@ -240,7 +266,7 @@
             // 
             Lbl_Temperature.AutoEllipsis = true;
             Lbl_Temperature.AutoSize = true;
-            Lbl_Temperature.Location = new Point(125, 115);
+            Lbl_Temperature.Location = new Point(125, 102);
             Lbl_Temperature.Name = "Lbl_Temperature";
             Lbl_Temperature.Size = new Size(119, 20);
             Lbl_Temperature.TabIndex = 1;
@@ -305,6 +331,24 @@
             Aujourd_hui.Text = "Aujourd_hui";
             Aujourd_hui.Click += Aujourd_hui_Click;
             // 
+            // Lbl_lever_soleil
+            // 
+            Lbl_lever_soleil.AutoSize = true;
+            Lbl_lever_soleil.Location = new Point(125, 410);
+            Lbl_lever_soleil.Name = "Lbl_lever_soleil";
+            Lbl_lever_soleil.Size = new Size(108, 20);
+            Lbl_lever_soleil.TabIndex = 13;
+            Lbl_lever_soleil.Text = "Lbl_lever_soleil";
+            // 
+            // Lbl_coucher_soleil
+            // 
+            Lbl_coucher_soleil.AutoSize = true;
+            Lbl_coucher_soleil.Location = new Point(126, 438);
+            Lbl_coucher_soleil.Name = "Lbl_coucher_soleil";
+            Lbl_coucher_soleil.Size = new Size(128, 20);
+            Lbl_coucher_soleil.TabIndex = 14;
+            Lbl_coucher_soleil.Text = "Lbl_coucher_soleil";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -354,5 +398,9 @@
         private Label Lbl_temp_min_demain;
         private Label Lbl_temp_max_demain;
         private PictureBox iconeMeteo_demain;
+        private Label Lbl_temp_min;
+        private Label Lbl_temp_max;
+        private Label Lbl_coucher_soleil;
+        private Label Lbl_lever_soleil;
     }
 }
