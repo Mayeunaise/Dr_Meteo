@@ -30,6 +30,8 @@ namespace Dr_Meteo
             iconeMeteo.SizeMode = PictureBoxSizeMode.Zoom;
             Lbl_VilleNom.Font = new Font("Segoe UI", 18, FontStyle.Bold);
             Lbl_VilleNom.AutoSize = true;
+            iconeMeteo.Location = new Point(20, 20);
+            iconeMeteo.Size = new Size(100, 100);
             Lbl_Temperature.Font = new Font("Segoe UI", 28, FontStyle.Bold);
             Lbl_Temperature.AutoSize = true;
             Lbl_MeteoDesc.Font = new Font("Segoe UI", 14);
@@ -45,6 +47,29 @@ namespace Dr_Meteo
             Lbl_pressure.AutoSize = true;
             Lbl_Uv.Font = new Font("Segoe UI", 14);
             Lbl_Uv.AutoSize = true;
+            Lbl_lever_soleil.Font = new Font("Segoe UI", 14);
+            Lbl_lever_soleil.AutoSize = true;
+            Lbl_coucher_soleil.Font = new Font("Segoe UI", 14);
+            Lbl_coucher_soleil.AutoSize = true;
+
+            Lbl_Demain.Font = new Font("Segoe UI", 14);
+            Lbl_Demain.AutoSize = true;
+            Lbl_MeteoDesc_demain.Font = new Font("Segoe UI", 14);
+            Lbl_MeteoDesc_demain.AutoSize = true;
+            Lbl_Uv_demain.Font = new Font("Segoe UI", 14);
+            Lbl_Uv_demain.AutoSize = true;
+            iconeMeteo_demain.Size = new Size(100, 100);
+            iconeMeteo_demain.Location = new Point(450, 20);
+            iconeMeteo_demain.SizeMode = PictureBoxSizeMode.Zoom;
+            Lbl_temp_max_demain.Font = new Font("Segoe UI", 14);
+            Lbl_temp_max_demain.AutoSize = true;
+            Lbl_temp_min_demain.Font = new Font("Segoe UI", 14);
+            Lbl_temp_min_demain.AutoSize = true;
+            Lbl_diff_temp_ensoleilement_demain.Font = new Font("Segoe UI", 12);
+            Lbl_diff_temp_ensoleilement_demain.AutoSize = true;
+            Lbl_diff_sunset_demain.Font = new Font("Segoe UI", 12);
+            Lbl_diff_sunset_demain.AutoSize= true;
+
             lbl_Apres_demain.Font = new Font("Segoe UI", 14);
             lbl_Apres_demain.AutoSize = true;
             Lbl_MeteoDesc_apres_demain.Font = new Font("Segoe UI", 14);
@@ -52,8 +77,26 @@ namespace Dr_Meteo
             Lbl_Uv_apres_demain.Font = new Font("Segoe UI", 14);
             Lbl_Uv_apres_demain.AutoSize = true;
             iconeMeteo_apres_demain.Size = new Size(100, 100);
-            iconeMeteo_apres_demain.Location = new Point(550, 20);
+            iconeMeteo_apres_demain.Location = new Point(825, 20);
             iconeMeteo_apres_demain.SizeMode = PictureBoxSizeMode.Zoom;
+            Lbl_temp_max_apres_demain.Font = new Font("Segoe UI", 14);
+            Lbl_temp_max_apres_demain.AutoSize = true;
+            Lbl_temp_min_apres_demain.Font = new Font("Segoe UI", 14);
+            Lbl_temp_min_apres_demain.AutoSize = true;
+            Lbl_diff_temp_ensoleilement_apres_demain.Font = new Font("Segoe UI", 12);
+            Lbl_diff_temp_ensoleilement_apres_demain.AutoSize=true;
+            Lbl_diff_sunset_apres_demain.Font = new Font("Segoe UI", 12);
+            Lbl_diff_sunset_apres_demain.AutoSize = true;
+
+
+            Lbl_j_3.Font = new Font("Segoe UI", 14);
+            Lbl_j_3.AutoSize = true;
+            Lbl_min_j3.Font = new Font("Segoe UI", 14);
+            Lbl_min_j3.AutoSize = true;
+            Lbl_max_j3.Font = new Font("Segoe UI", 14);
+            Lbl_max_j3.AutoSize = true;
+            
+
 
             Panel_Meteo_Ville.Controls.Add(Lbl_VilleNom);
             Panel_Meteo_Ville.Controls.Add(Lbl_Temperature);
@@ -244,9 +287,24 @@ namespace Dr_Meteo
             Lbl_humidite.Text = $"{reponseMeteo.current.humidity} % d'humidité";
             Lbl_Speed_wind.Text = $"{reponseMeteo.current.windspeed} km/h";
             Lbl_pressure.Text = $"{reponseMeteo.current.pressure} hPa";
-            Lbl_Uv.Text = $"Indice UV : {reponseMeteo.current.uv_index}";
-            Lbl_Uv.ForeColor = TraduireCodeUV(reponseMeteo.current.uv_index);
+            Lbl_Uv.Text = $"Indice UV : {reponseMeteo.daily.uv_index_max[0]}";
+            Lbl_Uv.ForeColor = TraduireCodeUV(reponseMeteo.daily.uv_index_max[0]);
             iconeMeteo.Image = ChoixImage(reponseMeteo.current.code_meteo);
+            Lbl_temp_max.Text = $"Max : {reponseMeteo.daily.temperature_max[0]} °C";
+            Lbl_temp_min.Text = $"Min : {reponseMeteo.daily.temperature_min[0]} °C";
+            Lbl_lever_soleil.Text = "Lever : " + Traduire_heures_soleil(reponseMeteo.daily.sunrise[0]);
+            Lbl_coucher_soleil.Text = "Coucher : " + Traduire_heures_soleil(reponseMeteo.daily.sunset[0]);
+
+
+            Lbl_Demain.Text = "Demain";
+            Lbl_MeteoDesc_demain.Text = TraduireCodeMeteo(reponseMeteo.daily.weather_code[1]);
+            Lbl_Uv_demain.Text = $"Indice UV : {reponseMeteo.daily.uv_index_max[1]}";
+            Lbl_Uv_demain.ForeColor = TraduireCodeUV(reponseMeteo.daily.uv_index_max[1]);
+            iconeMeteo_demain.Image = ChoixImage(reponseMeteo.daily.weather_code[1]);
+            Lbl_temp_max_demain.Text = $"Temperature Max : {reponseMeteo.daily.temperature_max[1]} °C";
+            Lbl_temp_min_demain.Text = $"Temperature Min : {reponseMeteo.daily.temperature_min[1]} °C";
+            Lbl_diff_temp_ensoleilement_demain.Text = DiffTempEnsoleilement(reponseMeteo.daily.sunrise[1], reponseMeteo.daily.sunrise[0]);
+            Lbl_diff_sunset_demain.Text = Diff_sunset(reponseMeteo.daily.sunset[1], reponseMeteo.daily.sunset[0]);
 
 
             lbl_Apres_demain.Text = "Après demain";
@@ -254,6 +312,16 @@ namespace Dr_Meteo
             Lbl_Uv_apres_demain.Text = $"Indice UV : {reponseMeteo.daily.uv_index_max[2]}";
             Lbl_Uv_apres_demain.ForeColor = TraduireCodeUV(reponseMeteo.daily.uv_index_max[2]);
             iconeMeteo_apres_demain.Image = ChoixImage(reponseMeteo.daily.weather_code[2]);
+            Lbl_temp_max_apres_demain.Text = $"Temperature Max : {reponseMeteo.daily.temperature_max[2]} °C";
+            Lbl_temp_min_apres_demain.Text = $"Temperature Min : {reponseMeteo.daily.temperature_min[2]} °C";
+            Lbl_diff_temp_ensoleilement_apres_demain.Text = DiffTempEnsoleilement(reponseMeteo.daily.sunrise[2], reponseMeteo.daily.sunrise[1]);
+            Lbl_diff_sunset_apres_demain.Text = Diff_sunset(reponseMeteo.daily.sunset[2], reponseMeteo.daily.sunset[1]);
+
+
+            Lbl_j_3.Text = Date(reponseMeteo.daily.time[3]);
+            Lbl_min_j3.Text = $"Min : {reponseMeteo.daily.temperature_min[3]} °C";
+            Lbl_max_j3.Text = $"Max : {reponseMeteo.daily.temperature_max[3]} °C";
+
 
             Panel_Accueil.Visible = false;
             Panel_Meteo_Ville.Visible = true;
@@ -290,6 +358,92 @@ namespace Dr_Meteo
             if (code >= 71 && code <= 77) return Image.FromFile(@"Images\neigeux.png");
             if (code >= 95) return Image.FromFile(@"Images\tempete.png");
             else return Image.FromFile(@"Images\soleil.png");
+        }
+
+        private string Traduire_heures_soleil(string heure)
+        {
+            // La fonction reçoit une heure au format "2024-06-01T05:30:00"
+            // On veut extraire "05:30"
+            try
+            {
+                DateTime dt = DateTime.Parse(heure);
+                return dt.ToString("HH:mm");
+            }
+            catch
+            {
+                return heure; // En cas d'erreur, on retourne la chaîne d'origine
+            }
+        }
+
+        private string DiffTempEnsoleilement(string temp_j1, string temp_j2)
+        {
+            int min_j1, min_j2, h_j1, h_j2;
+            string rep;
+            DateTime dt = DateTime.Parse(temp_j1);
+            int.TryParse(dt.ToString("mm"), out min_j1);
+            int.TryParse(dt.ToString("HH"), out h_j1);
+            DateTime dt2 = DateTime.Parse(temp_j2);
+            int.TryParse(dt2.ToString("mm"), out min_j2);
+            int.TryParse(dt2.ToString("HH"),out h_j2);
+            if (h_j1 == h_j2)
+            {
+                if (min_j1 <=min_j2)
+                {
+                    rep = $"Lever de soleil plus tard de {min_j2-min_j1} min";
+                }
+                else
+                {
+                    rep = $"Lever de soleil plus tot de {min_j1-min_j2} min";
+                }
+            }
+            else if(h_j1<h_j2)
+            {
+                rep = $"Lever de soleil plus tard de {60 - (min_j1 - min_j2)} min";
+            }
+            else
+            {
+                rep = $"Lever de soleil plus tot de {60 - (min_j2 - min_j1)} min";
+            }
+            return rep;
+        }
+        private string Diff_sunset(string temp_j1, string temp_j2)
+        {
+            int min_j1, min_j2, h_j1, h_j2;
+            string rep;
+            DateTime dt = DateTime.Parse(temp_j1);
+            int.TryParse(dt.ToString("mm"), out min_j1);
+            int.TryParse(dt.ToString("HH"), out h_j1);
+            DateTime dt2 = DateTime.Parse(temp_j2);
+            int.TryParse(dt2.ToString("mm"), out min_j2);
+            int.TryParse(dt2.ToString("HH"), out h_j2);
+            if (h_j1 == h_j2)
+            {
+                if (min_j1 <= min_j2)
+                {
+                    rep = $"Coucher de soleil plus tot de {min_j2 - min_j1} min";
+                }
+                else
+                {
+                    rep = $"Coucher de soleil plus tard de {min_j1 - min_j2} min";
+                }
+            }
+            else if (h_j1 < h_j2)
+            {
+                rep = $"Coucher de soleil plus tot de {60 - (min_j1 - min_j2)} min";
+            }
+            else
+            {
+                rep = $"Coucher de soleil plus tard de {60 - (min_j2 - min_j1)} min";
+            }
+            return rep;
+        }
+
+        private string Date(string jour)
+        {
+            string jj_mm_aa;
+            DateTime dt = DateTime.Parse(jour);
+            jj_mm_aa = dt.ToString("D");
+            return jj_mm_aa;
         }
 
 
@@ -352,6 +506,16 @@ namespace Dr_Meteo
         }
 
         private void Aujourd_hui_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Lbl_Speed_wind_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Lbl_diff_temp_ensoleilement_demain_Click(object sender, EventArgs e)
         {
 
         }
