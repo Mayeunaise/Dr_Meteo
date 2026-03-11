@@ -251,7 +251,6 @@
         private PictureBox Loupe;
         private Button Bouton_Loc;
         private Panel Panel_Meteo_Ville;
-        //Pour éviter de te faire chier, les éléments que tu placeras dans le Panel_Meteo_Ville, tu les renommeras commme ci-dessous pour ceux que ça concerne
         private Label Lbl_VilleNom;
         private Label Lbl_Temperature;
         private Label Lbl_MeteoDesc;
