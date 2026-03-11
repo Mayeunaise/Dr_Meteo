@@ -87,6 +87,14 @@ namespace Dr_Meteo
             Lbl_diff_temp_ensoleilement_apres_demain.AutoSize=true;
             Lbl_diff_sunset_apres_demain.Font = new Font("Segoe UI", 12);
             Lbl_diff_sunset_apres_demain.AutoSize = true;
+
+
+            Lbl_j_3.Font = new Font("Segoe UI", 14);
+            Lbl_j_3.AutoSize = true;
+            Lbl_min_j3.Font = new Font("Segoe UI", 14);
+            Lbl_min_j3.AutoSize = true;
+            Lbl_max_j3.Font = new Font("Segoe UI", 14);
+            Lbl_max_j3.AutoSize = true;
             
 
 
@@ -309,6 +317,12 @@ namespace Dr_Meteo
             Lbl_diff_temp_ensoleilement_apres_demain.Text = DiffTempEnsoleilement(reponseMeteo.daily.sunrise[2], reponseMeteo.daily.sunrise[1]);
             Lbl_diff_sunset_apres_demain.Text = Diff_sunset(reponseMeteo.daily.sunset[2], reponseMeteo.daily.sunset[1]);
 
+
+            Lbl_j_3.Text = Date(reponseMeteo.daily.time[3]);
+            Lbl_min_j3.Text = $"Min : {reponseMeteo.daily.temperature_min[3]} °C";
+            Lbl_max_j3.Text = $"Max : {reponseMeteo.daily.temperature_max[3]} °C";
+
+
             Panel_Accueil.Visible = false;
             Panel_Meteo_Ville.Visible = true;
 
@@ -422,6 +436,14 @@ namespace Dr_Meteo
                 rep = $"Coucher de soleil plus tard de {60 - (min_j2 - min_j1)} min";
             }
             return rep;
+        }
+
+        private string Date(string jour)
+        {
+            string jj_mm_aa;
+            DateTime dt = DateTime.Parse(jour);
+            jj_mm_aa = dt.ToString("D");
+            return jj_mm_aa;
         }
 
 
