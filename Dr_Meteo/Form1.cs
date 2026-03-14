@@ -68,7 +68,7 @@ namespace Dr_Meteo
             Lbl_diff_temp_ensoleilement_demain.Font = new Font("Segoe UI", 12);
             Lbl_diff_temp_ensoleilement_demain.AutoSize = true;
             Lbl_diff_sunset_demain.Font = new Font("Segoe UI", 12);
-            Lbl_diff_sunset_demain.AutoSize= true;
+            Lbl_diff_sunset_demain.AutoSize = true;
 
             lbl_Apres_demain.Font = new Font("Segoe UI", 14);
             lbl_Apres_demain.AutoSize = true;
@@ -76,15 +76,15 @@ namespace Dr_Meteo
             Lbl_MeteoDesc_apres_demain.AutoSize = true;
             Lbl_Uv_apres_demain.Font = new Font("Segoe UI", 14);
             Lbl_Uv_apres_demain.AutoSize = true;
-            iconeMeteo_apres_demain.Size = new Size(100, 100);
-            iconeMeteo_apres_demain.Location = new Point(825, 20);
-            iconeMeteo_apres_demain.SizeMode = PictureBoxSizeMode.Zoom;
+            iconeMeteo_apres_demain_bis.Size = new Size(100, 100);
+            iconeMeteo_apres_demain_bis.Location = new Point(825, 20);
+            iconeMeteo_apres_demain_bis.SizeMode = PictureBoxSizeMode.Zoom;
             Lbl_temp_max_apres_demain.Font = new Font("Segoe UI", 14);
             Lbl_temp_max_apres_demain.AutoSize = true;
             Lbl_temp_min_apres_demain.Font = new Font("Segoe UI", 14);
             Lbl_temp_min_apres_demain.AutoSize = true;
             Lbl_diff_temp_ensoleilement_apres_demain.Font = new Font("Segoe UI", 12);
-            Lbl_diff_temp_ensoleilement_apres_demain.AutoSize=true;
+            Lbl_diff_temp_ensoleilement_apres_demain.AutoSize = true;
             Lbl_diff_sunset_apres_demain.Font = new Font("Segoe UI", 12);
             Lbl_diff_sunset_apres_demain.AutoSize = true;
 
@@ -95,7 +95,28 @@ namespace Dr_Meteo
             Lbl_min_j3.AutoSize = true;
             Lbl_max_j3.Font = new Font("Segoe UI", 14);
             Lbl_max_j3.AutoSize = true;
-            
+            iconeMeteo_j3.Size = new Size(25, 25);
+            iconeMeteo_j3.SizeMode = PictureBoxSizeMode.Zoom;
+
+
+            Lbl_j_4.Font = new Font("Segoe UI", 14);
+            Lbl_j_4.AutoSize = true;
+            Lbl_min_j4.Font = new Font("Segoe UI", 14);
+            Lbl_min_j4.AutoSize = true;
+            Lbl_max_j4.Font = new Font("Segoe UI", 14);
+            Lbl_max_j4.AutoSize = true;
+            iconeMeteo_j4.Size = new Size(25, 25);
+            iconeMeteo_j4.SizeMode = PictureBoxSizeMode.Zoom;
+
+
+            Lbl_j_5.Font = new Font("Segoe UI", 14);
+            Lbl_j_5.AutoSize = true;
+            Lbl_min_j5.Font = new Font("Segoe UI", 14);
+            Lbl_min_j5.AutoSize = true;
+            Lbl_max_j5.Font = new Font("Segoe UI", 14);
+            Lbl_max_j5.AutoSize = true;
+            iconeMeteo_j5.Size = new Size(25, 25);
+            iconeMeteo_j5.SizeMode = PictureBoxSizeMode.Zoom;
 
 
             Panel_Meteo_Ville.Controls.Add(Lbl_VilleNom);
@@ -311,7 +332,7 @@ namespace Dr_Meteo
             Lbl_MeteoDesc_apres_demain.Text = TraduireCodeMeteo(reponseMeteo.daily.weather_code[2]);
             Lbl_Uv_apres_demain.Text = $"Indice UV : {reponseMeteo.daily.uv_index_max[2]}";
             Lbl_Uv_apres_demain.ForeColor = TraduireCodeUV(reponseMeteo.daily.uv_index_max[2]);
-            iconeMeteo_apres_demain.Image = ChoixImage(reponseMeteo.daily.weather_code[2]);
+            iconeMeteo_apres_demain_bis.Image = ChoixImage(reponseMeteo.daily.weather_code[2]);
             Lbl_temp_max_apres_demain.Text = $"Temperature Max : {reponseMeteo.daily.temperature_max[2]} °C";
             Lbl_temp_min_apres_demain.Text = $"Temperature Min : {reponseMeteo.daily.temperature_min[2]} °C";
             Lbl_diff_temp_ensoleilement_apres_demain.Text = DiffTempEnsoleilement(reponseMeteo.daily.sunrise[2], reponseMeteo.daily.sunrise[1]);
@@ -321,6 +342,17 @@ namespace Dr_Meteo
             Lbl_j_3.Text = Date(reponseMeteo.daily.time[3]);
             Lbl_min_j3.Text = $"Min : {reponseMeteo.daily.temperature_min[3]} °C";
             Lbl_max_j3.Text = $"Max : {reponseMeteo.daily.temperature_max[3]} °C";
+            iconeMeteo_j3.Image = ChoixImage(reponseMeteo.daily.weather_code[3]);
+
+            Lbl_j_4.Text = Date(reponseMeteo.daily.time[4]);
+            Lbl_min_j4.Text = $"Min : {reponseMeteo.daily.temperature_min[4]} °C";
+            Lbl_max_j4.Text = $"Max : {reponseMeteo.daily.temperature_max[4]} °C";
+            iconeMeteo_j4.Image = ChoixImage(reponseMeteo.daily.weather_code[4]);
+
+            Lbl_j_5.Text = Date(reponseMeteo.daily.time[5]);
+            Lbl_min_j5.Text = $"Min : {reponseMeteo.daily.temperature_min[5]} °C";
+            Lbl_max_j5.Text = $"Max : {reponseMeteo.daily.temperature_max[5]} °C";
+            iconeMeteo_j5.Image = ChoixImage(reponseMeteo.daily.weather_code[5]);
 
 
             Panel_Accueil.Visible = false;
@@ -384,19 +416,19 @@ namespace Dr_Meteo
             int.TryParse(dt.ToString("HH"), out h_j1);
             DateTime dt2 = DateTime.Parse(temp_j2);
             int.TryParse(dt2.ToString("mm"), out min_j2);
-            int.TryParse(dt2.ToString("HH"),out h_j2);
+            int.TryParse(dt2.ToString("HH"), out h_j2);
             if (h_j1 == h_j2)
             {
-                if (min_j1 <=min_j2)
+                if (min_j1 <= min_j2)
                 {
-                    rep = $"Lever de soleil plus tard de {min_j2-min_j1} min";
+                    rep = $"Lever de soleil plus tard de {min_j2 - min_j1} min";
                 }
                 else
                 {
-                    rep = $"Lever de soleil plus tot de {min_j1-min_j2} min";
+                    rep = $"Lever de soleil plus tot de {min_j1 - min_j2} min";
                 }
             }
-            else if(h_j1<h_j2)
+            else if (h_j1 < h_j2)
             {
                 rep = $"Lever de soleil plus tard de {60 - (min_j1 - min_j2)} min";
             }
@@ -516,6 +548,16 @@ namespace Dr_Meteo
         }
 
         private void Lbl_diff_temp_ensoleilement_demain_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void iconeMeteo_j3_Click(object sender, EventArgs e)
         {
 
         }
