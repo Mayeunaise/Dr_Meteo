@@ -51,10 +51,6 @@
             iconeMeteo_j4 = new PictureBox();
             Lbl_min_j5 = new Label();
             Lbl_j_5 = new Label();
-            Lbl_j_7 = new Label();
-            Lbl_min_j7 = new Label();
-            Lbl_max_j7 = new Label();
-            iconeMeteo_j7 = new PictureBox();
             iconeMeteo_apres_demain_bis = new PictureBox();
             Lbl_diff_sunset_apres_demain = new Label();
             Lbl_diff_sunset_demain = new Label();
@@ -91,7 +87,6 @@
             ((System.ComponentModel.ISupportInitialize)iconeMeteo_j3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)iconeMeteo_j5).BeginInit();
             ((System.ComponentModel.ISupportInitialize)iconeMeteo_j4).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)iconeMeteo_j7).BeginInit();
             ((System.ComponentModel.ISupportInitialize)iconeMeteo_apres_demain_bis).BeginInit();
             ((System.ComponentModel.ISupportInitialize)iconeMeteo_demain).BeginInit();
             SuspendLayout();
@@ -187,17 +182,17 @@
             // 
             // tableLayoutPanel1
             // 
-            tableLayoutPanel1.ColumnCount = 10;
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 15.5555553F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 4.44444466F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 15.5555553F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 4.44444466F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 15.5555553F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 4.44444466F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 15.5555553F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 4.44444466F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 15.5555553F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 4.44444466F));
+            tableLayoutPanel1.ColumnCount = 8;
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 19.44445F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 5.555556F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 19.4444447F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 5.555556F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 19.4444447F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 5.555556F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 19.4444447F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 5.5555563F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
             tableLayoutPanel1.Controls.Add(Lbl_j_3, 0, 0);
             tableLayoutPanel1.Controls.Add(iconeMeteo_j6, 7, 0);
             tableLayoutPanel1.Controls.Add(Lbl_min_j3, 0, 1);
@@ -214,10 +209,6 @@
             tableLayoutPanel1.Controls.Add(iconeMeteo_j4, 3, 0);
             tableLayoutPanel1.Controls.Add(Lbl_min_j5, 4, 1);
             tableLayoutPanel1.Controls.Add(Lbl_j_5, 4, 0);
-            tableLayoutPanel1.Controls.Add(Lbl_j_7, 8, 0);
-            tableLayoutPanel1.Controls.Add(Lbl_min_j7, 8, 1);
-            tableLayoutPanel1.Controls.Add(Lbl_max_j7, 8, 2);
-            tableLayoutPanel1.Controls.Add(iconeMeteo_j7, 9, 0);
             tableLayoutPanel1.Location = new Point(46, 491);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 3;
@@ -232,14 +223,14 @@
             Lbl_j_3.Dock = DockStyle.Fill;
             Lbl_j_3.Location = new Point(3, 0);
             Lbl_j_3.Name = "Lbl_j_3";
-            Lbl_j_3.Size = new Size(172, 68);
+            Lbl_j_3.Size = new Size(216, 68);
             Lbl_j_3.TabIndex = 19;
             Lbl_j_3.Text = "Lbl_j_3";
             Lbl_j_3.Click += Lbl_j_3_Click;
             // 
             // iconeMeteo_j6
             // 
-            iconeMeteo_j6.Location = new Point(865, 3);
+            iconeMeteo_j6.Location = new Point(1080, 3);
             iconeMeteo_j6.Name = "iconeMeteo_j6";
             iconeMeteo_j6.Size = new Size(44, 54);
             iconeMeteo_j6.TabIndex = 36;
@@ -250,16 +241,16 @@
             Lbl_min_j3.Dock = DockStyle.Fill;
             Lbl_min_j3.Location = new Point(3, 68);
             Lbl_min_j3.Name = "Lbl_min_j3";
-            Lbl_min_j3.Size = new Size(172, 60);
+            Lbl_min_j3.Size = new Size(216, 60);
             Lbl_min_j3.TabIndex = 20;
             Lbl_min_j3.Text = "Lbl_min_j3";
             // 
             // Lbl_max_j6
             // 
             Lbl_max_j6.Dock = DockStyle.Fill;
-            Lbl_max_j6.Location = new Point(687, 128);
+            Lbl_max_j6.Location = new Point(858, 128);
             Lbl_max_j6.Name = "Lbl_max_j6";
-            Lbl_max_j6.Size = new Size(172, 98);
+            Lbl_max_j6.Size = new Size(216, 98);
             Lbl_max_j6.TabIndex = 35;
             Lbl_max_j6.Text = "Lbl_max_j6";
             // 
@@ -268,22 +259,22 @@
             Lbl_max_j3.Dock = DockStyle.Fill;
             Lbl_max_j3.Location = new Point(3, 128);
             Lbl_max_j3.Name = "Lbl_max_j3";
-            Lbl_max_j3.Size = new Size(172, 98);
+            Lbl_max_j3.Size = new Size(216, 98);
             Lbl_max_j3.TabIndex = 21;
             Lbl_max_j3.Text = "Lbl_max_j3";
             // 
             // Lbl_min_j6
             // 
             Lbl_min_j6.Dock = DockStyle.Fill;
-            Lbl_min_j6.Location = new Point(687, 68);
+            Lbl_min_j6.Location = new Point(858, 68);
             Lbl_min_j6.Name = "Lbl_min_j6";
-            Lbl_min_j6.Size = new Size(172, 60);
+            Lbl_min_j6.Size = new Size(216, 60);
             Lbl_min_j6.TabIndex = 34;
             Lbl_min_j6.Text = "Lbl_min_j6";
             // 
             // iconeMeteo_j3
             // 
-            iconeMeteo_j3.Location = new Point(181, 3);
+            iconeMeteo_j3.Location = new Point(225, 3);
             iconeMeteo_j3.Name = "iconeMeteo_j3";
             iconeMeteo_j3.Size = new Size(44, 50);
             iconeMeteo_j3.TabIndex = 31;
@@ -292,18 +283,18 @@
             // Lbl_j_6
             // 
             Lbl_j_6.Dock = DockStyle.Fill;
-            Lbl_j_6.Location = new Point(687, 0);
+            Lbl_j_6.Location = new Point(858, 0);
             Lbl_j_6.Name = "Lbl_j_6";
-            Lbl_j_6.Size = new Size(172, 68);
+            Lbl_j_6.Size = new Size(216, 68);
             Lbl_j_6.TabIndex = 33;
             Lbl_j_6.Text = "Lbl_j_6";
             // 
             // Lbl_j_4
             // 
             Lbl_j_4.Dock = DockStyle.Fill;
-            Lbl_j_4.Location = new Point(231, 0);
+            Lbl_j_4.Location = new Point(288, 0);
             Lbl_j_4.Name = "Lbl_j_4";
-            Lbl_j_4.Size = new Size(172, 68);
+            Lbl_j_4.Size = new Size(216, 68);
             Lbl_j_4.TabIndex = 23;
             Lbl_j_4.Text = "Lbl_j_4";
             Lbl_j_4.Click += label3_Click;
@@ -311,16 +302,16 @@
             // Lbl_min_j4
             // 
             Lbl_min_j4.Dock = DockStyle.Fill;
-            Lbl_min_j4.Location = new Point(231, 68);
+            Lbl_min_j4.Location = new Point(288, 68);
             Lbl_min_j4.Name = "Lbl_min_j4";
-            Lbl_min_j4.Size = new Size(172, 60);
+            Lbl_min_j4.Size = new Size(216, 60);
             Lbl_min_j4.TabIndex = 24;
             Lbl_min_j4.Text = "Lbl_min_j4";
             Lbl_min_j4.Click += Lbl_min_j4_Click;
             // 
             // iconeMeteo_j5
             // 
-            iconeMeteo_j5.Location = new Point(637, 3);
+            iconeMeteo_j5.Location = new Point(795, 3);
             iconeMeteo_j5.Name = "iconeMeteo_j5";
             iconeMeteo_j5.Size = new Size(44, 54);
             iconeMeteo_j5.TabIndex = 30;
@@ -330,24 +321,24 @@
             // Lbl_max_j4
             // 
             Lbl_max_j4.Dock = DockStyle.Fill;
-            Lbl_max_j4.Location = new Point(231, 128);
+            Lbl_max_j4.Location = new Point(288, 128);
             Lbl_max_j4.Name = "Lbl_max_j4";
-            Lbl_max_j4.Size = new Size(172, 98);
+            Lbl_max_j4.Size = new Size(216, 98);
             Lbl_max_j4.TabIndex = 25;
             Lbl_max_j4.Text = "Lbl_max_j4";
             // 
             // Lbl_max_j5
             // 
             Lbl_max_j5.Dock = DockStyle.Fill;
-            Lbl_max_j5.Location = new Point(459, 128);
+            Lbl_max_j5.Location = new Point(573, 128);
             Lbl_max_j5.Name = "Lbl_max_j5";
-            Lbl_max_j5.Size = new Size(172, 98);
+            Lbl_max_j5.Size = new Size(216, 98);
             Lbl_max_j5.TabIndex = 29;
             Lbl_max_j5.Text = "Lbl_max_j5";
             // 
             // iconeMeteo_j4
             // 
-            iconeMeteo_j4.Location = new Point(409, 3);
+            iconeMeteo_j4.Location = new Point(510, 3);
             iconeMeteo_j4.Name = "iconeMeteo_j4";
             iconeMeteo_j4.Size = new Size(44, 54);
             iconeMeteo_j4.TabIndex = 26;
@@ -356,9 +347,9 @@
             // Lbl_min_j5
             // 
             Lbl_min_j5.Dock = DockStyle.Fill;
-            Lbl_min_j5.Location = new Point(459, 68);
+            Lbl_min_j5.Location = new Point(573, 68);
             Lbl_min_j5.Name = "Lbl_min_j5";
-            Lbl_min_j5.Size = new Size(172, 60);
+            Lbl_min_j5.Size = new Size(216, 60);
             Lbl_min_j5.TabIndex = 28;
             Lbl_min_j5.Text = "Lbl_min_j5";
             Lbl_min_j5.Click += Lbl_min_j5_Click;
@@ -366,49 +357,11 @@
             // Lbl_j_5
             // 
             Lbl_j_5.Dock = DockStyle.Fill;
-            Lbl_j_5.Location = new Point(459, 0);
+            Lbl_j_5.Location = new Point(573, 0);
             Lbl_j_5.Name = "Lbl_j_5";
-            Lbl_j_5.Size = new Size(172, 68);
+            Lbl_j_5.Size = new Size(216, 68);
             Lbl_j_5.TabIndex = 27;
             Lbl_j_5.Text = "Lbl_j_5";
-            // 
-            // Lbl_j_7
-            // 
-            Lbl_j_7.AutoSize = true;
-            Lbl_j_7.Dock = DockStyle.Fill;
-            Lbl_j_7.Location = new Point(915, 0);
-            Lbl_j_7.Name = "Lbl_j_7";
-            Lbl_j_7.Size = new Size(172, 68);
-            Lbl_j_7.TabIndex = 37;
-            Lbl_j_7.Text = "Lbl_j_7";
-            // 
-            // Lbl_min_j7
-            // 
-            Lbl_min_j7.AutoSize = true;
-            Lbl_min_j7.Dock = DockStyle.Fill;
-            Lbl_min_j7.Location = new Point(915, 68);
-            Lbl_min_j7.Name = "Lbl_min_j7";
-            Lbl_min_j7.Size = new Size(172, 60);
-            Lbl_min_j7.TabIndex = 38;
-            Lbl_min_j7.Text = "Lbl_min_j7";
-            // 
-            // Lbl_max_j7
-            // 
-            Lbl_max_j7.AutoSize = true;
-            Lbl_max_j7.Dock = DockStyle.Fill;
-            Lbl_max_j7.Location = new Point(915, 128);
-            Lbl_max_j7.Name = "Lbl_max_j7";
-            Lbl_max_j7.Size = new Size(172, 98);
-            Lbl_max_j7.TabIndex = 39;
-            Lbl_max_j7.Text = "Lbl_max_j7";
-            // 
-            // iconeMeteo_j7
-            // 
-            iconeMeteo_j7.Location = new Point(1093, 3);
-            iconeMeteo_j7.Name = "iconeMeteo_j7";
-            iconeMeteo_j7.Size = new Size(49, 62);
-            iconeMeteo_j7.TabIndex = 40;
-            iconeMeteo_j7.TabStop = false;
             // 
             // iconeMeteo_apres_demain_bis
             // 
@@ -675,12 +628,10 @@
             Panel_Meteo_Ville.ResumeLayout(false);
             Panel_Meteo_Ville.PerformLayout();
             tableLayoutPanel1.ResumeLayout(false);
-            tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)iconeMeteo_j6).EndInit();
             ((System.ComponentModel.ISupportInitialize)iconeMeteo_j3).EndInit();
             ((System.ComponentModel.ISupportInitialize)iconeMeteo_j5).EndInit();
             ((System.ComponentModel.ISupportInitialize)iconeMeteo_j4).EndInit();
-            ((System.ComponentModel.ISupportInitialize)iconeMeteo_j7).EndInit();
             ((System.ComponentModel.ISupportInitialize)iconeMeteo_apres_demain_bis).EndInit();
             ((System.ComponentModel.ISupportInitialize)iconeMeteo_demain).EndInit();
             ResumeLayout(false);
@@ -740,9 +691,5 @@
         private Label Lbl_j_6;
         private PictureBox iconeMeteo_j6;
         private TableLayoutPanel tableLayoutPanel1;
-        private Label Lbl_j_7;
-        private Label Lbl_min_j7;
-        private Label Lbl_max_j7;
-        private PictureBox iconeMeteo_j7;
     }
 }

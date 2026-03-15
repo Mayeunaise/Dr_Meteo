@@ -129,16 +129,6 @@ namespace Dr_Meteo
             iconeMeteo_j6.SizeMode = PictureBoxSizeMode.Zoom;
 
 
-            Lbl_j_7.Font = new Font("Segoe UI", 14);
-            Lbl_j_7.AutoSize = true;
-            Lbl_min_j7.Font = new Font("Segoe UI", 14);
-            Lbl_min_j7.AutoSize = true;
-            Lbl_max_j7.Font = new Font("Segoe UI", 14);
-            Lbl_max_j7.AutoSize = true;
-            iconeMeteo_j7.Size = new Size(25, 25);
-            iconeMeteo_j7.SizeMode = PictureBoxSizeMode.Zoom;
-
-
             Panel_Meteo_Ville.Controls.Add(Lbl_VilleNom);
             Panel_Meteo_Ville.Controls.Add(Lbl_Temperature);
             Panel_Meteo_Ville.Controls.Add(Lbl_MeteoDesc);
@@ -379,13 +369,6 @@ namespace Dr_Meteo
             Lbl_min_j6.Text = $"Min : {reponseMeteo.daily.temperature_min[6]} °C";
             Lbl_max_j6.Text = $"Max : {reponseMeteo.daily.temperature_max[6]} °C";
             iconeMeteo_j6.Image = ChoixImage(reponseMeteo.daily.weather_code[6]);
-
-
-            //Lbl_j_7.Text = Date(reponseMeteo.daily.time[7]);
-            //Lbl_min_j7.Text = $"Min : {reponseMeteo.daily.temperature_min[7]} °C";
-            //Lbl_max_j7.Text = $"Max : {reponseMeteo.daily.temperature_max[7]} °C";
-            //iconeMeteo_j7.Image = ChoixImage(reponseMeteo.daily.weather_code[7]);
-
 
             Panel_Accueil.Visible = false;
             Panel_Meteo_Ville.Visible = true;
