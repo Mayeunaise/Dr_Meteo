@@ -28,11 +28,11 @@ namespace Dr_Meteo
         private void CreerPanelMeteo()
         {
             iconeMeteo.SizeMode = PictureBoxSizeMode.Zoom;
-            Lbl_VilleNom.Font = new Font("Segoe UI", 18, FontStyle.Bold);
-            Lbl_VilleNom.AutoSize = true;
+            Lbl_VilleNom.Font = new Font("Segoe UI", 14, FontStyle.Bold);
+            Lbl_VilleNom.AutoSize = false;
             iconeMeteo.Location = new Point(20, 20);
             iconeMeteo.Size = new Size(100, 100);
-            Lbl_Temperature.Font = new Font("Segoe UI", 28, FontStyle.Bold);
+            Lbl_Temperature.Font = new Font("Segoe UI", 14, FontStyle.Bold);
             Lbl_Temperature.AutoSize = true;
             Lbl_MeteoDesc.Font = new Font("Segoe UI", 14);
             Lbl_MeteoDesc.AutoSize = true;
@@ -334,6 +334,7 @@ namespace Dr_Meteo
             Lbl_Uv_demain.Text = $"Indice UV : {reponseMeteo.daily.uv_index_max[1]}";
             Lbl_Uv_demain.ForeColor = TraduireCodeUV(reponseMeteo.daily.uv_index_max[1]);
             iconeMeteo_demain.Image = ChoixImage(reponseMeteo.daily.weather_code[1]);
+            iconeMeteo_demain.Location = new Point(525, 20);
             Lbl_temp_max_demain.Text = $"Temperature Max : {reponseMeteo.daily.temperature_max[1]} °C";
             Lbl_temp_min_demain.Text = $"Temperature Min : {reponseMeteo.daily.temperature_min[1]} °C";
             Lbl_diff_temp_ensoleilement_demain.Text = DiffTempEnsoleilement(reponseMeteo.daily.sunrise[1], reponseMeteo.daily.sunrise[0]);
@@ -345,6 +346,7 @@ namespace Dr_Meteo
             Lbl_Uv_apres_demain.Text = $"Indice UV : {reponseMeteo.daily.uv_index_max[2]}";
             Lbl_Uv_apres_demain.ForeColor = TraduireCodeUV(reponseMeteo.daily.uv_index_max[2]);
             iconeMeteo_apres_demain_bis.Image = ChoixImage(reponseMeteo.daily.weather_code[2]);
+            iconeMeteo_apres_demain_bis.Location = new Point(950, 20);
             Lbl_temp_max_apres_demain.Text = $"Temperature Max : {reponseMeteo.daily.temperature_max[2]} °C";
             Lbl_temp_min_apres_demain.Text = $"Temperature Min : {reponseMeteo.daily.temperature_min[2]} °C";
             Lbl_diff_temp_ensoleilement_apres_demain.Text = DiffTempEnsoleilement(reponseMeteo.daily.sunrise[2], reponseMeteo.daily.sunrise[1]);
@@ -784,29 +786,16 @@ namespace Dr_Meteo
 
         }
 
-        private void textBoxMdpConnection_KeyDown(object sender, KeyEventArgs e)
+        private void Lbl_min_j5_Click(object sender, EventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
-            {
-                e.SuppressKeyPress = true;
-                if (!string.IsNullOrWhiteSpace(textBoxMdpConnection.Text))
-                {
-                    //Vérification des identifiants
-                    if (GestionBdd.VerifierIdentifiants(pseudoActuel, textBoxMdpConnection.Text))
-                    {
-                        MessageBox.Show($"Bienvenue {pseudoActuel} !");
-                        Panel_Connection.Visible = false;
-                        Panel_Meteo_Ville.Visible = true; //Affichez l'interface normale après connexion
-                    }
-                    else
-                    {
-                        MessageBox.Show("Mot de passe incorrect !");
-                        textBoxMdpConnection.Text = "";
-                        textBoxMdpConnection.Focus();
-                    }
-                }
-            }
+
         }
+
+        private void iconeMeteo_j5_Click(object sender, EventArgs e)
+        {
+
+        }
+    }
 
     }
 }
