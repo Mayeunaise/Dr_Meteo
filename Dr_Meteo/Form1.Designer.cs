@@ -54,7 +54,6 @@
             Lbl_j_5 = new Label();
             iconeMeteo_apres_demain_bis = new PictureBox();
             iconeMeteo_demain = new PictureBox();
-            tableLayoutPanel2 = new TableLayoutPanel();
             Lbl_Demain = new Label();
             lbl_Apres_demain = new Label();
             Lbl_diff_sunset_apres_demain = new Label();
@@ -69,7 +68,6 @@
             Lbl_Uv_apres_demain = new Label();
             Lbl_temp_max_demain = new Label();
             Lbl_MeteoDesc_demain = new Label();
-            tableLayoutPanel3 = new TableLayoutPanel();
             Lbl_VilleNom = new Label();
             Lbl_Temperature = new Label();
             Lbl_coucher_soleil = new Label();
@@ -89,9 +87,9 @@
             sinscrireToolStripMenuItem = new ToolStripMenuItem();
             seConnecterToolStripMenuItem = new ToolStripMenuItem();
             Panel_Inscription = new Panel();
-            Lbl_Uname = new Label();
             Lbl_Conf_Mdp = new Label();
             Lbl_Mdp = new Label();
+            Lbl_Uname = new Label();
             textBoxMdpConf = new TextBox();
             textBoxMdp = new TextBox();
             textBoxUname = new TextBox();
@@ -102,7 +100,7 @@
             textBoxEmail = new TextBox();
             Panel_Connection = new Panel();
             Lbl_Mdp_Connection = new Label();
-            Lbl_Uname_Connection = new Label();
+            Lbl_UConnection = new Label();
             textBoxMdpConnection = new TextBox();
             textBoxUconnection = new TextBox();
             Panel_Accueil.SuspendLayout();
@@ -145,7 +143,7 @@
             Barre_Recherche.Margin = new Padding(2);
             Barre_Recherche.Name = "Barre_Recherche";
             Barre_Recherche.ScrollBars = ScrollBars.Vertical;
-            Barre_Recherche.Size = new Size(988, 23);
+            Barre_Recherche.Size = new Size(2042, 23);
             Barre_Recherche.TabIndex = 0;
             // 
             // Loupe
@@ -153,7 +151,7 @@
             Loupe.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             Loupe.BackgroundImageLayout = ImageLayout.Stretch;
             Loupe.Image = (Image)resources.GetObject("Loupe.Image");
-            Loupe.Location = new Point(1126, 86);
+            Loupe.Location = new Point(2180, 86);
             Loupe.Margin = new Padding(2);
             Loupe.Name = "Loupe";
             Loupe.Size = new Size(23, 22);
@@ -178,8 +176,6 @@
             Panel_Meteo_Ville.Controls.Add(tableLayoutPanel1);
             Panel_Meteo_Ville.Controls.Add(iconeMeteo_apres_demain_bis);
             Panel_Meteo_Ville.Controls.Add(iconeMeteo_demain);
-            Panel_Meteo_Ville.Controls.Add(tableLayoutPanel2);
-            Panel_Meteo_Ville.Controls.Add(tableLayoutPanel3);
             Panel_Meteo_Ville.Dock = DockStyle.Fill;
             Panel_Meteo_Ville.Location = new Point(0, 0);
             Panel_Meteo_Ville.Name = "Panel_Meteo_Ville";
@@ -379,50 +375,16 @@
             // 
             // iconeMeteo_demain
             // 
-            iconeMeteo_demain.Location = new Point(553, 27);
+            iconeMeteo_demain.Location = new Point(339, 85);
             iconeMeteo_demain.Name = "iconeMeteo_demain";
             iconeMeteo_demain.Size = new Size(125, 62);
             iconeMeteo_demain.TabIndex = 10;
             iconeMeteo_demain.TabStop = false;
             // 
-            // tableLayoutPanel2
-            // 
-            tableLayoutPanel2.ColumnCount = 2;
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel2.Controls.Add(Lbl_Demain, 0, 0);
-            tableLayoutPanel2.Controls.Add(lbl_Apres_demain, 1, 0);
-            tableLayoutPanel2.Controls.Add(Lbl_diff_sunset_apres_demain, 1, 6);
-            tableLayoutPanel2.Controls.Add(Lbl_MeteoDesc_apres_demain, 1, 1);
-            tableLayoutPanel2.Controls.Add(Lbl_diff_sunset_demain, 0, 6);
-            tableLayoutPanel2.Controls.Add(Lbl_diff_temp_ensoleilement_apres_demain, 1, 5);
-            tableLayoutPanel2.Controls.Add(Lbl_temp_max_apres_demain, 1, 2);
-            tableLayoutPanel2.Controls.Add(Lbl_diff_temp_ensoleilement_demain, 0, 5);
-            tableLayoutPanel2.Controls.Add(Lbl_temp_min_demain, 0, 3);
-            tableLayoutPanel2.Controls.Add(Lbl_temp_min_apres_demain, 1, 3);
-            tableLayoutPanel2.Controls.Add(Lbl_Uv_demain, 0, 4);
-            tableLayoutPanel2.Controls.Add(Lbl_Uv_apres_demain, 1, 4);
-            tableLayoutPanel2.Controls.Add(Lbl_temp_max_demain, 0, 2);
-            tableLayoutPanel2.Controls.Add(Lbl_MeteoDesc_demain, 0, 1);
-            tableLayoutPanel2.Location = new Point(334, 25);
-            tableLayoutPanel2.Name = "tableLayoutPanel2";
-            tableLayoutPanel2.RowCount = 7;
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 14.2857132F));
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 14.2857151F));
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 14.2857151F));
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 14.2857151F));
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 14.2857151F));
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 14.2857151F));
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 14.2857132F));
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel2.Size = new Size(836, 446);
-            tableLayoutPanel2.TabIndex = 38;
-            // 
             // Lbl_Demain
             // 
             Lbl_Demain.AutoSize = true;
-            Lbl_Demain.Location = new Point(3, 0);
+            Lbl_Demain.Location = new Point(333, 60);
             Lbl_Demain.Name = "Lbl_Demain";
             Lbl_Demain.Size = new Size(87, 20);
             Lbl_Demain.TabIndex = 5;
@@ -430,12 +392,11 @@
             // 
             // lbl_Apres_demain
             // 
-            lbl_Apres_demain.Location = new Point(421, 0);
+            lbl_Apres_demain.Location = new Point(647, 60);
             lbl_Apres_demain.Name = "lbl_Apres_demain";
             lbl_Apres_demain.Size = new Size(170, 23);
             lbl_Apres_demain.TabIndex = 0;
             lbl_Apres_demain.Text = "lbl_Apres_demain";
-            lbl_Apres_demain.Click += lbl_Apres_demain_Click;
             // 
             // Lbl_diff_sunset_apres_demain
             // 
@@ -449,9 +410,9 @@
             // Lbl_MeteoDesc_apres_demain
             // 
             Lbl_MeteoDesc_apres_demain.Dock = DockStyle.Fill;
-            Lbl_MeteoDesc_apres_demain.Location = new Point(421, 63);
+            Lbl_MeteoDesc_apres_demain.Location = new Point(647, 168);
             Lbl_MeteoDesc_apres_demain.Name = "Lbl_MeteoDesc_apres_demain";
-            Lbl_MeteoDesc_apres_demain.Size = new Size(412, 63);
+            Lbl_MeteoDesc_apres_demain.Size = new Size(218, 23);
             Lbl_MeteoDesc_apres_demain.TabIndex = 0;
             Lbl_MeteoDesc_apres_demain.Text = "Lbl_MeteoDesc_apres_demain";
             // 
@@ -477,9 +438,9 @@
             // 
             Lbl_temp_max_apres_demain.AutoSize = true;
             Lbl_temp_max_apres_demain.Dock = DockStyle.Fill;
-            Lbl_temp_max_apres_demain.Location = new Point(421, 126);
+            Lbl_temp_max_apres_demain.Location = new Point(652, 202);
             Lbl_temp_max_apres_demain.Name = "Lbl_temp_max_apres_demain";
-            Lbl_temp_max_apres_demain.Size = new Size(412, 63);
+            Lbl_temp_max_apres_demain.Size = new Size(202, 20);
             Lbl_temp_max_apres_demain.TabIndex = 3;
             Lbl_temp_max_apres_demain.Text = "Lbl_temp_max_apres_demain";
             // 
@@ -492,49 +453,23 @@
             Lbl_diff_temp_ensoleilement_demain.TabIndex = 15;
             Lbl_diff_temp_ensoleilement_demain.Text = "Lbl_diff_temp_ensoleilement_demain";
             // 
-            // Lbl_coucher_soleil
+            // Lbl_temp_min_demain
             // 
-            Lbl_coucher_soleil.AutoSize = true;
-            Lbl_coucher_soleil.Location = new Point(126, 438);
-            Lbl_coucher_soleil.Name = "Lbl_coucher_soleil";
-            Lbl_coucher_soleil.Size = new Size(128, 20);
-            Lbl_coucher_soleil.TabIndex = 14;
-            Lbl_coucher_soleil.Text = "Lbl_coucher_soleil";
-            // 
-            // Lbl_lever_soleil
-            // 
-            Lbl_lever_soleil.AutoSize = true;
-            Lbl_lever_soleil.Location = new Point(125, 410);
-            Lbl_lever_soleil.Name = "Lbl_lever_soleil";
-            Lbl_lever_soleil.Size = new Size(108, 20);
-            Lbl_lever_soleil.TabIndex = 13;
-            Lbl_lever_soleil.Text = "Lbl_lever_soleil";
-            // 
-            // Lbl_temp_min
-            // 
-            Lbl_temp_min.AutoSize = true;
-            Lbl_temp_min.Location = new Point(120, 87);
-            Lbl_temp_min.Name = "Lbl_temp_min";
-            Lbl_temp_min.Size = new Size(101, 20);
-            Lbl_temp_min.TabIndex = 12;
-            Lbl_temp_min.Text = "Lbl_temp_min";
-            // 
-            // Lbl_temp_max
-            // 
-            Lbl_temp_max.AutoSize = true;
-            Lbl_temp_max.Location = new Point(119, 155);
-            Lbl_temp_max.Name = "Lbl_temp_max";
-            Lbl_temp_max.Size = new Size(104, 20);
-            Lbl_temp_max.TabIndex = 11;
-            Lbl_temp_max.Text = "Lbl_temp_max";
+            Lbl_temp_min_demain.AutoSize = true;
+            Lbl_temp_min_demain.Location = new Point(350, 242);
+            Lbl_temp_min_demain.Name = "Lbl_temp_min_demain";
+            Lbl_temp_min_demain.Size = new Size(157, 20);
+            Lbl_temp_min_demain.TabIndex = 8;
+            Lbl_temp_min_demain.Text = "Lbl_temp_min_demain";
             // 
             // Lbl_temp_min_apres_demain
             // 
-            iconeMeteo_demain.Location = new Point(339, 85);
-            iconeMeteo_demain.Name = "iconeMeteo_demain";
-            iconeMeteo_demain.Size = new Size(125, 62);
-            iconeMeteo_demain.TabIndex = 10;
-            iconeMeteo_demain.TabStop = false;
+            Lbl_temp_min_apres_demain.AutoSize = true;
+            Lbl_temp_min_apres_demain.Location = new Point(652, 236);
+            Lbl_temp_min_apres_demain.Name = "Lbl_temp_min_apres_demain";
+            Lbl_temp_min_apres_demain.Size = new Size(199, 20);
+            Lbl_temp_min_apres_demain.TabIndex = 4;
+            Lbl_temp_min_apres_demain.Text = "Lbl_temp_min_apres_demain";
             // 
             // Lbl_Uv_demain
             // 
@@ -547,12 +482,11 @@
             // 
             // Lbl_Uv_apres_demain
             // 
-            Lbl_temp_min_demain.AutoSize = true;
-            Lbl_temp_min_demain.Location = new Point(350, 242);
-            Lbl_temp_min_demain.Name = "Lbl_temp_min_demain";
-            Lbl_temp_min_demain.Size = new Size(157, 20);
-            Lbl_temp_min_demain.TabIndex = 8;
-            Lbl_temp_min_demain.Text = "Lbl_temp_min_demain";
+            Lbl_Uv_apres_demain.Location = new Point(647, 318);
+            Lbl_Uv_apres_demain.Name = "Lbl_Uv_apres_demain";
+            Lbl_Uv_apres_demain.Size = new Size(158, 23);
+            Lbl_Uv_apres_demain.TabIndex = 0;
+            Lbl_Uv_apres_demain.Text = "Lbl_Uv_apres_demain";
             // 
             // Lbl_temp_max_demain
             // 
@@ -572,33 +506,6 @@
             Lbl_MeteoDesc_demain.TabIndex = 6;
             Lbl_MeteoDesc_demain.Text = "Lbl_MeteoDesc_demain";
             // 
-            // tableLayoutPanel3
-            // 
-            Lbl_Demain.AutoSize = true;
-            Lbl_Demain.Location = new Point(333, 60);
-            Lbl_Demain.Name = "Lbl_Demain";
-            Lbl_Demain.Size = new Size(87, 20);
-            Lbl_Demain.TabIndex = 5;
-            Lbl_Demain.Text = "Lbl_Demain";
-            // 
-            // Lbl_temp_min_apres_demain
-            // 
-            Lbl_temp_min_apres_demain.AutoSize = true;
-            Lbl_temp_min_apres_demain.Location = new Point(652, 236);
-            Lbl_temp_min_apres_demain.Name = "Lbl_temp_min_apres_demain";
-            Lbl_temp_min_apres_demain.Size = new Size(199, 20);
-            Lbl_temp_min_apres_demain.TabIndex = 4;
-            Lbl_temp_min_apres_demain.Text = "Lbl_temp_min_apres_demain";
-            // 
-            // Lbl_temp_max_apres_demain
-            // 
-            Lbl_temp_max_apres_demain.AutoSize = true;
-            Lbl_temp_max_apres_demain.Location = new Point(652, 202);
-            Lbl_temp_max_apres_demain.Name = "Lbl_temp_max_apres_demain";
-            Lbl_temp_max_apres_demain.Size = new Size(202, 20);
-            Lbl_temp_max_apres_demain.TabIndex = 3;
-            Lbl_temp_max_apres_demain.Text = "Lbl_temp_max_apres_demain";
-            // 
             // Lbl_VilleNom
             // 
             Lbl_VilleNom.AutoSize = true;
@@ -608,23 +515,6 @@
             Lbl_VilleNom.Size = new Size(97, 20);
             Lbl_VilleNom.TabIndex = 2;
             Lbl_VilleNom.Text = "Lbl_VilleNom";
-            // 
-            // Lbl_MeteoDesc
-            // 
-            Lbl_MeteoDesc.Location = new Point(125, 176);
-            Lbl_MeteoDesc.Name = "Lbl_MeteoDesc";
-            Lbl_MeteoDesc.Size = new Size(174, 23);
-            Lbl_MeteoDesc.TabIndex = 0;
-            Lbl_MeteoDesc.Text = "Lbl_MeteoDesc";
-            // 
-            // Lbl_Uv
-            // 
-            Lbl_Uv.Location = new Point(125, 318);
-            Lbl_Uv.Name = "Lbl_Uv";
-            Lbl_Uv.Size = new Size(100, 23);
-            Lbl_Uv.TabIndex = 0;
-            Lbl_Uv.Text = "Lbl_Uv";
-            Lbl_Uv.Click += Lbl_Uv_Click;
             // 
             // Lbl_Temperature
             // 
@@ -654,7 +544,6 @@
             Lbl_lever_soleil.Size = new Size(108, 20);
             Lbl_lever_soleil.TabIndex = 13;
             Lbl_lever_soleil.Text = "Lbl_lever_soleil";
-            Lbl_lever_soleil.Click += Lbl_lever_soleil_Click;
             // 
             // Lbl_humidite
             // 
@@ -666,11 +555,11 @@
             // 
             // Lbl_Uv
             // 
-            Lbl_MeteoDesc_apres_demain.Location = new Point(647, 168);
-            Lbl_MeteoDesc_apres_demain.Name = "Lbl_MeteoDesc_apres_demain";
-            Lbl_MeteoDesc_apres_demain.Size = new Size(218, 23);
-            Lbl_MeteoDesc_apres_demain.TabIndex = 0;
-            Lbl_MeteoDesc_apres_demain.Text = "Lbl_MeteoDesc_apres_demain";
+            Lbl_Uv.Location = new Point(125, 318);
+            Lbl_Uv.Name = "Lbl_Uv";
+            Lbl_Uv.Size = new Size(100, 23);
+            Lbl_Uv.TabIndex = 0;
+            Lbl_Uv.Text = "Lbl_Uv";
             // 
             // Lbl_pressure
             // 
@@ -699,20 +588,21 @@
             // 
             // Lbl_temp_max
             // 
-            lbl_Apres_demain.Location = new Point(647, 60);
-            lbl_Apres_demain.Name = "lbl_Apres_demain";
-            lbl_Apres_demain.Size = new Size(170, 23);
-            lbl_Apres_demain.TabIndex = 0;
-            lbl_Apres_demain.Text = "lbl_Apres_demain";
+            Lbl_temp_max.AutoSize = true;
+            Lbl_temp_max.Location = new Point(119, 155);
+            Lbl_temp_max.Name = "Lbl_temp_max";
+            Lbl_temp_max.Size = new Size(104, 20);
+            Lbl_temp_max.TabIndex = 11;
+            Lbl_temp_max.Text = "Lbl_temp_max";
             // 
             // Lbl_temp_min
             // 
-            Lbl_Uv_apres_demain.Location = new Point(647, 318);
-            Lbl_Uv_apres_demain.Name = "Lbl_Uv_apres_demain";
-            Lbl_Uv_apres_demain.Size = new Size(158, 23);
-            Lbl_Uv_apres_demain.TabIndex = 0;
-            Lbl_Uv_apres_demain.Text = "Lbl_Uv_apres_demain";
-            Lbl_Uv_apres_demain.Click += Lbl_Uv_apres_demain_Click;
+            Lbl_temp_min.AutoSize = true;
+            Lbl_temp_min.Location = new Point(120, 87);
+            Lbl_temp_min.Name = "Lbl_temp_min";
+            Lbl_temp_min.Size = new Size(101, 20);
+            Lbl_temp_min.TabIndex = 12;
+            Lbl_temp_min.Text = "Lbl_temp_min";
             // 
             // Aujourd_hui
             // 
@@ -724,7 +614,7 @@
             // 
             // Panel_Header
             // 
-            Panel_Header.BackColor = SystemColors.ButtonFace;
+            Panel_Header.BackColor = Color.PeachPuff;
             Panel_Header.Controls.Add(toolBar);
             Panel_Header.Dock = DockStyle.Top;
             Panel_Header.Location = new Point(0, 0);
@@ -734,12 +624,11 @@
             // 
             // toolBar
             // 
+            toolBar.BackgroundImage = Properties.Resources.menu_hamburger;
             toolBar.ContextMenuStrip = menuHamburger;
-            toolBar.Dock = DockStyle.Left;
-            toolBar.Image = Properties.Resources.menu_hamburger;
             toolBar.Location = new Point(0, 0);
             toolBar.Name = "toolBar";
-            toolBar.Size = new Size(28, 25);
+            toolBar.Size = new Size(27, 25);
             toolBar.TabIndex = 0;
             toolBar.TabStop = false;
             toolBar.Click += toolBar_Click;
@@ -773,10 +662,9 @@
             // 
             // Panel_Inscription
             // 
-            Panel_Inscription.BackColor = Color.Transparent;
-            Panel_Inscription.Controls.Add(Lbl_Uname);
             Panel_Inscription.Controls.Add(Lbl_Conf_Mdp);
             Panel_Inscription.Controls.Add(Lbl_Mdp);
+            Panel_Inscription.Controls.Add(Lbl_Uname);
             Panel_Inscription.Controls.Add(textBoxMdpConf);
             Panel_Inscription.Controls.Add(textBoxMdp);
             Panel_Inscription.Controls.Add(textBoxUname);
@@ -786,61 +674,60 @@
             Panel_Inscription.Size = new Size(1254, 607);
             Panel_Inscription.TabIndex = 38;
             // 
-            // Lbl_Uname
-            // 
-            Lbl_Uname.AutoSize = true;
-            Lbl_Uname.Location = new Point(39, 44);
-            Lbl_Uname.Name = "Lbl_Uname";
-            Lbl_Uname.Size = new Size(175, 15);
-            Lbl_Uname.TabIndex = 5;
-            Lbl_Uname.Text = "Saissiez votre nom d'utilisateur :";
-            // 
             // Lbl_Conf_Mdp
             // 
             Lbl_Conf_Mdp.AutoSize = true;
-            Lbl_Conf_Mdp.Location = new Point(39, 216);
+            Lbl_Conf_Mdp.Location = new Point(61, 248);
             Lbl_Conf_Mdp.Name = "Lbl_Conf_Mdp";
-            Lbl_Conf_Mdp.Size = new Size(210, 15);
-            Lbl_Conf_Mdp.TabIndex = 4;
-            Lbl_Conf_Mdp.Text = "Veuillez confirmer votre mot de passe :";
+            Lbl_Conf_Mdp.Size = new Size(170, 15);
+            Lbl_Conf_Mdp.TabIndex = 5;
+            Lbl_Conf_Mdp.Text = "Confirmer votre mot de passe :";
             Lbl_Conf_Mdp.Visible = false;
             // 
             // Lbl_Mdp
             // 
             Lbl_Mdp.AutoSize = true;
-            Lbl_Mdp.Location = new Point(39, 151);
+            Lbl_Mdp.Location = new Point(61, 171);
             Lbl_Mdp.Name = "Lbl_Mdp";
             Lbl_Mdp.Size = new Size(160, 15);
-            Lbl_Mdp.TabIndex = 3;
+            Lbl_Mdp.TabIndex = 4;
             Lbl_Mdp.Text = "Saisissez votre mot de passe :";
             Lbl_Mdp.Visible = false;
             // 
+            // Lbl_Uname
+            // 
+            Lbl_Uname.AutoSize = true;
+            Lbl_Uname.Location = new Point(61, 53);
+            Lbl_Uname.Name = "Lbl_Uname";
+            Lbl_Uname.Size = new Size(299, 15);
+            Lbl_Uname.TabIndex = 3;
+            Lbl_Uname.Text = "Saissiez le nom d'utilisateur que vous souhaitez utiliser :";
+            // 
             // textBoxMdpConf
             // 
-            textBoxMdpConf.Location = new Point(39, 234);
+            textBoxMdpConf.Location = new Point(61, 266);
             textBoxMdpConf.Name = "textBoxMdpConf";
-            textBoxMdpConf.Size = new Size(529, 23);
+            textBoxMdpConf.Size = new Size(589, 23);
             textBoxMdpConf.TabIndex = 2;
             textBoxMdpConf.Visible = false;
             // 
             // textBoxMdp
             // 
-            textBoxMdp.Location = new Point(39, 172);
+            textBoxMdp.Location = new Point(61, 189);
             textBoxMdp.Name = "textBoxMdp";
-            textBoxMdp.Size = new Size(529, 23);
+            textBoxMdp.Size = new Size(589, 23);
             textBoxMdp.TabIndex = 1;
             textBoxMdp.Visible = false;
             // 
             // textBoxUname
             // 
-            textBoxUname.Location = new Point(39, 62);
+            textBoxUname.Location = new Point(61, 71);
             textBoxUname.Name = "textBoxUname";
-            textBoxUname.Size = new Size(529, 23);
+            textBoxUname.Size = new Size(589, 23);
             textBoxUname.TabIndex = 0;
             // 
             // Panel_Configuration
             // 
-            Panel_Configuration.BackColor = Color.Transparent;
             Panel_Configuration.Controls.Add(Lbl_VilleFavorite);
             Panel_Configuration.Controls.Add(Lbl_EMail);
             Panel_Configuration.Controls.Add(textBoxVilleFavorite);
@@ -849,87 +736,86 @@
             Panel_Configuration.Location = new Point(0, 25);
             Panel_Configuration.Name = "Panel_Configuration";
             Panel_Configuration.Size = new Size(1254, 607);
-            Panel_Configuration.TabIndex = 3;
+            Panel_Configuration.TabIndex = 6;
             // 
             // Lbl_VilleFavorite
             // 
             Lbl_VilleFavorite.AutoSize = true;
-            Lbl_VilleFavorite.Location = new Point(320, 177);
+            Lbl_VilleFavorite.Location = new Point(313, 142);
             Lbl_VilleFavorite.Name = "Lbl_VilleFavorite";
-            Lbl_VilleFavorite.Size = new Size(266, 15);
+            Lbl_VilleFavorite.Size = new Size(446, 15);
             Lbl_VilleFavorite.TabIndex = 3;
-            Lbl_VilleFavorite.Text = "Veuillez saisir votre ville favorite afin d'être alerté :";
+            Lbl_VilleFavorite.Text = "Veuillez saisir la ville pour laquelle vous souhaitez être informer par mail des alertes :";
             Lbl_VilleFavorite.Visible = false;
             // 
             // Lbl_EMail
             // 
             Lbl_EMail.AutoSize = true;
-            Lbl_EMail.Location = new Point(320, 44);
+            Lbl_EMail.Location = new Point(313, 52);
             Lbl_EMail.Name = "Lbl_EMail";
-            Lbl_EMail.Size = new Size(173, 15);
+            Lbl_EMail.Size = new Size(166, 15);
             Lbl_EMail.TabIndex = 2;
-            Lbl_EMail.Text = "Saisissez votre addresse e-mail :";
+            Lbl_EMail.Text = "Saisissez votre adresse e-mail :";
             // 
             // textBoxVilleFavorite
             // 
-            textBoxVilleFavorite.Location = new Point(320, 195);
+            textBoxVilleFavorite.Location = new Point(313, 160);
             textBoxVilleFavorite.Name = "textBoxVilleFavorite";
-            textBoxVilleFavorite.Size = new Size(571, 23);
+            textBoxVilleFavorite.Size = new Size(448, 23);
             textBoxVilleFavorite.TabIndex = 1;
             textBoxVilleFavorite.Visible = false;
             // 
             // textBoxEmail
             // 
-            textBoxEmail.Location = new Point(320, 61);
+            textBoxEmail.Location = new Point(313, 70);
             textBoxEmail.Name = "textBoxEmail";
-            textBoxEmail.Size = new Size(571, 23);
+            textBoxEmail.Size = new Size(448, 23);
             textBoxEmail.TabIndex = 0;
             // 
             // Panel_Connection
             // 
-            Panel_Connection.BackColor = Color.Transparent;
             Panel_Connection.Controls.Add(Lbl_Mdp_Connection);
-            Panel_Connection.Controls.Add(Lbl_Uname_Connection);
+            Panel_Connection.Controls.Add(Lbl_UConnection);
             Panel_Connection.Controls.Add(textBoxMdpConnection);
             Panel_Connection.Controls.Add(textBoxUconnection);
             Panel_Connection.Dock = DockStyle.Fill;
             Panel_Connection.Location = new Point(0, 25);
             Panel_Connection.Name = "Panel_Connection";
             Panel_Connection.Size = new Size(1254, 607);
-            Panel_Connection.TabIndex = 2;
+            Panel_Connection.TabIndex = 4;
             // 
             // Lbl_Mdp_Connection
             // 
             Lbl_Mdp_Connection.AutoSize = true;
-            Lbl_Mdp_Connection.Location = new Point(118, 175);
+            Lbl_Mdp_Connection.Location = new Point(109, 171);
             Lbl_Mdp_Connection.Name = "Lbl_Mdp_Connection";
-            Lbl_Mdp_Connection.Size = new Size(184, 15);
+            Lbl_Mdp_Connection.Size = new Size(160, 15);
             Lbl_Mdp_Connection.TabIndex = 3;
-            Lbl_Mdp_Connection.Text = "Veuillez saisir votre mot de passe :";
+            Lbl_Mdp_Connection.Text = "Saisissez votre mot de passe :";
             Lbl_Mdp_Connection.Visible = false;
             // 
-            // Lbl_Uname_Connection
+            // Lbl_UConnection
             // 
-            Lbl_Uname_Connection.AutoSize = true;
-            Lbl_Uname_Connection.Location = new Point(119, 41);
-            Lbl_Uname_Connection.Name = "Lbl_Uname_Connection";
-            Lbl_Uname_Connection.Size = new Size(204, 15);
-            Lbl_Uname_Connection.TabIndex = 2;
-            Lbl_Uname_Connection.Text = "Veuillez saisir votre nom d'utilisateur :";
+            Lbl_UConnection.AutoSize = true;
+            Lbl_UConnection.Location = new Point(108, 50);
+            Lbl_UConnection.Name = "Lbl_UConnection";
+            Lbl_UConnection.Size = new Size(180, 15);
+            Lbl_UConnection.TabIndex = 2;
+            Lbl_UConnection.Text = "Saisissez votre nom d'utilisateur :";
             // 
             // textBoxMdpConnection
             // 
-            textBoxMdpConnection.Location = new Point(119, 193);
+            textBoxMdpConnection.Location = new Point(108, 189);
             textBoxMdpConnection.Name = "textBoxMdpConnection";
-            textBoxMdpConnection.Size = new Size(525, 23);
+            textBoxMdpConnection.Size = new Size(473, 23);
             textBoxMdpConnection.TabIndex = 1;
             textBoxMdpConnection.Visible = false;
             // 
             // textBoxUconnection
             // 
-            textBoxUconnection.Location = new Point(119, 59);
+            textBoxUconnection.Location = new Point(108, 68);
             textBoxUconnection.Name = "textBoxUconnection";
-            textBoxUconnection.Size = new Size(525, 23);
+            textBoxUconnection.Size = new Size(473, 23);
             textBoxUconnection.TabIndex = 0;
             // 
             // Form1
@@ -937,9 +823,9 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1254, 632);
-            Controls.Add(Panel_Connection);
-            Controls.Add(Panel_Configuration);
             Controls.Add(Panel_Inscription);
+            Controls.Add(Panel_Configuration);
+            Controls.Add(Panel_Connection);
             Controls.Add(Panel_Header);
             Controls.Add(Panel_Meteo_Ville);
             Controls.Add(Panel_Accueil);
@@ -958,6 +844,15 @@
             ((System.ComponentModel.ISupportInitialize)iconeMeteo_j4).EndInit();
             ((System.ComponentModel.ISupportInitialize)iconeMeteo_apres_demain_bis).EndInit();
             ((System.ComponentModel.ISupportInitialize)iconeMeteo_demain).EndInit();
+            Panel_Header.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)toolBar).EndInit();
+            menuHamburger.ResumeLayout(false);
+            Panel_Inscription.ResumeLayout(false);
+            Panel_Inscription.PerformLayout();
+            Panel_Configuration.ResumeLayout(false);
+            Panel_Configuration.PerformLayout();
+            Panel_Connection.ResumeLayout(false);
+            Panel_Connection.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -1015,5 +910,28 @@
         private Label Lbl_j_6;
         private PictureBox iconeMeteo_j6;
         private TableLayoutPanel tableLayoutPanel1;
+        private Panel Panel_Header;
+        private PictureBox toolBar;
+        private ContextMenuStrip menuHamburger;
+        private ToolStripMenuItem changerDeVilleToolStripMenuItem;
+        private ToolStripMenuItem sinscrireToolStripMenuItem;
+        private ToolStripMenuItem seConnecterToolStripMenuItem;
+        private Panel Panel_Inscription;
+        private Label Lbl_Uname;
+        private TextBox textBoxMdpConf;
+        private TextBox textBoxMdp;
+        private TextBox textBoxUname;
+        private Label Lbl_Conf_Mdp;
+        private Label Lbl_Mdp;
+        private Panel Panel_Configuration;
+        private Label Lbl_VilleFavorite;
+        private Label Lbl_EMail;
+        private TextBox textBoxVilleFavorite;
+        private TextBox textBoxEmail;
+        private Panel Panel_Connection;
+        private Label Lbl_UConnection;
+        private TextBox textBoxMdpConnection;
+        private TextBox textBoxUconnection;
+        private Label Lbl_Mdp_Connection;
     }
 }

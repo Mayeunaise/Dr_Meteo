@@ -638,7 +638,7 @@ namespace Dr_Meteo
             Lbl_EMail.Visible = true;
             textBoxEmail.Visible = true;
             textBoxVilleFavorite.Visible = false;
-            
+
             textBoxEmail.Focus();
         }
         private void textBoxEmail_KeyDown(object sender, KeyEventArgs e)
@@ -785,6 +785,29 @@ namespace Dr_Meteo
             }
 
         }
+        private void textBoxMdpConnection_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.SuppressKeyPress = true;
+                if (!string.IsNullOrWhiteSpace(textBoxMdpConnection.Text))
+                {
+                    //Vérification des identifiants
+                    if (GestionBdd.VerifierIdentifiants(pseudoActuel, textBoxMdpConnection.Text))
+                    {
+                        MessageBox.Show($"Bienvenue {pseudoActuel} !");
+                        Panel_Connection.Visible = false;
+                        Panel_Meteo_Ville.Visible = true; //Affichez l'interface normale après connexion
+                    }
+                    else
+                    {
+                        MessageBox.Show("Mot de passe incorrect !");
+                        textBoxMdpConnection.Text = "";
+                        textBoxMdpConnection.Focus();
+                    }
+                }
+            }
+        }
 
         private void Lbl_min_j5_Click(object sender, EventArgs e)
         {
@@ -795,8 +818,9 @@ namespace Dr_Meteo
         {
 
         }
-    }
 
     }
+
+
 }
 
