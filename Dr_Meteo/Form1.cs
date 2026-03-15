@@ -15,6 +15,7 @@ namespace Dr_Meteo
 
     public partial class Form1 : Form
     {
+        private string pseudoActuel = ""; // Variable pour stocker le pseudo de l'utilisateur connecté
         private const string BaseText = "Saisissez une Ville ou un code postal ex: Bordeaux, 33063";
         private string ville = "";
 
@@ -23,7 +24,6 @@ namespace Dr_Meteo
             InitializeComponent();
             CreerPanelMeteo();
             Form1_Load(null, null); // Appel manuel pour éviter les soucis de timing avec le designer
-            InitializeSearchBar();
         }
         private void CreerPanelMeteo()
         {
@@ -137,28 +137,34 @@ namespace Dr_Meteo
         }
         private async void Form1_Load(object sender, EventArgs e)
         {
+            //Gestion des Panels
+            Panel_Accueil.Visible = true;
+            Panel_Meteo_Ville.Visible = false;
+            Panel_Inscription.Visible = false;
+            Panel_Configuration.Visible = false;
+            Panel_Connection.Visible = false;
             // On indique visuellement à l'utilisateur que l'application se prépare
             Barre_Recherche.Enabled = false;
             Barre_Recherche.Text = "Téléchargement des villes de France...";
 
             GestionBdd bdd = new GestionBdd();
 
-            // 1. Crée les tables si elles n'existent pas
+            //Création de la Bdd
             GestionBdd.InitialiserBase();
 
-            // 2. Télécharge et insère les villes (seulement si la base est vide)
+            //Insertion des villes en BDD (si pas déjà fait)
             await bdd.ImporterVillesDepuisApiGouv();
 
-            // 3. On remet la barre de recherche à la normale et on charge l'autocomplétion
+            //Barre de recherche disponible
             Barre_Recherche.Enabled = true;
-            InitializeSearchBar(); // Votre méthode qui remplit l'AutoCompleteCustomSource
+            InitializeSearchBar();
         }
         private void InitializeSearchBar()
         {
             Barre_Recherche.Text = BaseText;
             Barre_Recherche.ForeColor = Color.Gray;
 
-            // Événements visuels
+            //Gestion des entrées et sorties du curseur sur la barre de recherche
             Barre_Recherche.Enter += (s, e) =>
             {
                 if (Barre_Recherche.Text == BaseText)
@@ -168,86 +174,99 @@ namespace Dr_Meteo
                 }
             };
             Barre_Recherche.Leave += (s, e) =>
+        {
+            if (string.IsNullOrWhiteSpace(Barre_Recherche.Text))
             {
-                if (string.IsNullOrWhiteSpace(Barre_Recherche.Text))
-                {
-                    Barre_Recherche.Text = BaseText;
-                    Barre_Recherche.ForeColor = Color.Gray;
-                }
-            };
-
-            // Autocomplétion depuis la BDD
-            GestionBdd bdd = new GestionBdd();
-            var villes = GestionBdd.GetVilles();
-            AutoCompleteStringCollection collection = new AutoCompleteStringCollection();
-            foreach (DataRow row in villes.Rows)
-            {
-                if (row[0] != null)
-                    collection.Add(row[0].ToString());
+                Barre_Recherche.Text = BaseText;
+                Barre_Recherche.ForeColor = Color.Gray;
             }
+        };
 
-            Barre_Recherche.AutoCompleteCustomSource = collection;
+            //Gestion de la saisie avec soit le nom de la ville soit le code postal
+            var villes = GestionBdd.GetVilles();
+            AutoCompleteStringCollection collectionVille = new AutoCompleteStringCollection();
+
             Barre_Recherche.AutoCompleteSource = AutoCompleteSource.CustomSource;
             Barre_Recherche.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
 
-            // Touche Entrée
+            foreach (DataRow row in villes.Rows)
+            {
+                if (row["Nom"] != DBNull.Value)
+                {
+                    string nom = row["Nom"].ToString();
+                    string cpText = row["CodePostal"] != DBNull.Value ? row["CodePostal"].ToString() : "";
+
+                    if (!string.IsNullOrWhiteSpace(cpText))
+                    {
+                        // Si la ville a plusieurs codes (ex: "75001, 75002"), on les sépare
+                        string[] listeCodes = cpText.Split(',');
+
+                        // 1. Sens normal : "Ville , CodePostal"
+                        collectionVille.Add(nom + " , " + listeCodes[0].Trim());
+
+                        // 2. Sens inverse (Miroir) : "CodePostal , Ville"
+                        foreach (string code in listeCodes)
+                        {
+                            collectionVille.Add(code.Trim() + " , " + nom);
+                        }
+                    }
+                    else
+                    {
+                        // S'il n'y a pas de code postal du tout
+                        collectionVille.Add(nom);
+                    }
+                }
+            }
+
+            Barre_Recherche.AutoCompleteCustomSource = collectionVille;
+
+            //Gestion de la touche "Entrée" pour lancer la recherche
             Barre_Recherche.KeyDown += (s, e) =>
             {
                 if (e.KeyCode == Keys.Enter)
                 {
                     e.SuppressKeyPress = true; // Stop le "Bip"
-                    AfficherMeteo(Barre_Recherche.Text);
+
+                    string texteSaisi = Barre_Recherche.Text;
+                    string villeReelle = texteSaisi;
+
+                    //Si le texte contient " , "
+                    if (texteSaisi.Contains(" , "))
+                    {
+                        //On coupe en deux parties (avant et après le séparateur)
+                        string[] morceaux = texteSaisi.Split(new string[] { " , " }, StringSplitOptions.None);
+                        string partie1 = morceaux[0].Trim();
+                        string partie2 = morceaux[1].Trim();
+
+                        //On vérifie si la première partie est un nombre (le Code Postal)
+                        if (int.TryParse(partie1, out _))
+                        {
+                            //Si partie1 = code postal, alors la ville est la partie2
+                            villeReelle = partie2;
+                        }
+                        else
+                        {
+                            //Sinon, la ville est la partie1
+                            villeReelle = partie1;
+                        }
+                    }
+
+                    //On remet la barre propre avec juste le nom de la ville
+                    Barre_Recherche.Text = villeReelle;
+
+                    //On lance la recherche
+                    AfficherMeteo(villeReelle);
                 }
             };
         }
 
-        private void RetirerBaseText(object? sender, EventArgs e)
-        {
-            if (Barre_Recherche.Text == BaseText)
-            {
-                Barre_Recherche.Text = "";
-                Barre_Recherche.ForeColor = Color.Gray;
-            }
-        }
-
-
-        private void RajouterBaseText(object? sender, EventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(Barre_Recherche.Text))
-            {
-                Barre_Recherche.Text = BaseText;
-                Barre_Recherche.ForeColor = Color.Green;
-            }
-        }
-
-        // Fonction liée à l'événement KeyDown de votre TextBox (txtRecherche)
-        private void BarreRecherche_KeyDown(object? sender, KeyEventArgs e)
-        {
-            // On vérifie si la touche appuyée est "Entrée"
-            if (e.KeyCode == Keys.Enter)
-            {
-                // Empêche le "bip" système désagréable windows et le saut de ligne
-                //e.SuppressKeyPress = true;
-
-                // Récupération du texte saisi
-                string villeSaisie = Barre_Recherche.Text;
-
-                // Validation : On ne lance pas la recherche si vide ou si c'est le texte gris
-                if (!(string.IsNullOrWhiteSpace(villeSaisie)) && villeSaisie != BaseText)
-                {
-                    AfficherMeteo(villeSaisie);
-                }
-            }
-        }
-
-        // Fonction personnalisée pour changer d'écran
         private async void AfficherMeteo(string villeSaisie)
         {
             if (string.IsNullOrWhiteSpace(villeSaisie) || villeSaisie == BaseText) return;
 
             VilleData villeBdd = GestionBdd.RecupererVille(villeSaisie);
 
-            // --- LOGIQUE DU CACHE (30 minutes) ---
+            //On vérifie si les données en BDD sont encore valides (moins de 30 minutes) pour éviter les appels API inutiles
             bool cacheValide = false;
             if (villeBdd != null)
             {
@@ -260,50 +279,31 @@ namespace Dr_Meteo
 
             if (cacheValide)
             {
-                // CAS 1 : On utilise la BDD (Pas d'internet)
+                //On utilise les données en cache
                 System.Diagnostics.Debug.WriteLine("Données depuis le CACHE BDD");
                 ReponseMeteo reponseMeteo = JsonConvert.DeserializeObject<ReponseMeteo>(villeBdd.DonneesJson);
                 MettreAJourInterface(villeBdd.Nom, reponseMeteo);
             }
             else
             {
-                // CAS 2 : On appelle l'API
+                //Appel API pour obtenir les données fraîches
                 System.Diagnostics.Debug.WriteLine("Appel API...");
                 ServiceMeteo service = new ServiceMeteo();
 
-                // A. On trouve les coordonnées (si on ne les a pas déjà en BDD)
+                //On trouve les coordonnées (si on ne les a pas déjà en BDD)
                 double lat = (villeBdd != null && villeBdd.Latitude != 0) ? villeBdd.Latitude : 0;
                 double lon = (villeBdd != null && villeBdd.Longitude != 0) ? villeBdd.Longitude : 0;
-                VilleResultat geo = null;
-                if (lat == 0 || lon == 0)
-                {
-                    geo = await service.ChercherVille(villeSaisie);
-                    if (geo == null)
-                    {
-                        MessageBox.Show("Ville introuvable !");
-                        return;
-                    }
-                    lat = geo.latitude;
-                    lon = geo.longitude;
-                    // On garde le "vrai" nom officiel (ex: "Paris" avec majuscule)
-                    villeSaisie = geo.name;
-                }
 
-                // B. On prend la météo
+
+                //On prend la météo
                 var meteo = await service.ObtenirMeteo(lat, lon);
                 if (meteo != null)
                 {
                     string json_meteo = JsonConvert.SerializeObject(meteo);
-                    string ListeCodesPostaux = "";
-                    if (geo != null && geo.codePostal != null && geo.codePostal.Count > 0)
-                    {
-                        // string.Join va créer un texte du type : "75001, 75002, 75003"
-                        ListeCodesPostaux = string.Join(", ", geo.codePostal);
-                    }
-                    // C. On sauvegarde en BDD (Mise en cache)
-                    GestionBdd.MajVille(villeSaisie, ListeCodesPostaux, lat, lon, json_meteo);
+                    //Sauvegarde en BDD (Mise en cache)
+                    GestionBdd.MajVille(villeSaisie, lat, lon, json_meteo);
 
-                    // D. Affichage
+                    //Affichage
                     MettreAJourInterface(villeSaisie, meteo);
                 }
             }
@@ -311,6 +311,8 @@ namespace Dr_Meteo
         private void MettreAJourInterface(string ville, ReponseMeteo reponseMeteo)
         {
             //Affichage du panel météo
+            Panel_Accueil.Visible = false;
+            Panel_Meteo_Ville.Visible = true;
             // Les propriétés (current_weather.temperature, etc.) sont à adapter selon comment tu as nommé les variables dans ta classe ReponseMeteo
             Lbl_VilleNom.Text = ville;
             Lbl_Temperature.Text = $"{reponseMeteo.current.temperature} °C";
@@ -522,81 +524,290 @@ namespace Dr_Meteo
             AfficherMeteo(villeSaisie);
         }
 
-        private void Panel_Meteo_Ville_Paint(object sender, PaintEventArgs e)
+        //Menu hamburger
+        private void toolBar_Click(object sender, EventArgs e)
         {
+            menuHamburger.Show(toolBar, new Point(0, toolBar.Height));
+        }
+
+        private void changerDeVilleToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Panel_Accueil.Visible = true;
+            Panel_Meteo_Ville.Visible = false;
+            Panel_Inscription.Visible = false;
+        }
+
+        private void sinscrireToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //Gestion des Panels
+            Panel_Inscription.Visible = true;
+            Panel_Meteo_Ville.Visible = false;
+            Panel_Accueil.Visible = false;
+            //Gestion des évènements
+            textBoxUname.KeyDown += textBoxUname_KeyDown;
+            textBoxMdp.KeyDown += textBoxMdp_KeyDown;
+            textBoxMdpConf.KeyDown += textBoxMdpConf_KeyDown;
+
+        }
+        private void textBoxUname_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.SuppressKeyPress = true;
+
+                if (!string.IsNullOrWhiteSpace(textBoxUname.Text) && textBoxUname.Text != "Saisissez votre nom d'utilisateur")
+                {
+                    if (GestionBdd.UtilisateurExiste(textBoxUname.Text))
+                    {
+                        MessageBox.Show("Ce nom d'utilisateur existe déjà ! Choisissez-en un autre.");
+                        textBoxUname.Text = "";
+                        textBoxUname.Focus();
+                        return;
+                    }
+                    //Username valide, on procede à la suite de l'inscription
+                    Lbl_Mdp.Visible = true;
+                    textBoxMdp.Visible = true;
+                    textBoxMdp.Focus();
+                    pseudoActuel = textBoxUname.Text; //On stocke le pseudo pour la suite
+                }
+                else
+                {
+                    MessageBox.Show("Nom d'utilisateur invalide !");
+                }
+            }
+        }
+        private void textBoxMdp_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.SuppressKeyPress = true;
+
+                if (!string.IsNullOrWhiteSpace(textBoxMdp.Text))
+                {
+                    Lbl_Conf_Mdp.Visible = true;
+                    textBoxMdpConf.Visible = true;
+                    textBoxMdpConf.Focus();
+                }
+            }
+        }
+        private void textBoxMdpConf_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.SuppressKeyPress = true;
+
+                if (textBoxMdp.Text == textBoxMdpConf.Text)
+                {
+                    string pseudo = textBoxUname.Text;
+                    string mdp = textBoxMdp.Text;
+
+                    GestionBdd.CreerUtilisateur(pseudo, mdp, "");
+                    MessageBox.Show($"Bienvenue {pseudo} ! Votre compte est créé.");
+                    DialogResult reponse = MessageBox.Show(
+                    "Voulez-vous renseigner votre e-mail et une ou plusieurs ville(s) favorite(s) afin d'être alerté en cas d'alerte orange ou rouge ?",
+                    "Poursuite d'inscription",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question);
+                    if (reponse == DialogResult.Yes)
+                    {
+                        LancerPhaseConfigAlertes();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Les mots de passe ne correspondent pas ! Réessayez.");
+                    textBoxMdpConf.Text = ""; // On vide la case pour qu'il recommence
+                    textBoxMdpConf.Focus();
+                }
+            }
+        }
+        private void LancerPhaseConfigAlertes()
+        {
+            //Gestion des Panels
+            Panel_Inscription.Visible = false;
+            Panel_Accueil.Visible = false;
+            Panel_Connection.Visible = false;
+            Panel_Meteo_Ville.Visible = false;
+            Panel_Configuration.Visible = true;
+            //Gestion des évènements
+            textBoxEmail.KeyDown += textBoxEmail_KeyDown;
+            textBoxVilleFavorite.KeyDown += textBoxVilleFavorite_KeyDown;
+            //Affichage des éléments de configuration
+            Lbl_EMail.Visible = true;
+            textBoxEmail.Visible = true;
+            textBoxVilleFavorite.Visible = false;
+            
+            textBoxEmail.Focus();
+        }
+        private void textBoxEmail_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.SuppressKeyPress = true;
+                string email = textBoxEmail.Text;
+
+                //Vérification basique pour voir si ça ressemble à un e-mail
+                if (email.Contains("@") && email.Contains("."))
+                {
+                    //On enregistre l'e-mail dans la base
+                    GestionBdd.EnregistrerEmail(pseudoActuel, email);
+
+                    //On passe à la ville favorite
+                    InitializeVilleFavoriteBar();
+                    Lbl_VilleFavorite.Visible = true;
+                    textBoxVilleFavorite.Visible = true;
+                    textBoxVilleFavorite.Focus();
+                }
+                else
+                {
+                    MessageBox.Show("Veuillez saisir une adresse e-mail valide (avec un @ et .).");
+                }
+            }
+        }
+        private void textBoxVilleFavorite_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.SuppressKeyPress = true;
+                string villeFav = textBoxVilleFavorite.Text;
+
+                if (!string.IsNullOrWhiteSpace(villeFav))
+                {
+                    GestionBdd.AjouterVilleFavorite(pseudoActuel, villeFav);
+
+                    MessageBox.Show("Configuration terminée ! Vous serez alerté en cas de vigilance Orange ou Rouge.");
+
+                    Panel_Configuration.Visible = false;
+                    Panel_Meteo_Ville.Visible = true;
+                }
+            }
+        }
+        private void InitializeVilleFavoriteBar()
+        {
+            //Reprends la même logique que pour la barre de recherche classique pour l'auto-complétion, mais appliquée à la textBoxVilleFavorite
+            var villes = GestionBdd.GetVilles();
+            AutoCompleteStringCollection collectionVille = new AutoCompleteStringCollection();
+
+            textBoxVilleFavorite.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            textBoxVilleFavorite.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+
+            foreach (DataRow row in villes.Rows)
+            {
+                if (row["Nom"] != DBNull.Value)
+                {
+                    string nom = row["Nom"].ToString();
+                    string cpText = row["CodePostal"] != DBNull.Value ? row["CodePostal"].ToString() : "";
+
+                    if (!string.IsNullOrWhiteSpace(cpText))
+                    {
+                        string[] listeCodes = cpText.Split(',');
+
+                        collectionVille.Add(nom + " , " + listeCodes[0].Trim());
+
+                        foreach (string code in listeCodes)
+                        {
+                            collectionVille.Add(code.Trim() + " , " + nom);
+                        }
+                    }
+                    else
+                    {
+                        collectionVille.Add(nom);
+                    }
+                }
+            }
+
+            textBoxVilleFavorite.AutoCompleteCustomSource = collectionVille;
+
+            textBoxVilleFavorite.KeyDown += (s, e) =>
+            {
+                if (e.KeyCode == Keys.Enter)
+                {
+                    e.SuppressKeyPress = true;
+
+                    string texteSaisi = textBoxVilleFavorite.Text;
+                    string villeReelle = texteSaisi;
+
+                    if (texteSaisi.Contains(" , "))
+                    {
+                        string[] morceaux = texteSaisi.Split(new string[] { " , " }, StringSplitOptions.None);
+                        string partie1 = morceaux[0].Trim();
+                        string partie2 = morceaux[1].Trim();
+
+                        if (int.TryParse(partie1, out _))
+                        {
+                            villeReelle = partie2;
+                        }
+                        else
+                        {
+                            villeReelle = partie1;
+                        }
+                    }
+                }
+            };
+        }
+
+        private void seConnecterToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Panel_Meteo_Ville.Visible = false;
+            Panel_Inscription.Visible = false;
+            Panel_Configuration.Visible = false;
+            Panel_Accueil.Visible = false;
+            textBoxUconnection.KeyDown += textBoxUconnection_KeyDown;
+            textBoxMdpConnection.KeyDown += textBoxMdpConnection_KeyDown;
+            Panel_Connection.Visible = true;
+        }
+        private void textBoxUconnection_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.SuppressKeyPress = true;
+                if (!string.IsNullOrWhiteSpace(textBoxUconnection.Text) && textBoxUconnection.Text != "Saisissez votre nom d'utilisateur")
+                {
+                    if (!GestionBdd.UtilisateurExiste(textBoxUconnection.Text))
+                    {
+                        MessageBox.Show("Ce nom d'utilisateur n'existe pas ! Veuillez vous inscrire.");
+                        textBoxUconnection.Text = "";
+                        textBoxUconnection.Focus();
+                        return;
+                    }
+                    //Username existant, on procede à la suite de la connexion
+                    Lbl_Mdp_Connection.Visible = true;
+                    textBoxMdpConnection.Visible = true;
+                    textBoxMdpConnection.Focus();
+                    pseudoActuel = textBoxUconnection.Text; //On stocke le pseudo pour la suite
+                }
+                else
+                {
+                    MessageBox.Show("Nom d'utilisateur invalide !");
+                }
+            }
 
         }
 
-        private void Lbl_Temperature_Click(object sender, EventArgs e)
+        private void textBoxMdpConnection_KeyDown(object sender, KeyEventArgs e)
         {
-
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.SuppressKeyPress = true;
+                if (!string.IsNullOrWhiteSpace(textBoxMdpConnection.Text))
+                {
+                    //Vérification des identifiants
+                    if (GestionBdd.VerifierIdentifiants(pseudoActuel, textBoxMdpConnection.Text))
+                    {
+                        MessageBox.Show($"Bienvenue {pseudoActuel} !");
+                        Panel_Connection.Visible = false;
+                        Panel_Meteo_Ville.Visible = true; //Affichez l'interface normale après connexion
+                    }
+                    else
+                    {
+                        MessageBox.Show("Mot de passe incorrect !");
+                        textBoxMdpConnection.Text = "";
+                        textBoxMdpConnection.Focus();
+                    }
+                }
+            }
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Lbl_Uv_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Lbl_Uv_apres_demain_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Aujourd_hui_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Lbl_Speed_wind_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Lbl_diff_temp_ensoleilement_demain_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void iconeMeteo_j3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Lbl_j_3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Lbl_min_j4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Lbl_min_j5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void iconeMeteo_j5_Click(object sender, EventArgs e)
-        {
-
-        }
     }
-
 }
 

@@ -32,7 +32,7 @@ namespace Dr_Meteo
                     command.ExecuteNonQuery();
                 }
                 createTableQuery = "CREATE TABLE IF NOT EXISTS Utilisateurs (Id INTEGER PRIMARY KEY AUTOINCREMENT, NomUtilisateur TEXT NOT NULL UNIQUE, " +
-                    "MotDePasse TEXT NOT NULL, EMail TEXT NOT NULL)";
+                    "MotDePasse TEXT NOT NULL, EMail TEXT, VilleFavorite TEXT)";
                 using (var command = new SQLiteCommand(createTableQuery, connection))
                 {
                     command.ExecuteNonQuery();
@@ -44,46 +44,13 @@ namespace Dr_Meteo
         {
             SQLiteConnection connection = new SQLiteConnection(ConnectionString);
             connection.Open();
-            string requete = "SELECT Nom FROM TableVille";
+            string requete = "SELECT Nom,CodePostal FROM TableVille";
             var commande = new SQLiteCommand(requete, connection);
             SQLiteDataAdapter adapter = new SQLiteDataAdapter(commande);
             DataTable dataTable = new DataTable();
             adapter.Fill(dataTable);
             connection.Close();
             return (dataTable);
-        }
-
-        public static void Ajouter_Ville(string Ville)
-        {
-            SQLiteConnection connection = new SQLiteConnection(ConnectionString);
-            connection.Open();
-            string verification = "SELECT COUNT(*) FROM TableVille WHERE Nom=@Ville";
-            using (var verificationCommande = new SQLiteCommand(verification, connection))
-            {
-                verificationCommande.Parameters.AddWithValue("@Ville", Ville);
-                long count = (long)verificationCommande.ExecuteScalar();
-                if (count > 0)
-                { // La ville existe déjà, ne pas l'ajouter
-                    connection.Close();
-                    return;
-                }
-            }
-            string requete = "INSERT INTO TableVille (Nom, Latitude, Longitude, DonneesJson, DerniereMaj) VALUES (@Ville, 0.0, 0.0, 0.0)";
-            var commande = new SQLiteCommand(requete, connection);
-            commande.Parameters.AddWithValue("@Ville", Ville);
-            commande.ExecuteNonQuery();
-            connection.Close();
-        }
-
-        public static void Supprimer_Ville(string Ville)
-        {
-            SQLiteConnection connection = new SQLiteConnection(ConnectionString);
-            connection.Open();
-            string requete = "DELETE FROM TableVille WHERE Nom=@Ville";
-            var commande = new SQLiteCommand(requete, connection);
-            commande.Parameters.AddWithValue("@Ville", Ville);
-            commande.ExecuteNonQuery();
-            connection.Close();
         }
 
         //Récupération des données d'une ville
@@ -102,20 +69,20 @@ namespace Dr_Meteo
                         {
                             return new VilleData
                             {
-                                // Les ID SQLite sont souvent renvoyés en Int64 (long), Convert règle ce problème
+                                //Les ID SQLite sont souvent renvoyés en Int64 (long), Convert règle ce problème
                                 Id = Convert.ToInt32(reader[0]),
 
                                 Nom = reader[1].ToString(),
 
                                 CodePostal = reader.IsDBNull(2) ? "" : reader[2].ToString(),
 
-                                // Convert.ToDouble acceptera la valeur même si SQLite la renvoie comme un float ou un string
+                                //Convert.ToDouble acceptera la valeur même si SQLite la renvoie comme un float ou un string
                                 Latitude = reader.IsDBNull(3) ? 0 : Convert.ToDouble(reader[3]),
                                 Longitude = reader.IsDBNull(4) ? 0 : Convert.ToDouble(reader[4]),
 
                                 DonneesJson = reader.IsDBNull(5) ? "" : reader[5].ToString(),
 
-                                // Utilisation de DateTime.TryParse pour éviter tout crash si la date est mal formatée
+                                //Utilisation de DateTime.TryParse pour éviter tout crash si la date est mal formatée
                                 DerniereMaj = reader.IsDBNull(6) || string.IsNullOrWhiteSpace(reader[6].ToString())
                                         ? DateTime.MinValue
                                         : (DateTime.TryParse(reader[6].ToString(), out DateTime parsedDate) ? parsedDate : DateTime.MinValue)
@@ -125,21 +92,19 @@ namespace Dr_Meteo
                 }
                 connection.Close();
             }
-            return null; // Ville non trouvée
+            return null; //Ville non trouvée
         }
-        // Ajout ou mise à jour d'une ville
-        public static void MajVille(string nomVille, string codePostaux, double lat, double lon, string json)
+        //Ajout ou mise à jour d'une ville
+        public static void MajVille(string nomVille, double lat, double lon, string json)
         {
             using (var connection = new SQLiteConnection(ConnectionString))
             {
                 connection.Open();
-                // "INSERT OR REPLACE" permet de créer la ville si elle n'existe pas, ou de la mettre à jour
-                string query = @"INSERT OR REPLACE INTO TableVille (Nom, CodePostal, Latitude, Longitude, DonneesJson, DerniereMaj) 
-                    VALUES (@nom ,@codePostaux, @lat, @lon, @json, @date)";
+                string query = @"UPDATE TableVille SET Latitude=@lat, Longitude=@lon, DonneesJson=@json, DerniereMaj=@date
+                    WHERE nom=@nom";
                 using (var command = new SQLiteCommand(query, connection))
                 {
                     command.Parameters.AddWithValue("@nom", nomVille);
-                    command.Parameters.AddWithValue("@codePostaux", codePostaux);
                     command.Parameters.AddWithValue("@lat", lat);
                     command.Parameters.AddWithValue("@lon", lon);
                     command.Parameters.AddWithValue("@json", json);
@@ -154,7 +119,7 @@ namespace Dr_Meteo
 
         public async Task ImporterVillesDepuisApiGouv()
         {
-            // 1. On vérifie si la base est déjà remplie pour ne pas retélécharger à chaque fois
+            //Vérification si la base est déjà remplie pour ne pas retélécharger à chaque fois
             using (var connexion = new SQLiteConnection(ConnectionString))
             {
                 connexion.Open();
@@ -165,41 +130,38 @@ namespace Dr_Meteo
                 }
             }
 
-            // 2. On télécharge les données depuis l'API du gouvernement
+            //Téléchargement des données depuis l'API du gouvernement
             string url = "https://geo.api.gouv.fr/communes?fields=nom,codesPostaux,centre&format=json&geometry=centre";
 
             using (HttpClient client = new HttpClient())
             {
                 string jsonResponse = await client.GetStringAsync(url);
 
-                // On transforme le gros texte JSON en une liste d'objets C#
+                //On transforme le gros texte JSON en une liste d'objets C#
                 List<CommuneGouv> communes = JsonConvert.DeserializeObject<List<CommuneGouv>>(jsonResponse);
 
-                // 3. On insère tout dans la base de données à la vitesse de l'éclair
+                //On insère tout dans la base de données à la vitesse de l'éclair
                 using (var connexion = new SQLiteConnection(ConnectionString))
                 {
                     connexion.Open();
 
-                    // La TRANSACTION est la clé de la rapidité
                     using (var transaction = connexion.BeginTransaction())
                     {
                         string sql = "INSERT INTO TableVille (Nom, CodePostal, Latitude, Longitude) VALUES (@nom, @cp, @lat, @lon)";
                         using (var cmd = new SQLiteCommand(sql, connexion, transaction))
                         {
-                            // On prépare les paramètres une seule fois
                             cmd.Parameters.Add(new SQLiteParameter("@nom"));
                             cmd.Parameters.Add(new SQLiteParameter("@cp"));
-                            cmd.Parameters.Add(new SQLiteParameter("@lat", System.Data.DbType.Double)); // Force en nombre à virgule (REAL)));
-                            cmd.Parameters.Add(new SQLiteParameter("@lon", System.Data.DbType.Double)); // Force en nombre à virgule (REAL)));
+                            cmd.Parameters.Add(new SQLiteParameter("@lat", System.Data.DbType.Double)); //Force en nombre à virgule (REAL)));
+                            cmd.Parameters.Add(new SQLiteParameter("@lon", System.Data.DbType.Double));
 
                             foreach (var commune in communes)
                             {
                                 cmd.Parameters["@nom"].Value = commune.nom;
 
-                                // Transforme la liste des codes postaux en texte séparé par des virgules
+                                //Transforme la liste des codes postaux en texte séparé par des virgules
                                 cmd.Parameters["@cp"].Value = commune.codesPostaux != null ? string.Join(", ", commune.codesPostaux) : "";
 
-                                //Longitude en premier !
                                 if (commune.centre != null && commune.centre.coordinates != null && commune.centre.coordinates.Count >= 2)
                                 {
                                     cmd.Parameters["@lon"].Value = commune.centre.coordinates[0];
@@ -214,12 +176,185 @@ namespace Dr_Meteo
                                 cmd.ExecuteNonQuery();
                             }
                         }
-                        // On valide l'enregistrement global
+                        //On valide l'enregistrement global
                         transaction.Commit();
                     }
                 }
             }
         }
+        //Partie Utilisateurs
+        public static void CreerUtilisateur(string nomUtilisateur, string motDePasse, string villeFavorite)
+        {
+            using (var connection = new SQLiteConnection(ConnectionString))
+            {
+                connection.Open();
+                string query = "INSERT INTO Utilisateurs (NomUtilisateur, MotDePasse, VilleFavorite) VALUES (@nomUtilisateur, @motDePasse, @villeFavorite)";
+                using (var command = new SQLiteCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@nomUtilisateur", nomUtilisateur);
+                    command.Parameters.AddWithValue("@motDePasse", motDePasse);
+                    command.Parameters.AddWithValue("@villeFavorite", villeFavorite);
+                    command.ExecuteNonQuery();
+                }
+                connection.Close();
+            }
+        }
+
+        public static bool UtilisateurExiste(string nomUtilisateur)
+        {
+            using (var connection = new SQLiteConnection(ConnectionString))
+            {
+                connection.Open();
+                string query = "SELECT COUNT(*) FROM Utilisateurs WHERE NomUtilisateur = @nomUtilisateur";
+                using (var command = new SQLiteCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@nomUtilisateur", nomUtilisateur);
+                    long count = (long)command.ExecuteScalar();
+                    connection.Close();
+                    return count > 0; //Retourne true si l'utilisateur existe
+                }
+            }
+        }
+
+        public static string GetVilleFavorite(string nomUtilisateur)
+        {
+            using (var connection = new SQLiteConnection(ConnectionString))
+            {
+                connection.Open();
+                string query = "SELECT VilleFavorite FROM Utilisateurs WHERE NomUtilisateur = @nomUtilisateur";
+                using (var command = new SQLiteCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@nomUtilisateur", nomUtilisateur);
+                    object result = command.ExecuteScalar();
+                    return result != null ? result.ToString() : null; //Retourne la ville favorite ou null si l'utilisateur n'existe pas
+                }
+            }
+        }
+        public static void MettreAJourVilleFavorite(string nomUtilisateur, string nouvelleVilleFavorite)
+        {
+            using (var connection = new SQLiteConnection(ConnectionString))
+            {
+                connection.Open();
+                string query = "UPDATE Utilisateurs SET VilleFavorite = @nouvelleVilleFavorite WHERE NomUtilisateur = @nomUtilisateur";
+                using (var command = new SQLiteCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@nouvelleVilleFavorite", nouvelleVilleFavorite);
+                    command.Parameters.AddWithValue("@nomUtilisateur", nomUtilisateur);
+                    command.ExecuteNonQuery();
+                }
+                connection.Close();
+            }
+        }
+        public static void MettreAJourMotDePasse(string nomUtilisateur, string nouveauMotDePasse)
+        {
+            using (var connection = new SQLiteConnection(ConnectionString))
+            {
+                connection.Open();
+                string query = "UPDATE Utilisateurs SET MotDePasse = @nouveauMotDePasse WHERE NomUtilisateur = @nomUtilisateur";
+                using (var command = new SQLiteCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@nouveauMotDePasse", nouveauMotDePasse);
+                    command.Parameters.AddWithValue("@nomUtilisateur", nomUtilisateur);
+                    command.ExecuteNonQuery();
+                }
+                connection.Close();
+            }
+        }
+        public static void SupprimerUtilisateur(string nomUtilisateur)
+        {
+            using (var connection = new SQLiteConnection(ConnectionString))
+            {
+                connection.Open();
+                string query = "DELETE FROM Utilisateurs WHERE NomUtilisateur = @nomUtilisateur";
+                using (var command = new SQLiteCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@nomUtilisateur", nomUtilisateur);
+                    command.ExecuteNonQuery();
+                }
+                connection.Close();
+            }
+        }
+        public static List<string> GetTousUtilisateurs()
+        {
+            List<string> utilisateurs = new List<string>();
+            using (var connection = new SQLiteConnection(ConnectionString))
+            {
+                connection.Open();
+                string query = "SELECT NomUtilisateur FROM Utilisateurs";
+                using (var command = new SQLiteCommand(query, connection))
+                {
+                    using (var reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            utilisateurs.Add(reader[0].ToString());
+                        }
+                    }
+                }
+                connection.Close();
+            }
+            return utilisateurs;
+        }
+
+        //Mettre à jour l'e-mail de l'utilisateur qui vient de s'inscrire
+        public static void EnregistrerEmail(string pseudo, string email)
+        {
+            using (var connection = new SQLiteConnection(ConnectionString))
+            {
+                connection.Open();
+                string query = "UPDATE Utilisateurs SET Email = @email WHERE NomUtilisateur = @pseudo";
+                using (var command = new SQLiteCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@email", email);
+                    command.Parameters.AddWithValue("@pseudo", pseudo);
+                    command.ExecuteNonQuery();
+                }
+                connection.Close();
+            }
+        }
+
+        //Ajoute d'une ville dans ses favoris
+        public static void AjouterVilleFavorite(string pseudo, string ville)
+        {
+            using (var connection = new SQLiteConnection(ConnectionString))
+            {
+                connection.Open();
+                // On cherche l'ID de l'utilisateur grâce à son pseudo pour faire la liaison
+                string query = "UPDATE Utilisateurs SET VilleFavorite = @ville WHERE NomUtilisateur = @pseudo";
+                using (var command = new SQLiteCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@pseudo", pseudo);
+                    command.Parameters.AddWithValue("@ville", ville);
+                    command.ExecuteNonQuery();
+                }
+                connection.Close();
+            }
+        }
+
+        public static bool VerifierIdentifiants(string pseudo, string mdp)
+        {
+            using (var connection = new SQLiteConnection(ConnectionString))
+            {
+                connection.Open();
+                string query = "SELECT COUNT(*) FROM Utilisateurs WHERE NomUtilisateur=@pseudo AND MotDePasse=@mdp";
+                using (var commande = new SQLiteCommand(query, connection))
+                {
+                    commande.Parameters.AddWithValue("@pseudo", pseudo);
+                    commande.Parameters.AddWithValue("@mdp", mdp);
+                    long count = (long)commande.ExecuteScalar();
+                    if (count > 0)
+                    {
+                        return (true);
+                    }
+                    else
+                    {
+                        return (false);
+                    }
+                }
+            }
+        }
+
+
     }
 }
 //Classe pour transporter les données de la Bdd

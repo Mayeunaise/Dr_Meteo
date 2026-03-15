@@ -121,4 +121,7 @@
   <data name="gps (3)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\gps (3).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="menu-hamburger" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\menu-hamburger.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

@@ -14,7 +14,7 @@ namespace Dr_Meteo
     {
         private static readonly HttpClient client = new HttpClient();
 
-        // ÉTAPE 1 : Trouver la latitude/longitude de la ville
+        //Trouver la latitude/longitude de la ville
         public async Task<VilleResultat> ChercherVille(string nomVille)
         {
             try
@@ -35,7 +35,7 @@ namespace Dr_Meteo
             }
         }
 
-        // ÉTAPE 2 : Avoir la météo via Lat/Lon
+        //Avoir la météo via Lat/Lon
         public async Task<ReponseMeteo> ObtenirMeteo(double lat, double lon)
         {
             try
@@ -43,7 +43,7 @@ namespace Dr_Meteo
                 string sLat = lat.ToString(CultureInfo.InvariantCulture);
                 string sLon = lon.ToString(CultureInfo.InvariantCulture);
 
-                // API call
+                //API call
                 string url = $"https://api.open-meteo.com/v1/forecast?latitude={sLat}&longitude={sLon}&current=temperature_2m,relative_humidity_2m,wind_speed_10m,surface_pressure,weather_code,is_day&daily=weather_code,temperature_2m_max,temperature_2m_min,sunrise,sunset,uv_index_max&timezone=auto";
 
                 var json = await client.GetStringAsync(url);
@@ -96,9 +96,6 @@ namespace Dr_Meteo
         public int code_meteo { get; set; }
 
         public int is_day { get; set; }
-
-        // Laissé vide car l'API ne le donne pas en "current", 
-        // utilisez daily.uv_index_max[0] pour l'UV du jour !
         public int uv_index { get; set; }
     }
 
