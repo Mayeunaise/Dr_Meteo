@@ -537,6 +537,8 @@ namespace Dr_Meteo
             Panel_Accueil.Visible = true;
             Panel_Meteo_Ville.Visible = false;
             Panel_Inscription.Visible = false;
+            Panel_Configuration.Visible = false;
+            Panel_Connection.Visible = false;
         }
 
         private void sinscrireToolStripMenuItem_Click(object sender, EventArgs e)
