@@ -59,7 +59,7 @@ namespace Dr_Meteo
             Lbl_Uv_demain.Font = new Font("Segoe UI", 14);
             Lbl_Uv_demain.AutoSize = true;
             iconeMeteo_demain.Size = new Size(100, 100);
-            iconeMeteo_demain.Location = new Point(450, 20);
+            iconeMeteo_demain.Location = new Point(450, 40);
             iconeMeteo_demain.SizeMode = PictureBoxSizeMode.Zoom;
             Lbl_temp_max_demain.Font = new Font("Segoe UI", 14);
             Lbl_temp_max_demain.AutoSize = true;
@@ -77,7 +77,7 @@ namespace Dr_Meteo
             Lbl_Uv_apres_demain.Font = new Font("Segoe UI", 14);
             Lbl_Uv_apres_demain.AutoSize = true;
             iconeMeteo_apres_demain_bis.Size = new Size(100, 100);
-            iconeMeteo_apres_demain_bis.Location = new Point(825, 20);
+            iconeMeteo_apres_demain_bis.Location = new Point(450, 40);
             iconeMeteo_apres_demain_bis.SizeMode = PictureBoxSizeMode.Zoom;
             Lbl_temp_max_apres_demain.Font = new Font("Segoe UI", 14);
             Lbl_temp_max_apres_demain.AutoSize = true;
