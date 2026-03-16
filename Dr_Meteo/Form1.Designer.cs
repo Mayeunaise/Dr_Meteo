@@ -179,10 +179,10 @@
             Panel_Meteo_Ville.Controls.Add(tableLayoutPanel2);
             Panel_Meteo_Ville.Controls.Add(tableLayoutPanel3);
             Panel_Meteo_Ville.Dock = DockStyle.Fill;
-            Panel_Meteo_Ville.Location = new Point(0, 42);
+            Panel_Meteo_Ville.Location = new Point(0, 32);
             Panel_Meteo_Ville.Margin = new Padding(4, 5, 4, 5);
             Panel_Meteo_Ville.Name = "Panel_Meteo_Ville";
-            Panel_Meteo_Ville.Size = new Size(1791, 1008);
+            Panel_Meteo_Ville.Size = new Size(1791, 1018);
             Panel_Meteo_Ville.TabIndex = 3;
             // 
             // tableLayoutPanel1
@@ -391,7 +391,7 @@
             // 
             // iconeMeteo_demain
             // 
-            iconeMeteo_demain.Location = new Point(436, 175);
+            iconeMeteo_demain.Location = new Point(750, 50);
             iconeMeteo_demain.Margin = new Padding(4, 3, 4, 3);
             iconeMeteo_demain.Name = "iconeMeteo_demain";
             iconeMeteo_demain.Size = new Size(156, 77);
@@ -749,18 +749,16 @@
             Panel_Header.Location = new Point(0, 0);
             Panel_Header.Margin = new Padding(4, 5, 4, 5);
             Panel_Header.Name = "Panel_Header";
-            Panel_Header.Size = new Size(1791, 42);
+            Panel_Header.Size = new Size(1791, 32);
             Panel_Header.TabIndex = 38;
             // 
             // toolBar
             // 
             toolBar.ContextMenuStrip = menuHamburger;
-            toolBar.Dock = DockStyle.Left;
-            toolBar.Image = Properties.Resources.menu_hamburger;
+            toolBar.Image = Properties.Resources.menu__1_;
             toolBar.Location = new Point(0, 0);
-            toolBar.Margin = new Padding(4, 5, 4, 5);
             toolBar.Name = "toolBar";
-            toolBar.Size = new Size(40, 42);
+            toolBar.Size = new Size(34, 32);
             toolBar.TabIndex = 0;
             toolBar.TabStop = false;
             toolBar.Click += toolBar_Click;
@@ -770,26 +768,26 @@
             menuHamburger.ImageScalingSize = new Size(24, 24);
             menuHamburger.Items.AddRange(new ToolStripItem[] { changerDeVilleToolStripMenuItem, sinscrireToolStripMenuItem, seConnecterToolStripMenuItem });
             menuHamburger.Name = "menuHamburger";
-            menuHamburger.Size = new Size(241, 133);
+            menuHamburger.Size = new Size(211, 100);
             // 
             // changerDeVilleToolStripMenuItem
             // 
             changerDeVilleToolStripMenuItem.Name = "changerDeVilleToolStripMenuItem";
-            changerDeVilleToolStripMenuItem.Size = new Size(240, 32);
+            changerDeVilleToolStripMenuItem.Size = new Size(210, 32);
             changerDeVilleToolStripMenuItem.Text = "Changer de ville";
             changerDeVilleToolStripMenuItem.Click += changerDeVilleToolStripMenuItem_Click;
             // 
             // sinscrireToolStripMenuItem
             // 
             sinscrireToolStripMenuItem.Name = "sinscrireToolStripMenuItem";
-            sinscrireToolStripMenuItem.Size = new Size(240, 32);
+            sinscrireToolStripMenuItem.Size = new Size(210, 32);
             sinscrireToolStripMenuItem.Text = "S'inscrire";
             sinscrireToolStripMenuItem.Click += sinscrireToolStripMenuItem_Click;
             // 
             // seConnecterToolStripMenuItem
             // 
             seConnecterToolStripMenuItem.Name = "seConnecterToolStripMenuItem";
-            seConnecterToolStripMenuItem.Size = new Size(240, 32);
+            seConnecterToolStripMenuItem.Size = new Size(210, 32);
             seConnecterToolStripMenuItem.Text = "Se connecter";
             seConnecterToolStripMenuItem.Click += seConnecterToolStripMenuItem_Click;
             // 
@@ -803,10 +801,10 @@
             Panel_Inscription.Controls.Add(textBoxMdp);
             Panel_Inscription.Controls.Add(textBoxUname);
             Panel_Inscription.Dock = DockStyle.Fill;
-            Panel_Inscription.Location = new Point(0, 42);
+            Panel_Inscription.Location = new Point(0, 32);
             Panel_Inscription.Margin = new Padding(4, 5, 4, 5);
             Panel_Inscription.Name = "Panel_Inscription";
-            Panel_Inscription.Size = new Size(1791, 1008);
+            Panel_Inscription.Size = new Size(1791, 1018);
             Panel_Inscription.TabIndex = 38;
             // 
             // Lbl_Uname
@@ -875,10 +873,10 @@
             Panel_Configuration.Controls.Add(textBoxVilleFavorite);
             Panel_Configuration.Controls.Add(textBoxEmail);
             Panel_Configuration.Dock = DockStyle.Fill;
-            Panel_Configuration.Location = new Point(0, 42);
+            Panel_Configuration.Location = new Point(0, 32);
             Panel_Configuration.Margin = new Padding(4, 5, 4, 5);
             Panel_Configuration.Name = "Panel_Configuration";
-            Panel_Configuration.Size = new Size(1791, 1008);
+            Panel_Configuration.Size = new Size(1791, 1018);
             Panel_Configuration.TabIndex = 3;
             // 
             // Lbl_VilleFavorite
@@ -927,10 +925,10 @@
             Panel_Connection.Controls.Add(textBoxMdpConnection);
             Panel_Connection.Controls.Add(textBoxUconnection);
             Panel_Connection.Dock = DockStyle.Fill;
-            Panel_Connection.Location = new Point(0, 42);
+            Panel_Connection.Location = new Point(0, 32);
             Panel_Connection.Margin = new Padding(4, 5, 4, 5);
             Panel_Connection.Name = "Panel_Connection";
-            Panel_Connection.Size = new Size(1791, 1008);
+            Panel_Connection.Size = new Size(1791, 1018);
             Panel_Connection.TabIndex = 2;
             // 
             // Lbl_Mdp_Connection
@@ -1071,7 +1069,6 @@
         private ToolStripMenuItem changerDeVilleToolStripMenuItem;
         private ToolStripMenuItem sinscrireToolStripMenuItem;
         private ToolStripMenuItem seConnecterToolStripMenuItem;
-        private PictureBox toolBar;
         private Panel Panel_Inscription;
         private TextBox textBoxMdpConf;
         private TextBox textBoxMdp;
@@ -1092,5 +1089,6 @@
 
         private TableLayoutPanel tableLayoutPanel2;
         private TableLayoutPanel tableLayoutPanel3;
+        private PictureBox toolBar;
     }
 }
