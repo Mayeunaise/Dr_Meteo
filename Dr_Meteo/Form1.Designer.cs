@@ -129,9 +129,8 @@
             Panel_Accueil.Controls.Add(Bouton_Loc);
             Panel_Accueil.Dock = DockStyle.Fill;
             Panel_Accueil.Location = new Point(0, 0);
-            Panel_Accueil.Margin = new Padding(2);
             Panel_Accueil.Name = "Panel_Accueil";
-            Panel_Accueil.Size = new Size(1254, 632);
+            Panel_Accueil.Size = new Size(1791, 1050);
             Panel_Accueil.TabIndex = 0;
             // 
             // Barre_Recherche
@@ -139,11 +138,10 @@
             Barre_Recherche.AccessibleName = "Barre_Recherche";
             Barre_Recherche.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             Barre_Recherche.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-            Barre_Recherche.Location = new Point(134, 86);
-            Barre_Recherche.Margin = new Padding(2);
+            Barre_Recherche.Location = new Point(191, 143);
             Barre_Recherche.Name = "Barre_Recherche";
             Barre_Recherche.ScrollBars = ScrollBars.Vertical;
-            Barre_Recherche.Size = new Size(2042, 23);
+            Barre_Recherche.Size = new Size(2915, 31);
             Barre_Recherche.TabIndex = 0;
             // 
             // Loupe
@@ -151,10 +149,9 @@
             Loupe.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             Loupe.BackgroundImageLayout = ImageLayout.Stretch;
             Loupe.Image = (Image)resources.GetObject("Loupe.Image");
-            Loupe.Location = new Point(2180, 86);
-            Loupe.Margin = new Padding(2);
+            Loupe.Location = new Point(3114, 143);
             Loupe.Name = "Loupe";
-            Loupe.Size = new Size(23, 22);
+            Loupe.Size = new Size(33, 37);
             Loupe.TabIndex = 2;
             Loupe.TabStop = false;
             Loupe.Click += Loupe_Click;
@@ -163,10 +160,9 @@
             // 
             Bouton_Loc.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             Bouton_Loc.Image = Properties.Resources.gps__3_;
-            Bouton_Loc.Location = new Point(109, 86);
-            Bouton_Loc.Margin = new Padding(2);
+            Bouton_Loc.Location = new Point(156, 143);
             Bouton_Loc.Name = "Bouton_Loc";
-            Bouton_Loc.Size = new Size(27, 24);
+            Bouton_Loc.Size = new Size(39, 40);
             Bouton_Loc.TabIndex = 1;
             Bouton_Loc.UseVisualStyleBackColor = true;
             Bouton_Loc.Click += Bouton_Loc_Click;
@@ -178,8 +174,9 @@
             Panel_Meteo_Ville.Controls.Add(iconeMeteo_demain);
             Panel_Meteo_Ville.Dock = DockStyle.Fill;
             Panel_Meteo_Ville.Location = new Point(0, 0);
+            Panel_Meteo_Ville.Margin = new Padding(4, 5, 4, 5);
             Panel_Meteo_Ville.Name = "Panel_Meteo_Ville";
-            Panel_Meteo_Ville.Size = new Size(1254, 632);
+            Panel_Meteo_Ville.Size = new Size(1791, 1050);
             Panel_Meteo_Ville.TabIndex = 3;
             // 
             // tableLayoutPanel1
@@ -193,8 +190,8 @@
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 5.555556F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 19.4444447F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 5.5555563F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 18F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 18F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 26F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 26F));
             tableLayoutPanel1.Controls.Add(Lbl_j_3, 0, 0);
             tableLayoutPanel1.Controls.Add(iconeMeteo_j6, 7, 0);
             tableLayoutPanel1.Controls.Add(Lbl_min_j3, 0, 1);
@@ -211,173 +208,187 @@
             tableLayoutPanel1.Controls.Add(iconeMeteo_j4, 3, 0);
             tableLayoutPanel1.Controls.Add(Lbl_min_j5, 4, 1);
             tableLayoutPanel1.Controls.Add(Lbl_j_5, 4, 0);
-            tableLayoutPanel1.Location = new Point(48, 409);
-            tableLayoutPanel1.Margin = new Padding(3, 2, 3, 2);
+            tableLayoutPanel1.Location = new Point(69, 682);
+            tableLayoutPanel1.Margin = new Padding(4, 3, 4, 3);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 3;
             tableLayoutPanel1.RowStyles.Add(new RowStyle());
             tableLayoutPanel1.RowStyles.Add(new RowStyle());
             tableLayoutPanel1.RowStyles.Add(new RowStyle());
-            tableLayoutPanel1.Size = new Size(1002, 164);
+            tableLayoutPanel1.Size = new Size(1431, 273);
             tableLayoutPanel1.TabIndex = 37;
             // 
             // Lbl_j_3
             // 
             Lbl_j_3.Dock = DockStyle.Fill;
-            Lbl_j_3.Location = new Point(3, 0);
+            Lbl_j_3.Location = new Point(4, 0);
+            Lbl_j_3.Margin = new Padding(4, 0, 4, 0);
             Lbl_j_3.Name = "Lbl_j_3";
-            Lbl_j_3.Size = new Size(188, 51);
+            Lbl_j_3.Size = new Size(270, 85);
             Lbl_j_3.TabIndex = 19;
             Lbl_j_3.Text = "Lbl_j_3";
             // 
             // iconeMeteo_j6
             // 
-            iconeMeteo_j6.Location = new Point(944, 2);
-            iconeMeteo_j6.Margin = new Padding(3, 2, 3, 2);
+            iconeMeteo_j6.Location = new Point(1353, 3);
+            iconeMeteo_j6.Margin = new Padding(4, 3, 4, 3);
             iconeMeteo_j6.Name = "iconeMeteo_j6";
-            iconeMeteo_j6.Size = new Size(38, 40);
+            iconeMeteo_j6.Size = new Size(54, 67);
             iconeMeteo_j6.TabIndex = 36;
             iconeMeteo_j6.TabStop = false;
             // 
             // Lbl_min_j3
             // 
             Lbl_min_j3.Dock = DockStyle.Fill;
-            Lbl_min_j3.Location = new Point(3, 51);
+            Lbl_min_j3.Location = new Point(4, 85);
+            Lbl_min_j3.Margin = new Padding(4, 0, 4, 0);
             Lbl_min_j3.Name = "Lbl_min_j3";
-            Lbl_min_j3.Size = new Size(188, 45);
+            Lbl_min_j3.Size = new Size(270, 75);
             Lbl_min_j3.TabIndex = 20;
             Lbl_min_j3.Text = "Lbl_min_j3";
             // 
             // Lbl_max_j6
             // 
             Lbl_max_j6.Dock = DockStyle.Fill;
-            Lbl_max_j6.Location = new Point(750, 96);
+            Lbl_max_j6.Location = new Point(1075, 160);
+            Lbl_max_j6.Margin = new Padding(4, 0, 4, 0);
             Lbl_max_j6.Name = "Lbl_max_j6";
-            Lbl_max_j6.Size = new Size(188, 74);
+            Lbl_max_j6.Size = new Size(270, 123);
             Lbl_max_j6.TabIndex = 35;
             Lbl_max_j6.Text = "Lbl_max_j6";
             // 
             // Lbl_max_j3
             // 
             Lbl_max_j3.Dock = DockStyle.Fill;
-            Lbl_max_j3.Location = new Point(3, 96);
+            Lbl_max_j3.Location = new Point(4, 160);
+            Lbl_max_j3.Margin = new Padding(4, 0, 4, 0);
             Lbl_max_j3.Name = "Lbl_max_j3";
-            Lbl_max_j3.Size = new Size(188, 74);
+            Lbl_max_j3.Size = new Size(270, 123);
             Lbl_max_j3.TabIndex = 21;
             Lbl_max_j3.Text = "Lbl_max_j3";
             // 
             // Lbl_min_j6
             // 
             Lbl_min_j6.Dock = DockStyle.Fill;
-            Lbl_min_j6.Location = new Point(750, 51);
+            Lbl_min_j6.Location = new Point(1075, 85);
+            Lbl_min_j6.Margin = new Padding(4, 0, 4, 0);
             Lbl_min_j6.Name = "Lbl_min_j6";
-            Lbl_min_j6.Size = new Size(188, 45);
+            Lbl_min_j6.Size = new Size(270, 75);
             Lbl_min_j6.TabIndex = 34;
             Lbl_min_j6.Text = "Lbl_min_j6";
             // 
             // iconeMeteo_j3
             // 
-            iconeMeteo_j3.Location = new Point(197, 2);
-            iconeMeteo_j3.Margin = new Padding(3, 2, 3, 2);
+            iconeMeteo_j3.Location = new Point(282, 3);
+            iconeMeteo_j3.Margin = new Padding(4, 3, 4, 3);
             iconeMeteo_j3.Name = "iconeMeteo_j3";
-            iconeMeteo_j3.Size = new Size(38, 38);
+            iconeMeteo_j3.Size = new Size(54, 63);
             iconeMeteo_j3.TabIndex = 31;
             iconeMeteo_j3.TabStop = false;
             // 
             // Lbl_j_6
             // 
             Lbl_j_6.Dock = DockStyle.Fill;
-            Lbl_j_6.Location = new Point(750, 0);
+            Lbl_j_6.Location = new Point(1075, 0);
+            Lbl_j_6.Margin = new Padding(4, 0, 4, 0);
             Lbl_j_6.Name = "Lbl_j_6";
-            Lbl_j_6.Size = new Size(188, 51);
+            Lbl_j_6.Size = new Size(270, 85);
             Lbl_j_6.TabIndex = 33;
             Lbl_j_6.Text = "Lbl_j_6";
             // 
             // Lbl_j_4
             // 
             Lbl_j_4.Dock = DockStyle.Fill;
-            Lbl_j_4.Location = new Point(252, 0);
+            Lbl_j_4.Location = new Point(361, 0);
+            Lbl_j_4.Margin = new Padding(4, 0, 4, 0);
             Lbl_j_4.Name = "Lbl_j_4";
-            Lbl_j_4.Size = new Size(188, 51);
+            Lbl_j_4.Size = new Size(270, 85);
             Lbl_j_4.TabIndex = 23;
             Lbl_j_4.Text = "Lbl_j_4";
             // 
             // Lbl_min_j4
             // 
             Lbl_min_j4.Dock = DockStyle.Fill;
-            Lbl_min_j4.Location = new Point(252, 51);
+            Lbl_min_j4.Location = new Point(361, 85);
+            Lbl_min_j4.Margin = new Padding(4, 0, 4, 0);
             Lbl_min_j4.Name = "Lbl_min_j4";
-            Lbl_min_j4.Size = new Size(188, 45);
+            Lbl_min_j4.Size = new Size(270, 75);
             Lbl_min_j4.TabIndex = 24;
             Lbl_min_j4.Text = "Lbl_min_j4";
             // 
             // iconeMeteo_j5
             // 
-            iconeMeteo_j5.Location = new Point(695, 2);
-            iconeMeteo_j5.Margin = new Padding(3, 2, 3, 2);
+            iconeMeteo_j5.Location = new Point(996, 3);
+            iconeMeteo_j5.Margin = new Padding(4, 3, 4, 3);
             iconeMeteo_j5.Name = "iconeMeteo_j5";
-            iconeMeteo_j5.Size = new Size(38, 40);
+            iconeMeteo_j5.Size = new Size(54, 67);
             iconeMeteo_j5.TabIndex = 30;
             iconeMeteo_j5.TabStop = false;
             // 
             // Lbl_max_j4
             // 
             Lbl_max_j4.Dock = DockStyle.Fill;
-            Lbl_max_j4.Location = new Point(252, 96);
+            Lbl_max_j4.Location = new Point(361, 160);
+            Lbl_max_j4.Margin = new Padding(4, 0, 4, 0);
             Lbl_max_j4.Name = "Lbl_max_j4";
-            Lbl_max_j4.Size = new Size(188, 74);
+            Lbl_max_j4.Size = new Size(270, 123);
             Lbl_max_j4.TabIndex = 25;
             Lbl_max_j4.Text = "Lbl_max_j4";
             // 
             // Lbl_max_j5
             // 
             Lbl_max_j5.Dock = DockStyle.Fill;
-            Lbl_max_j5.Location = new Point(501, 96);
+            Lbl_max_j5.Location = new Point(718, 160);
+            Lbl_max_j5.Margin = new Padding(4, 0, 4, 0);
             Lbl_max_j5.Name = "Lbl_max_j5";
-            Lbl_max_j5.Size = new Size(188, 74);
+            Lbl_max_j5.Size = new Size(270, 123);
             Lbl_max_j5.TabIndex = 29;
             Lbl_max_j5.Text = "Lbl_max_j5";
             // 
             // iconeMeteo_j4
             // 
-            iconeMeteo_j4.Location = new Point(446, 2);
-            iconeMeteo_j4.Margin = new Padding(3, 2, 3, 2);
+            iconeMeteo_j4.Location = new Point(639, 3);
+            iconeMeteo_j4.Margin = new Padding(4, 3, 4, 3);
             iconeMeteo_j4.Name = "iconeMeteo_j4";
-            iconeMeteo_j4.Size = new Size(38, 40);
+            iconeMeteo_j4.Size = new Size(54, 67);
             iconeMeteo_j4.TabIndex = 26;
             iconeMeteo_j4.TabStop = false;
             // 
             // Lbl_min_j5
             // 
             Lbl_min_j5.Dock = DockStyle.Fill;
-            Lbl_min_j5.Location = new Point(501, 51);
+            Lbl_min_j5.Location = new Point(718, 85);
+            Lbl_min_j5.Margin = new Padding(4, 0, 4, 0);
             Lbl_min_j5.Name = "Lbl_min_j5";
-            Lbl_min_j5.Size = new Size(188, 45);
+            Lbl_min_j5.Size = new Size(270, 75);
             Lbl_min_j5.TabIndex = 28;
             Lbl_min_j5.Text = "Lbl_min_j5";
             // 
             // Lbl_j_5
             // 
             Lbl_j_5.Dock = DockStyle.Fill;
-            Lbl_j_5.Location = new Point(501, 0);
+            Lbl_j_5.Location = new Point(718, 0);
+            Lbl_j_5.Margin = new Padding(4, 0, 4, 0);
             Lbl_j_5.Name = "Lbl_j_5";
-            Lbl_j_5.Size = new Size(188, 51);
+            Lbl_j_5.Size = new Size(270, 85);
             Lbl_j_5.TabIndex = 27;
             Lbl_j_5.Text = "Lbl_j_5";
             // 
             // iconeMeteo_apres_demain_bis
             // 
-            iconeMeteo_apres_demain_bis.Location = new Point(885, 72);
+            iconeMeteo_apres_demain_bis.Location = new Point(1264, 120);
+            iconeMeteo_apres_demain_bis.Margin = new Padding(4, 5, 4, 5);
             iconeMeteo_apres_demain_bis.Name = "iconeMeteo_apres_demain_bis";
-            iconeMeteo_apres_demain_bis.Size = new Size(109, 46);
+            iconeMeteo_apres_demain_bis.Size = new Size(156, 77);
             iconeMeteo_apres_demain_bis.TabIndex = 32;
             iconeMeteo_apres_demain_bis.TabStop = false;
             // 
             // iconeMeteo_demain
             // 
-            iconeMeteo_demain.Location = new Point(339, 85);
+            iconeMeteo_demain.Location = new Point(484, 142);
+            iconeMeteo_demain.Margin = new Padding(4, 5, 4, 5);
             iconeMeteo_demain.Name = "iconeMeteo_demain";
-            iconeMeteo_demain.Size = new Size(125, 62);
+            iconeMeteo_demain.Size = new Size(179, 103);
             iconeMeteo_demain.TabIndex = 10;
             iconeMeteo_demain.TabStop = false;
             // 
@@ -618,8 +629,9 @@
             Panel_Header.Controls.Add(toolBar);
             Panel_Header.Dock = DockStyle.Top;
             Panel_Header.Location = new Point(0, 0);
+            Panel_Header.Margin = new Padding(4, 5, 4, 5);
             Panel_Header.Name = "Panel_Header";
-            Panel_Header.Size = new Size(1254, 25);
+            Panel_Header.Size = new Size(1791, 42);
             Panel_Header.TabIndex = 38;
             // 
             // toolBar
@@ -627,36 +639,38 @@
             toolBar.BackgroundImage = Properties.Resources.menu_hamburger;
             toolBar.ContextMenuStrip = menuHamburger;
             toolBar.Location = new Point(0, 0);
+            toolBar.Margin = new Padding(4, 5, 4, 5);
             toolBar.Name = "toolBar";
-            toolBar.Size = new Size(27, 25);
+            toolBar.Size = new Size(39, 42);
             toolBar.TabIndex = 0;
             toolBar.TabStop = false;
             toolBar.Click += toolBar_Click;
             // 
             // menuHamburger
             // 
+            menuHamburger.ImageScalingSize = new Size(24, 24);
             menuHamburger.Items.AddRange(new ToolStripItem[] { changerDeVilleToolStripMenuItem, sinscrireToolStripMenuItem, seConnecterToolStripMenuItem });
             menuHamburger.Name = "menuHamburger";
-            menuHamburger.Size = new Size(160, 70);
+            menuHamburger.Size = new Size(211, 100);
             // 
             // changerDeVilleToolStripMenuItem
             // 
             changerDeVilleToolStripMenuItem.Name = "changerDeVilleToolStripMenuItem";
-            changerDeVilleToolStripMenuItem.Size = new Size(159, 22);
+            changerDeVilleToolStripMenuItem.Size = new Size(210, 32);
             changerDeVilleToolStripMenuItem.Text = "Changer de ville";
             changerDeVilleToolStripMenuItem.Click += changerDeVilleToolStripMenuItem_Click;
             // 
             // sinscrireToolStripMenuItem
             // 
             sinscrireToolStripMenuItem.Name = "sinscrireToolStripMenuItem";
-            sinscrireToolStripMenuItem.Size = new Size(159, 22);
+            sinscrireToolStripMenuItem.Size = new Size(210, 32);
             sinscrireToolStripMenuItem.Text = "S'inscrire";
             sinscrireToolStripMenuItem.Click += sinscrireToolStripMenuItem_Click;
             // 
             // seConnecterToolStripMenuItem
             // 
             seConnecterToolStripMenuItem.Name = "seConnecterToolStripMenuItem";
-            seConnecterToolStripMenuItem.Size = new Size(159, 22);
+            seConnecterToolStripMenuItem.Size = new Size(210, 32);
             seConnecterToolStripMenuItem.Text = "Se connecter";
             seConnecterToolStripMenuItem.Click += seConnecterToolStripMenuItem_Click;
             // 
@@ -669,17 +683,19 @@
             Panel_Inscription.Controls.Add(textBoxMdp);
             Panel_Inscription.Controls.Add(textBoxUname);
             Panel_Inscription.Dock = DockStyle.Fill;
-            Panel_Inscription.Location = new Point(0, 25);
+            Panel_Inscription.Location = new Point(0, 42);
+            Panel_Inscription.Margin = new Padding(4, 5, 4, 5);
             Panel_Inscription.Name = "Panel_Inscription";
-            Panel_Inscription.Size = new Size(1254, 607);
+            Panel_Inscription.Size = new Size(1791, 1008);
             Panel_Inscription.TabIndex = 38;
             // 
             // Lbl_Conf_Mdp
             // 
             Lbl_Conf_Mdp.AutoSize = true;
-            Lbl_Conf_Mdp.Location = new Point(61, 248);
+            Lbl_Conf_Mdp.Location = new Point(87, 413);
+            Lbl_Conf_Mdp.Margin = new Padding(4, 0, 4, 0);
             Lbl_Conf_Mdp.Name = "Lbl_Conf_Mdp";
-            Lbl_Conf_Mdp.Size = new Size(170, 15);
+            Lbl_Conf_Mdp.Size = new Size(259, 25);
             Lbl_Conf_Mdp.TabIndex = 5;
             Lbl_Conf_Mdp.Text = "Confirmer votre mot de passe :";
             Lbl_Conf_Mdp.Visible = false;
@@ -687,9 +703,10 @@
             // Lbl_Mdp
             // 
             Lbl_Mdp.AutoSize = true;
-            Lbl_Mdp.Location = new Point(61, 171);
+            Lbl_Mdp.Location = new Point(87, 285);
+            Lbl_Mdp.Margin = new Padding(4, 0, 4, 0);
             Lbl_Mdp.Name = "Lbl_Mdp";
-            Lbl_Mdp.Size = new Size(160, 15);
+            Lbl_Mdp.Size = new Size(248, 25);
             Lbl_Mdp.TabIndex = 4;
             Lbl_Mdp.Text = "Saisissez votre mot de passe :";
             Lbl_Mdp.Visible = false;
@@ -697,33 +714,37 @@
             // Lbl_Uname
             // 
             Lbl_Uname.AutoSize = true;
-            Lbl_Uname.Location = new Point(61, 53);
+            Lbl_Uname.Location = new Point(87, 88);
+            Lbl_Uname.Margin = new Padding(4, 0, 4, 0);
             Lbl_Uname.Name = "Lbl_Uname";
-            Lbl_Uname.Size = new Size(299, 15);
+            Lbl_Uname.Size = new Size(451, 25);
             Lbl_Uname.TabIndex = 3;
             Lbl_Uname.Text = "Saissiez le nom d'utilisateur que vous souhaitez utiliser :";
             // 
             // textBoxMdpConf
             // 
-            textBoxMdpConf.Location = new Point(61, 266);
+            textBoxMdpConf.Location = new Point(87, 443);
+            textBoxMdpConf.Margin = new Padding(4, 5, 4, 5);
             textBoxMdpConf.Name = "textBoxMdpConf";
-            textBoxMdpConf.Size = new Size(589, 23);
+            textBoxMdpConf.Size = new Size(840, 31);
             textBoxMdpConf.TabIndex = 2;
             textBoxMdpConf.Visible = false;
             // 
             // textBoxMdp
             // 
-            textBoxMdp.Location = new Point(61, 189);
+            textBoxMdp.Location = new Point(87, 315);
+            textBoxMdp.Margin = new Padding(4, 5, 4, 5);
             textBoxMdp.Name = "textBoxMdp";
-            textBoxMdp.Size = new Size(589, 23);
+            textBoxMdp.Size = new Size(840, 31);
             textBoxMdp.TabIndex = 1;
             textBoxMdp.Visible = false;
             // 
             // textBoxUname
             // 
-            textBoxUname.Location = new Point(61, 71);
+            textBoxUname.Location = new Point(87, 118);
+            textBoxUname.Margin = new Padding(4, 5, 4, 5);
             textBoxUname.Name = "textBoxUname";
-            textBoxUname.Size = new Size(589, 23);
+            textBoxUname.Size = new Size(840, 31);
             textBoxUname.TabIndex = 0;
             // 
             // Panel_Configuration
@@ -733,17 +754,19 @@
             Panel_Configuration.Controls.Add(textBoxVilleFavorite);
             Panel_Configuration.Controls.Add(textBoxEmail);
             Panel_Configuration.Dock = DockStyle.Fill;
-            Panel_Configuration.Location = new Point(0, 25);
+            Panel_Configuration.Location = new Point(0, 42);
+            Panel_Configuration.Margin = new Padding(4, 5, 4, 5);
             Panel_Configuration.Name = "Panel_Configuration";
-            Panel_Configuration.Size = new Size(1254, 607);
+            Panel_Configuration.Size = new Size(1791, 1008);
             Panel_Configuration.TabIndex = 6;
             // 
             // Lbl_VilleFavorite
             // 
             Lbl_VilleFavorite.AutoSize = true;
-            Lbl_VilleFavorite.Location = new Point(313, 142);
+            Lbl_VilleFavorite.Location = new Point(447, 237);
+            Lbl_VilleFavorite.Margin = new Padding(4, 0, 4, 0);
             Lbl_VilleFavorite.Name = "Lbl_VilleFavorite";
-            Lbl_VilleFavorite.Size = new Size(446, 15);
+            Lbl_VilleFavorite.Size = new Size(673, 25);
             Lbl_VilleFavorite.TabIndex = 3;
             Lbl_VilleFavorite.Text = "Veuillez saisir la ville pour laquelle vous souhaitez être informer par mail des alertes :";
             Lbl_VilleFavorite.Visible = false;
@@ -751,25 +774,28 @@
             // Lbl_EMail
             // 
             Lbl_EMail.AutoSize = true;
-            Lbl_EMail.Location = new Point(313, 52);
+            Lbl_EMail.Location = new Point(447, 87);
+            Lbl_EMail.Margin = new Padding(4, 0, 4, 0);
             Lbl_EMail.Name = "Lbl_EMail";
-            Lbl_EMail.Size = new Size(166, 15);
+            Lbl_EMail.Size = new Size(254, 25);
             Lbl_EMail.TabIndex = 2;
             Lbl_EMail.Text = "Saisissez votre adresse e-mail :";
             // 
             // textBoxVilleFavorite
             // 
-            textBoxVilleFavorite.Location = new Point(313, 160);
+            textBoxVilleFavorite.Location = new Point(447, 267);
+            textBoxVilleFavorite.Margin = new Padding(4, 5, 4, 5);
             textBoxVilleFavorite.Name = "textBoxVilleFavorite";
-            textBoxVilleFavorite.Size = new Size(448, 23);
+            textBoxVilleFavorite.Size = new Size(638, 31);
             textBoxVilleFavorite.TabIndex = 1;
             textBoxVilleFavorite.Visible = false;
             // 
             // textBoxEmail
             // 
-            textBoxEmail.Location = new Point(313, 70);
+            textBoxEmail.Location = new Point(447, 117);
+            textBoxEmail.Margin = new Padding(4, 5, 4, 5);
             textBoxEmail.Name = "textBoxEmail";
-            textBoxEmail.Size = new Size(448, 23);
+            textBoxEmail.Size = new Size(638, 31);
             textBoxEmail.TabIndex = 0;
             // 
             // Panel_Connection
@@ -779,17 +805,19 @@
             Panel_Connection.Controls.Add(textBoxMdpConnection);
             Panel_Connection.Controls.Add(textBoxUconnection);
             Panel_Connection.Dock = DockStyle.Fill;
-            Panel_Connection.Location = new Point(0, 25);
+            Panel_Connection.Location = new Point(0, 42);
+            Panel_Connection.Margin = new Padding(4, 5, 4, 5);
             Panel_Connection.Name = "Panel_Connection";
-            Panel_Connection.Size = new Size(1254, 607);
+            Panel_Connection.Size = new Size(1791, 1008);
             Panel_Connection.TabIndex = 4;
             // 
             // Lbl_Mdp_Connection
             // 
             Lbl_Mdp_Connection.AutoSize = true;
-            Lbl_Mdp_Connection.Location = new Point(109, 171);
+            Lbl_Mdp_Connection.Location = new Point(156, 285);
+            Lbl_Mdp_Connection.Margin = new Padding(4, 0, 4, 0);
             Lbl_Mdp_Connection.Name = "Lbl_Mdp_Connection";
-            Lbl_Mdp_Connection.Size = new Size(160, 15);
+            Lbl_Mdp_Connection.Size = new Size(248, 25);
             Lbl_Mdp_Connection.TabIndex = 3;
             Lbl_Mdp_Connection.Text = "Saisissez votre mot de passe :";
             Lbl_Mdp_Connection.Visible = false;
@@ -797,32 +825,35 @@
             // Lbl_UConnection
             // 
             Lbl_UConnection.AutoSize = true;
-            Lbl_UConnection.Location = new Point(108, 50);
+            Lbl_UConnection.Location = new Point(154, 83);
+            Lbl_UConnection.Margin = new Padding(4, 0, 4, 0);
             Lbl_UConnection.Name = "Lbl_UConnection";
-            Lbl_UConnection.Size = new Size(180, 15);
+            Lbl_UConnection.Size = new Size(273, 25);
             Lbl_UConnection.TabIndex = 2;
             Lbl_UConnection.Text = "Saisissez votre nom d'utilisateur :";
             // 
             // textBoxMdpConnection
             // 
-            textBoxMdpConnection.Location = new Point(108, 189);
+            textBoxMdpConnection.Location = new Point(154, 315);
+            textBoxMdpConnection.Margin = new Padding(4, 5, 4, 5);
             textBoxMdpConnection.Name = "textBoxMdpConnection";
-            textBoxMdpConnection.Size = new Size(473, 23);
+            textBoxMdpConnection.Size = new Size(674, 31);
             textBoxMdpConnection.TabIndex = 1;
             textBoxMdpConnection.Visible = false;
             // 
             // textBoxUconnection
             // 
-            textBoxUconnection.Location = new Point(108, 68);
+            textBoxUconnection.Location = new Point(154, 113);
+            textBoxUconnection.Margin = new Padding(4, 5, 4, 5);
             textBoxUconnection.Name = "textBoxUconnection";
-            textBoxUconnection.Size = new Size(473, 23);
+            textBoxUconnection.Size = new Size(674, 31);
             textBoxUconnection.TabIndex = 0;
             // 
             // Form1
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1254, 632);
+            ClientSize = new Size(1791, 1050);
             Controls.Add(Panel_Inscription);
             Controls.Add(Panel_Configuration);
             Controls.Add(Panel_Connection);
@@ -830,7 +861,6 @@
             Controls.Add(Panel_Meteo_Ville);
             Controls.Add(Panel_Accueil);
             Icon = (Icon)resources.GetObject("$this.Icon");
-            Margin = new Padding(2);
             Name = "Form1";
             Text = "Form1";
             Panel_Accueil.ResumeLayout(false);
