@@ -59,7 +59,7 @@ namespace Dr_Meteo
             Lbl_Uv_demain.Font = new Font("Segoe UI", 14);
             Lbl_Uv_demain.AutoSize = true;
             iconeMeteo_demain.Size = new Size(100, 100);
-            iconeMeteo_demain.Location = new Point(750, 50);
+            //iconeMeteo_demain.Location = new Point(750, 50);
             iconeMeteo_demain.SizeMode = PictureBoxSizeMode.Zoom;
             Lbl_temp_max_demain.Font = new Font("Segoe UI", 14);
             Lbl_temp_max_demain.AutoSize = true;

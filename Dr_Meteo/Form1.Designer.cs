@@ -177,9 +177,7 @@
             // 
             // Panel_Meteo_Ville
             // 
-            Panel_Meteo_Ville.Controls.Add(iconeMeteo_demain);
             Panel_Meteo_Ville.Controls.Add(tableLayoutPanel1);
-            Panel_Meteo_Ville.Controls.Add(iconeMeteo_apres_demain_bis);
             Panel_Meteo_Ville.Controls.Add(tableLayoutPanel3);
             Panel_Meteo_Ville.Controls.Add(tableLayoutPanel2);
             Panel_Meteo_Ville.Dock = DockStyle.Fill;
@@ -191,10 +189,10 @@
             // 
             // iconeMeteo_demain
             // 
-            iconeMeteo_demain.Location = new Point(562, 50);
+            iconeMeteo_demain.Location = new Point(275, 4);
             iconeMeteo_demain.Margin = new Padding(4);
             iconeMeteo_demain.Name = "iconeMeteo_demain";
-            iconeMeteo_demain.Size = new Size(156, 78);
+            iconeMeteo_demain.Size = new Size(156, 76);
             iconeMeteo_demain.TabIndex = 40;
             iconeMeteo_demain.TabStop = false;
             // 
@@ -395,7 +393,7 @@
             // 
             // iconeMeteo_apres_demain_bis
             // 
-            iconeMeteo_apres_demain_bis.Location = new Point(1396, 25);
+            iconeMeteo_apres_demain_bis.Location = new Point(836, 2);
             iconeMeteo_apres_demain_bis.Margin = new Padding(4, 2, 4, 2);
             iconeMeteo_apres_demain_bis.Name = "iconeMeteo_apres_demain_bis";
             iconeMeteo_apres_demain_bis.Size = new Size(156, 78);
@@ -564,23 +562,27 @@
             // 
             // tableLayoutPanel2
             // 
-            tableLayoutPanel2.ColumnCount = 2;
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel2.ColumnCount = 4;
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 54.86111F));
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 45.13889F));
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 339F));
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 189F));
+            tableLayoutPanel2.Controls.Add(iconeMeteo_demain, 1, 0);
             tableLayoutPanel2.Controls.Add(Lbl_Demain, 0, 0);
-            tableLayoutPanel2.Controls.Add(lbl_Apres_demain, 1, 0);
-            tableLayoutPanel2.Controls.Add(Lbl_diff_sunset_apres_demain, 1, 6);
-            tableLayoutPanel2.Controls.Add(Lbl_MeteoDesc_apres_demain, 1, 1);
             tableLayoutPanel2.Controls.Add(Lbl_diff_sunset_demain, 0, 6);
-            tableLayoutPanel2.Controls.Add(Lbl_diff_temp_ensoleilement_apres_demain, 1, 5);
-            tableLayoutPanel2.Controls.Add(Lbl_temp_max_apres_demain, 1, 2);
+            tableLayoutPanel2.Controls.Add(iconeMeteo_apres_demain_bis, 3, 0);
             tableLayoutPanel2.Controls.Add(Lbl_diff_temp_ensoleilement_demain, 0, 5);
             tableLayoutPanel2.Controls.Add(Lbl_temp_min_demain, 0, 3);
-            tableLayoutPanel2.Controls.Add(Lbl_temp_min_apres_demain, 1, 3);
             tableLayoutPanel2.Controls.Add(Lbl_Uv_demain, 0, 4);
-            tableLayoutPanel2.Controls.Add(Lbl_Uv_apres_demain, 1, 4);
             tableLayoutPanel2.Controls.Add(Lbl_temp_max_demain, 0, 2);
             tableLayoutPanel2.Controls.Add(Lbl_MeteoDesc_demain, 0, 1);
+            tableLayoutPanel2.Controls.Add(lbl_Apres_demain, 2, 0);
+            tableLayoutPanel2.Controls.Add(Lbl_MeteoDesc_apres_demain, 2, 1);
+            tableLayoutPanel2.Controls.Add(Lbl_temp_max_apres_demain, 2, 2);
+            tableLayoutPanel2.Controls.Add(Lbl_temp_min_apres_demain, 2, 3);
+            tableLayoutPanel2.Controls.Add(Lbl_Uv_apres_demain, 2, 4);
+            tableLayoutPanel2.Controls.Add(Lbl_diff_temp_ensoleilement_apres_demain, 2, 5);
+            tableLayoutPanel2.Controls.Add(Lbl_diff_sunset_apres_demain, 2, 6);
             tableLayoutPanel2.Location = new Point(478, 42);
             tableLayoutPanel2.Margin = new Padding(4, 5, 4, 5);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -594,7 +596,7 @@
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 14.2857132F));
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 32F));
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 32F));
-            tableLayoutPanel2.Size = new Size(1194, 590);
+            tableLayoutPanel2.Size = new Size(1022, 590);
             tableLayoutPanel2.TabIndex = 38;
             // 
             // Lbl_Demain
@@ -609,7 +611,7 @@
             // 
             // lbl_Apres_demain
             // 
-            lbl_Apres_demain.Location = new Point(601, 0);
+            lbl_Apres_demain.Location = new Point(497, 0);
             lbl_Apres_demain.Margin = new Padding(4, 0, 4, 0);
             lbl_Apres_demain.Name = "lbl_Apres_demain";
             lbl_Apres_demain.Size = new Size(212, 28);
@@ -620,20 +622,20 @@
             // 
             Lbl_diff_sunset_apres_demain.AutoSize = true;
             Lbl_diff_sunset_apres_demain.Dock = DockStyle.Fill;
-            Lbl_diff_sunset_apres_demain.Location = new Point(601, 504);
+            Lbl_diff_sunset_apres_demain.Location = new Point(497, 504);
             Lbl_diff_sunset_apres_demain.Margin = new Padding(4, 0, 4, 0);
             Lbl_diff_sunset_apres_demain.Name = "Lbl_diff_sunset_apres_demain";
-            Lbl_diff_sunset_apres_demain.Size = new Size(589, 86);
+            Lbl_diff_sunset_apres_demain.Size = new Size(331, 86);
             Lbl_diff_sunset_apres_demain.TabIndex = 18;
             Lbl_diff_sunset_apres_demain.Text = "Lbl_diff_sunset_apres_demain";
             // 
             // Lbl_MeteoDesc_apres_demain
             // 
             Lbl_MeteoDesc_apres_demain.Dock = DockStyle.Fill;
-            Lbl_MeteoDesc_apres_demain.Location = new Point(601, 84);
+            Lbl_MeteoDesc_apres_demain.Location = new Point(497, 84);
             Lbl_MeteoDesc_apres_demain.Margin = new Padding(4, 0, 4, 0);
             Lbl_MeteoDesc_apres_demain.Name = "Lbl_MeteoDesc_apres_demain";
-            Lbl_MeteoDesc_apres_demain.Size = new Size(589, 84);
+            Lbl_MeteoDesc_apres_demain.Size = new Size(331, 84);
             Lbl_MeteoDesc_apres_demain.TabIndex = 0;
             Lbl_MeteoDesc_apres_demain.Text = "Lbl_MeteoDesc_apres_demain";
             // 
@@ -644,7 +646,7 @@
             Lbl_diff_sunset_demain.Location = new Point(4, 504);
             Lbl_diff_sunset_demain.Margin = new Padding(4, 0, 4, 0);
             Lbl_diff_sunset_demain.Name = "Lbl_diff_sunset_demain";
-            Lbl_diff_sunset_demain.Size = new Size(589, 86);
+            Lbl_diff_sunset_demain.Size = new Size(263, 86);
             Lbl_diff_sunset_demain.TabIndex = 17;
             Lbl_diff_sunset_demain.Text = "Lbl_diff_sunset_demain";
             // 
@@ -652,10 +654,10 @@
             // 
             Lbl_diff_temp_ensoleilement_apres_demain.AutoSize = true;
             Lbl_diff_temp_ensoleilement_apres_demain.Dock = DockStyle.Fill;
-            Lbl_diff_temp_ensoleilement_apres_demain.Location = new Point(601, 420);
+            Lbl_diff_temp_ensoleilement_apres_demain.Location = new Point(497, 420);
             Lbl_diff_temp_ensoleilement_apres_demain.Margin = new Padding(4, 0, 4, 0);
             Lbl_diff_temp_ensoleilement_apres_demain.Name = "Lbl_diff_temp_ensoleilement_apres_demain";
-            Lbl_diff_temp_ensoleilement_apres_demain.Size = new Size(589, 84);
+            Lbl_diff_temp_ensoleilement_apres_demain.Size = new Size(331, 84);
             Lbl_diff_temp_ensoleilement_apres_demain.TabIndex = 16;
             Lbl_diff_temp_ensoleilement_apres_demain.Text = "Lbl_diff_temp_ensoleilement_apres_demain";
             // 
@@ -663,10 +665,10 @@
             // 
             Lbl_temp_max_apres_demain.AutoSize = true;
             Lbl_temp_max_apres_demain.Dock = DockStyle.Fill;
-            Lbl_temp_max_apres_demain.Location = new Point(601, 168);
+            Lbl_temp_max_apres_demain.Location = new Point(497, 168);
             Lbl_temp_max_apres_demain.Margin = new Padding(4, 0, 4, 0);
             Lbl_temp_max_apres_demain.Name = "Lbl_temp_max_apres_demain";
-            Lbl_temp_max_apres_demain.Size = new Size(589, 84);
+            Lbl_temp_max_apres_demain.Size = new Size(331, 84);
             Lbl_temp_max_apres_demain.TabIndex = 3;
             Lbl_temp_max_apres_demain.Text = "Lbl_temp_max_apres_demain";
             // 
@@ -677,7 +679,7 @@
             Lbl_diff_temp_ensoleilement_demain.Location = new Point(4, 420);
             Lbl_diff_temp_ensoleilement_demain.Margin = new Padding(4, 0, 4, 0);
             Lbl_diff_temp_ensoleilement_demain.Name = "Lbl_diff_temp_ensoleilement_demain";
-            Lbl_diff_temp_ensoleilement_demain.Size = new Size(589, 84);
+            Lbl_diff_temp_ensoleilement_demain.Size = new Size(263, 84);
             Lbl_diff_temp_ensoleilement_demain.TabIndex = 15;
             Lbl_diff_temp_ensoleilement_demain.Text = "Lbl_diff_temp_ensoleilement_demain";
             // 
@@ -688,7 +690,7 @@
             Lbl_temp_min_demain.Location = new Point(4, 252);
             Lbl_temp_min_demain.Margin = new Padding(4, 0, 4, 0);
             Lbl_temp_min_demain.Name = "Lbl_temp_min_demain";
-            Lbl_temp_min_demain.Size = new Size(589, 84);
+            Lbl_temp_min_demain.Size = new Size(263, 84);
             Lbl_temp_min_demain.TabIndex = 8;
             Lbl_temp_min_demain.Text = "Lbl_temp_min_demain";
             // 
@@ -696,10 +698,10 @@
             // 
             Lbl_temp_min_apres_demain.AutoSize = true;
             Lbl_temp_min_apres_demain.Dock = DockStyle.Fill;
-            Lbl_temp_min_apres_demain.Location = new Point(601, 252);
+            Lbl_temp_min_apres_demain.Location = new Point(497, 252);
             Lbl_temp_min_apres_demain.Margin = new Padding(4, 0, 4, 0);
             Lbl_temp_min_apres_demain.Name = "Lbl_temp_min_apres_demain";
-            Lbl_temp_min_apres_demain.Size = new Size(589, 84);
+            Lbl_temp_min_apres_demain.Size = new Size(331, 84);
             Lbl_temp_min_apres_demain.TabIndex = 4;
             Lbl_temp_min_apres_demain.Text = "Lbl_temp_min_apres_demain";
             // 
@@ -710,17 +712,17 @@
             Lbl_Uv_demain.Location = new Point(4, 336);
             Lbl_Uv_demain.Margin = new Padding(4, 0, 4, 0);
             Lbl_Uv_demain.Name = "Lbl_Uv_demain";
-            Lbl_Uv_demain.Size = new Size(589, 84);
+            Lbl_Uv_demain.Size = new Size(263, 84);
             Lbl_Uv_demain.TabIndex = 9;
             Lbl_Uv_demain.Text = "Lbl_Uv_demain";
             // 
             // Lbl_Uv_apres_demain
             // 
             Lbl_Uv_apres_demain.Dock = DockStyle.Fill;
-            Lbl_Uv_apres_demain.Location = new Point(601, 336);
+            Lbl_Uv_apres_demain.Location = new Point(497, 336);
             Lbl_Uv_apres_demain.Margin = new Padding(4, 0, 4, 0);
             Lbl_Uv_apres_demain.Name = "Lbl_Uv_apres_demain";
-            Lbl_Uv_apres_demain.Size = new Size(589, 84);
+            Lbl_Uv_apres_demain.Size = new Size(331, 84);
             Lbl_Uv_apres_demain.TabIndex = 0;
             Lbl_Uv_apres_demain.Text = "Lbl_Uv_apres_demain";
             // 
@@ -731,7 +733,7 @@
             Lbl_temp_max_demain.Location = new Point(4, 168);
             Lbl_temp_max_demain.Margin = new Padding(4, 0, 4, 0);
             Lbl_temp_max_demain.Name = "Lbl_temp_max_demain";
-            Lbl_temp_max_demain.Size = new Size(589, 84);
+            Lbl_temp_max_demain.Size = new Size(263, 84);
             Lbl_temp_max_demain.TabIndex = 7;
             Lbl_temp_max_demain.Text = "Lbl_temp_max_demain";
             // 
@@ -742,7 +744,7 @@
             Lbl_MeteoDesc_demain.Location = new Point(4, 84);
             Lbl_MeteoDesc_demain.Margin = new Padding(4, 0, 4, 0);
             Lbl_MeteoDesc_demain.Name = "Lbl_MeteoDesc_demain";
-            Lbl_MeteoDesc_demain.Size = new Size(589, 84);
+            Lbl_MeteoDesc_demain.Size = new Size(263, 84);
             Lbl_MeteoDesc_demain.TabIndex = 6;
             Lbl_MeteoDesc_demain.Text = "Lbl_MeteoDesc_demain";
             // 
