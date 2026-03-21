@@ -129,11 +129,6 @@ namespace Dr_Meteo
             iconeMeteo_j6.SizeMode = PictureBoxSizeMode.Zoom;
 
 
-            Panel_Meteo_Ville.Controls.Add(Lbl_VilleNom);
-            Panel_Meteo_Ville.Controls.Add(Lbl_Temperature);
-            Panel_Meteo_Ville.Controls.Add(Lbl_MeteoDesc);
-            Panel_Meteo_Ville.Controls.Add(iconeMeteo);
-            this.Controls.Add(Panel_Meteo_Ville);
         }
         private async void Form1_Load(object sender, EventArgs e)
         {

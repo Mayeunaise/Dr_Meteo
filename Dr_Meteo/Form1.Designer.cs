@@ -182,17 +182,17 @@
             Panel_Meteo_Ville.Controls.Add(iconeMeteo_apres_demain_bis);
             Panel_Meteo_Ville.Controls.Add(tableLayoutPanel3);
             Panel_Meteo_Ville.Controls.Add(tableLayoutPanel2);
-            Panel_Meteo_Ville.Dock = DockStyle.Bottom;
-            Panel_Meteo_Ville.Location = new Point(0, 25);
+            Panel_Meteo_Ville.Dock = DockStyle.Fill;
+            Panel_Meteo_Ville.Location = new Point(0, 0);
             Panel_Meteo_Ville.Margin = new Padding(4, 5, 4, 5);
             Panel_Meteo_Ville.Name = "Panel_Meteo_Ville";
-            Panel_Meteo_Ville.Size = new Size(1791, 1025);
+            Panel_Meteo_Ville.Size = new Size(1791, 1050);
             Panel_Meteo_Ville.TabIndex = 3;
             // 
             // iconeMeteo_demain
             // 
             iconeMeteo_demain.Location = new Point(562, 50);
-            iconeMeteo_demain.Margin = new Padding(4, 4, 4, 4);
+            iconeMeteo_demain.Margin = new Padding(4);
             iconeMeteo_demain.Name = "iconeMeteo_demain";
             iconeMeteo_demain.Size = new Size(156, 78);
             iconeMeteo_demain.TabIndex = 40;
@@ -418,7 +418,7 @@
             tableLayoutPanel3.Controls.Add(Lbl_temp_max, 0, 4);
             tableLayoutPanel3.Controls.Add(Lbl_temp_min, 0, 2);
             tableLayoutPanel3.Controls.Add(Aujourd_hui, 0, 1);
-            tableLayoutPanel3.Location = new Point(4, 45);
+            tableLayoutPanel3.Location = new Point(4, 42);
             tableLayoutPanel3.Margin = new Padding(4, 5, 4, 5);
             tableLayoutPanel3.Name = "tableLayoutPanel3";
             tableLayoutPanel3.RowCount = 12;
