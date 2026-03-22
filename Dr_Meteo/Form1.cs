@@ -32,6 +32,7 @@ namespace Dr_Meteo
             Lbl_VilleNom.AutoSize = false;
             iconeMeteo.Location = new Point(20, 20);
             iconeMeteo.Size = new Size(100, 100);
+            pictureBox1.Size = new Size(25,25);
             Lbl_Temperature.Font = new Font("Segoe UI", 14, FontStyle.Bold);
             Lbl_Temperature.AutoSize = true;
             Lbl_MeteoDesc.Font = new Font("Segoe UI", 14);
@@ -317,6 +318,7 @@ namespace Dr_Meteo
             Lbl_Uv.Text = $"Indice UV : {reponseMeteo.daily.uv_index_max[0]}";
             Lbl_Uv.ForeColor = TraduireCodeUV(reponseMeteo.daily.uv_index_max[0]);
             iconeMeteo.Image = ChoixImage(reponseMeteo.current.code_meteo);
+            pictureBox1.Image = ChoixImage(reponseMeteo.current.code_meteo);
             Lbl_temp_max.Text = $"Max : {reponseMeteo.daily.temperature_max[0]} °C";
             Lbl_temp_min.Text = $"Min : {reponseMeteo.daily.temperature_min[0]} °C";
             Lbl_lever_soleil.Text = "Lever : " + Traduire_heures_soleil(reponseMeteo.daily.sunrise[0]);
