@@ -251,8 +251,16 @@ namespace Dr_Meteo
                     //On remet la barre propre avec juste le nom de la ville
                     Barre_Recherche.Text = villeReelle;
 
-                    //On lance la recherche
-                    AfficherMeteo(villeReelle);
+                    if (GestionBdd.VilleExiste(villeReelle))
+                    {
+                        //On lance la recherche
+                        AfficherMeteo(villeReelle);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Ville non reconnue ! Assurez-vous d'avoir sélectionné une ville dans la liste déroulante.");
+                    }
+                    
                 }
             };
         }

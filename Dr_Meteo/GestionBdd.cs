@@ -354,7 +354,22 @@ namespace Dr_Meteo
             }
         }
 
+        public static bool VilleExiste(string nomVille)
+        {
+            using (var connection = new SQLiteConnection(ConnectionString))
+            {
+                connection.Open();
+                string query = "SELECT COUNT(*) FROM TableVille WHERE Nom=@nomVille";
+                using (var command = new SQLiteCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@nomVille", nomVille);
+                    long count = (long)command.ExecuteScalar();
+                    return count > 0; //Retourne true si la ville existe
+                }
+            }
 
+
+        }
     }
 }
 //Classe pour transporter les données de la Bdd
