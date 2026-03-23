@@ -135,6 +135,7 @@ namespace Dr_Meteo
             //Gestion des Panels
             Panel_Accueil.Visible = true;
             FondPanelRandom(Panel_Accueil);
+            Panel_Header.Parent = Panel_Accueil;
             Panel_Meteo_Ville.Visible = false;
             Panel_Inscription.Visible = false;
             Panel_Configuration.Visible = false;
@@ -312,6 +313,7 @@ namespace Dr_Meteo
             Panel_Connection.Visible = false;
             Panel_Inscription.Visible = false;
             FondPanel(Panel_Meteo_Ville, reponseMeteo.current.code_meteo);
+            Panel_Header.Parent = Panel_Meteo_Ville;
             Panel_Meteo_Ville.Visible = true;
             // Les propriétés (current_weather.temperature, etc.) sont à adapter selon comment tu as nommé les variables dans ta classe ReponseMeteo
             Lbl_VilleNom.Text = ville;
@@ -575,6 +577,7 @@ namespace Dr_Meteo
         {
             Panel_Accueil.Visible = true;
             FondPanelRandom(Panel_Accueil);
+            Panel_Header.Parent = Panel_Accueil;
             Panel_Meteo_Ville.Visible = false;
             Panel_Inscription.Visible = false;
             Panel_Configuration.Visible = false;
@@ -585,6 +588,7 @@ namespace Dr_Meteo
         {
             //Gestion des Panels
             FondPanelRandom(Panel_Inscription);
+            Panel_Header.Parent = Panel_Inscription;
             Panel_Inscription.Visible = true;
             Panel_Meteo_Ville.Visible = false;
             Panel_Accueil.Visible = false;
@@ -803,6 +807,7 @@ namespace Dr_Meteo
             textBoxUconnection.KeyDown += textBoxUconnection_KeyDown;
             textBoxMdpConnection.KeyDown += textBoxMdpConnection_KeyDown;
             FondPanelRandom(Panel_Connection);
+            Panel_Header.Parent = Panel_Connection;
             Panel_Connection.Visible = true;
         }
         private void textBoxUconnection_KeyDown(object sender, KeyEventArgs e)
