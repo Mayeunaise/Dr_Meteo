@@ -377,6 +377,7 @@ namespace Dr_Meteo
             Lbl_max_j6.Text = $"Max : {reponseMeteo.daily.temperature_max[6]} °C";
             iconeMeteo_j6.Image = ChoixImage(reponseMeteo.daily.weather_code[6]);
 
+            Lbl_conseil.Text = GenererRecommandationVetements(reponseMeteo.current.temperature, reponseMeteo.current.code_meteo);
         }
 
         private string TraduireCodeMeteo(int code)
@@ -859,6 +860,43 @@ namespace Dr_Meteo
                     }
                 }
             }
+        }
+
+        private string GenererRecommandationVetements(double temperature, int codeMeteo)
+        {
+            string conseil = "";
+
+            if (temperature <= 5)
+            {
+                conseil += "Il fait très froid ! Sortez le gros manteau d'hiver, l'écharpe et les gants.\n";
+            }
+            else if (temperature > 5 && temperature <= 15)
+            {
+                conseil += "Il fait un peu frais. Une veste de mi-saison ou un bon pull sera parfait.\n";
+            }
+            else if (temperature > 15 && temperature <= 25)
+            {
+                conseil += "Température agréable ! Un t-shirt avec un jean ou pantalon léger feront l'affaire.\n";
+            }
+            else
+            {
+                conseil += "Il fait chaud ! Privilégiez une tenue très légère (short, t-shirt) et hydratez-vous bien.\n";
+            }
+
+            if ((codeMeteo >= 51 && codeMeteo <= 67) || (codeMeteo >= 80 && codeMeteo <= 82) || codeMeteo >= 95)
+            {
+                conseil += "Attention, il pleut. N'oubliez pas votre parapluie ou un imperméable !\n";
+            }
+            else if ((codeMeteo >= 71 && codeMeteo <= 77) || (codeMeteo >= 85 && codeMeteo <= 86))
+            {
+                conseil += "Il neige ! Mettez des chaussures chaudes et antidérapantes.\n";
+            }
+            else if ((codeMeteo == 0 || codeMeteo == 1) && temperature >= 20)
+            {
+                conseil += "Grand soleil ! C'est le moment de sortir les lunettes de soleil (et la crème !).\n";
+            }
+
+            return conseil;
         }
 
         private void Lbl_min_j5_Click(object sender, EventArgs e)

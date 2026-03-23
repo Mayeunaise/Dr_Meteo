@@ -35,6 +35,7 @@
             Loupe = new PictureBox();
             Bouton_Loc = new Button();
             Panel_Meteo_Ville = new Panel();
+            Lbl_conseil = new Label();
             tableLayoutPanel1 = new TableLayoutPanel();
             Lbl_j_3 = new Label();
             iconeMeteo_j6 = new PictureBox();
@@ -183,6 +184,7 @@
             // 
             // Panel_Meteo_Ville
             // 
+            Panel_Meteo_Ville.Controls.Add(Lbl_conseil);
             Panel_Meteo_Ville.Controls.Add(tableLayoutPanel1);
             Panel_Meteo_Ville.Controls.Add(tableLayoutPanel3);
             Panel_Meteo_Ville.Controls.Add(tableLayoutPanel2);
@@ -192,6 +194,15 @@
             Panel_Meteo_Ville.Name = "Panel_Meteo_Ville";
             Panel_Meteo_Ville.Size = new Size(1791, 1050);
             Panel_Meteo_Ville.TabIndex = 3;
+            // 
+            // Lbl_conseil
+            // 
+            Lbl_conseil.AutoSize = true;
+            Lbl_conseil.Location = new Point(60, 635);
+            Lbl_conseil.Name = "Lbl_conseil";
+            Lbl_conseil.Size = new Size(77, 25);
+            Lbl_conseil.TabIndex = 40;
+            Lbl_conseil.Text = "Conseils";
             // 
             // tableLayoutPanel1
             // 
@@ -1033,6 +1044,7 @@
             Panel_Accueil.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)Loupe).EndInit();
             Panel_Meteo_Ville.ResumeLayout(false);
+            Panel_Meteo_Ville.PerformLayout();
             tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)iconeMeteo_j6).EndInit();
             ((System.ComponentModel.ISupportInitialize)iconeMeteo_j3).EndInit();
@@ -1141,5 +1153,6 @@
         private PictureBox pictureBox1;
         private PictureBox iconeMeteo;
         private PictureBox pictureBox2;
+        private Label Lbl_conseil;
     }
 }
