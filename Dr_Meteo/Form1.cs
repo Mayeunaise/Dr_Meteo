@@ -134,6 +134,7 @@ namespace Dr_Meteo
         {
             //Gestion des Panels
             Panel_Accueil.Visible = true;
+            FondPanelRandom(Panel_Accueil);
             Panel_Meteo_Ville.Visible = false;
             Panel_Inscription.Visible = false;
             Panel_Configuration.Visible = false;
@@ -406,7 +407,48 @@ namespace Dr_Meteo
             if (code >= 95) return Image.FromFile(@"Images\tempete.png");
             else return Image.FromFile(@"Images\soleil.png");
         }
+        private static void FondPanel(Panel panel, int code)
+        {
+            if (code == 0) panel.BackgroundImage = Image.FromFile(@"Images\ciel-bleu.png");
+            else if (code >= 1 && code <= 3) panel.BackgroundImage = Image.FromFile(@"Images\ciel-nuageux.png");
+            else if (code >= 45 && code <= 48) panel.BackgroundImage = Image.FromFile(@"Images\ciel-brouillard.png");
+            else if (code >= 51 && code <= 67) panel.BackgroundImage = Image.FromFile(@"Images\ciel-pluvieux.png");
+            else if (code >= 71 && code <= 77) panel.BackgroundImage = Image.FromFile(@"Images\ciel-neige.png");
+            else if (code >= 95) panel.BackgroundImage = Image.FromFile(@"Images\ciel-orageux.png");
+            else panel.BackgroundImage = Image.FromFile(@"Images\ciel-bleu.png");
+            panel.BackgroundImageLayout = ImageLayout.Stretch;
+        }
+        private static void FondPanelRandom(Panel panel)
+        {
+            Random var = new Random();
+            int code = var.Next(0, 5); //Vu qu'on a 6 images, ça nous fait 6 valeurs
+            if (code == 0)
+            {
+                panel.BackgroundImage = Properties.Resources.ciel_bleu;
+            }
+            else if (code == 1)
+            {
+                panel.BackgroundImage = Properties.Resources.ciel_nuageux;
+            }
+            else if (code == 2)
+            {
+                panel.BackgroundImage = Properties.Resources.ciel_brouillard;
+            }
+            else if (code == 3)
+            {
+                panel.BackgroundImage = Properties.Resources.ciel_pluvieux;
+            }
+            else if (code == 4){
+                panel.BackgroundImage = Properties.Resources.ciel_neige;
+            }
+            else if (code == 5)
+            {
+                panel.BackgroundImage = Properties.Resources.ciel_orageux;
+            }
+            else panel.BackgroundImage = Properties.Resources.ciel_bleu;
+            panel.BackgroundImageLayout = ImageLayout.Stretch;
 
+        }
         private string Traduire_heures_soleil(string heure)
         {
             // La fonction reçoit une heure au format "2024-06-01T05:30:00"
