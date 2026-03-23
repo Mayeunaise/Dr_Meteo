@@ -308,6 +308,10 @@ namespace Dr_Meteo
         {
             //Affichage du panel météo
             Panel_Accueil.Visible = false;
+            Panel_Configuration.Visible = false;
+            Panel_Connection.Visible = false;
+            Panel_Inscription.Visible = false;
+            FondPanel(Panel_Meteo_Ville, reponseMeteo.current.code_meteo);
             Panel_Meteo_Ville.Visible = true;
             // Les propriétés (current_weather.temperature, etc.) sont à adapter selon comment tu as nommé les variables dans ta classe ReponseMeteo
             Lbl_VilleNom.Text = ville;
@@ -371,9 +375,6 @@ namespace Dr_Meteo
             Lbl_max_j6.Text = $"Max : {reponseMeteo.daily.temperature_max[6]} °C";
             iconeMeteo_j6.Image = ChoixImage(reponseMeteo.daily.weather_code[6]);
 
-            Panel_Accueil.Visible = false;
-            Panel_Meteo_Ville.Visible = true;
-
         }
 
         private string TraduireCodeMeteo(int code)
@@ -409,13 +410,13 @@ namespace Dr_Meteo
         }
         private static void FondPanel(Panel panel, int code)
         {
-            if (code == 0) panel.BackgroundImage = Image.FromFile(@"Images\ciel-bleu.png");
-            else if (code >= 1 && code <= 3) panel.BackgroundImage = Image.FromFile(@"Images\ciel-nuageux.png");
-            else if (code >= 45 && code <= 48) panel.BackgroundImage = Image.FromFile(@"Images\ciel-brouillard.png");
-            else if (code >= 51 && code <= 67) panel.BackgroundImage = Image.FromFile(@"Images\ciel-pluvieux.png");
-            else if (code >= 71 && code <= 77) panel.BackgroundImage = Image.FromFile(@"Images\ciel-neige.png");
-            else if (code >= 95) panel.BackgroundImage = Image.FromFile(@"Images\ciel-orageux.png");
-            else panel.BackgroundImage = Image.FromFile(@"Images\ciel-bleu.png");
+            if (code == 0) panel.BackgroundImage = Properties.Resources.ciel_bleu;
+            else if (code >= 1 && code <= 3) panel.BackgroundImage = Properties.Resources.ciel_nuageux;
+            else if (code >= 45 && code <= 48) panel.BackgroundImage = Properties.Resources.ciel_brouillard;
+            else if (code >= 51 && code <= 67) panel.BackgroundImage = Properties.Resources.ciel_pluvieux;
+            else if (code >= 71 && code <= 77) panel.BackgroundImage = Properties.Resources.ciel_neige;
+            else if (code >= 95) panel.BackgroundImage = Properties.Resources.ciel_orageux;
+            else panel.BackgroundImage = Properties.Resources.ciel_bleu;
             panel.BackgroundImageLayout = ImageLayout.Stretch;
         }
         private static void FondPanelRandom(Panel panel)
@@ -573,6 +574,7 @@ namespace Dr_Meteo
         private void changerDeVilleToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Panel_Accueil.Visible = true;
+            FondPanelRandom(Panel_Accueil);
             Panel_Meteo_Ville.Visible = false;
             Panel_Inscription.Visible = false;
             Panel_Configuration.Visible = false;
@@ -582,9 +584,12 @@ namespace Dr_Meteo
         private void sinscrireToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //Gestion des Panels
+            FondPanelRandom(Panel_Inscription);
             Panel_Inscription.Visible = true;
             Panel_Meteo_Ville.Visible = false;
             Panel_Accueil.Visible = false;
+            Panel_Connection.Visible = false;
+            Panel_Configuration.Visible = false;
             //Gestion des évènements
             textBoxUname.KeyDown += textBoxUname_KeyDown;
             textBoxMdp.KeyDown += textBoxMdp_KeyDown;
@@ -670,6 +675,7 @@ namespace Dr_Meteo
             Panel_Accueil.Visible = false;
             Panel_Connection.Visible = false;
             Panel_Meteo_Ville.Visible = false;
+            FondPanelRandom(Panel_Configuration);
             Panel_Configuration.Visible = true;
             //Gestion des évènements
             textBoxEmail.KeyDown += textBoxEmail_KeyDown;
@@ -796,6 +802,7 @@ namespace Dr_Meteo
             Panel_Accueil.Visible = false;
             textBoxUconnection.KeyDown += textBoxUconnection_KeyDown;
             textBoxMdpConnection.KeyDown += textBoxMdpConnection_KeyDown;
+            FondPanelRandom(Panel_Connection);
             Panel_Connection.Visible = true;
         }
         private void textBoxUconnection_KeyDown(object sender, KeyEventArgs e)
