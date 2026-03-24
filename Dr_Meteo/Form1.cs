@@ -32,7 +32,7 @@ namespace Dr_Meteo
             Lbl_VilleNom.AutoSize = false;
             iconeMeteo.Location = new Point(20, 20);
             iconeMeteo.Size = new Size(100, 100);
-            pictureBox1.Size = new Size(25,25);
+            pictureBox1.Size = new Size(100,100);
             Lbl_Temperature.Font = new Font("Segoe UI", 14, FontStyle.Bold);
             Lbl_Temperature.AutoSize = true;
             Lbl_MeteoDesc.Font = new Font("Segoe UI", 14);
