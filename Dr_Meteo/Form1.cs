@@ -475,7 +475,7 @@ namespace Dr_Meteo
                 return heure; // En cas d'erreur, on retourne la chaîne d'origine
             }
         }
-
+        //Fonction calcul difference Lever de soleil
         private string DiffTempEnsoleilement(string temp_j1, string temp_j2)
         {
             int min_j1, min_j2, h_j1, h_j2;
@@ -507,6 +507,7 @@ namespace Dr_Meteo
             }
             return rep;
         }
+        // Idem que pour le lever de soleil, mais coucher de soleil  
         private string Diff_sunset(string temp_j1, string temp_j2)
         {
             int min_j1, min_j2, h_j1, h_j2;
