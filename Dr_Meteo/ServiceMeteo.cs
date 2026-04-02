@@ -15,6 +15,7 @@ namespace Dr_Meteo
         private static readonly HttpClient client = new HttpClient();
 
         //Trouver la latitude/longitude de la ville
+        //Fonction obsolète
         public async Task<VilleResultat> ChercherVille(string nomVille)
         {
             try
