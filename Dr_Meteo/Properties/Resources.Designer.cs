@@ -63,6 +63,16 @@ namespace Dr_Meteo.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap brouillard {
+            get {
+                object obj = ResourceManager.GetObject("brouillard", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap ciel_bleu {
             get {
                 object obj = ResourceManager.GetObject("ciel_bleu", resourceCulture);
@@ -176,6 +186,56 @@ namespace Dr_Meteo.Properties {
         internal static System.Drawing.Bitmap menu_hamburger1 {
             get {
                 object obj = ResourceManager.GetObject("menu-hamburger1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap neigeux {
+            get {
+                object obj = ResourceManager.GetObject("neigeux", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap nuageux {
+            get {
+                object obj = ResourceManager.GetObject("nuageux", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap pluvieux {
+            get {
+                object obj = ResourceManager.GetObject("pluvieux", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap soleil {
+            get {
+                object obj = ResourceManager.GetObject("soleil", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap tempete {
+            get {
+                object obj = ResourceManager.GetObject("tempete", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

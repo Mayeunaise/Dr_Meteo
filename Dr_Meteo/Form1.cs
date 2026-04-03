@@ -1,17 +1,12 @@
 namespace Dr_Meteo
 {
     using System;
-    using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.Linq;
-    using System.Threading.Tasks;
     using Newtonsoft.Json;
     using System.Data;
     using System.Net.Http;
     using System.Text.Json;
     using System.Windows.Forms;
     using System.Drawing;
-    using System.IO;
 
     public partial class Form1 : Form
     {
@@ -412,13 +407,13 @@ namespace Dr_Meteo
 
         private static Image ChoixImage(int code)
         {
-            if (code == 0) return Image.FromFile(@"Images\soleil.png");
-            if (code >= 1 && code <= 3) return Image.FromFile(@"Images\nuageux.png");
-            if (code >= 45 && code <= 48) return Image.FromFile(@"Images\brouillard.png");
-            if (code >= 51 && code <= 67) return Image.FromFile(@"Images\pluvieux.png");
-            if (code >= 71 && code <= 77) return Image.FromFile(@"Images\neigeux.png");
-            if (code >= 95) return Image.FromFile(@"Images\tempete.png");
-            else return Image.FromFile(@"Images\soleil.png");
+            if (code == 0) return Properties.Resources.soleil;
+            if (code >= 1 && code <= 3) return Properties.Resources.nuageux;
+            if (code >= 45 && code <= 48) return Properties.Resources.brouillard;
+            if (code >= 51 && code <= 67) return Properties.Resources.pluvieux;
+            if (code >= 71 && code <= 77) return Properties.Resources.neigeux;
+            if (code >= 95) return Properties.Resources.tempete;
+            else return Properties.Resources.soleil;
         }
         private static void FondPanel(Panel panel, int code)
         {
