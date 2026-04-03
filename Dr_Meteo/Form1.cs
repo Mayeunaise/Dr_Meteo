@@ -18,7 +18,9 @@ namespace Dr_Meteo
         {
             InitializeComponent();
             CreerPanelMeteo();
-            Form1_Load(null, null); // Appel manuel pour éviter les soucis de timing avec le designer
+            //Form1_Load(null, null); // Appel manuel pour éviter les soucis de timing avec le designer
+            this.Load += Form1_Load; // Assure que Form1_Load est appelé lorsque le formulaire est chargé
+
         }
         private void CreerPanelMeteo()
         {
@@ -127,29 +129,38 @@ namespace Dr_Meteo
         }
         private async void Form1_Load(object sender, EventArgs e)
         {
-            //Gestion des Panels
-            Panel_Accueil.Visible = true;
-            FondPanelRandom(Panel_Accueil);
-            Panel_Header.Parent = Panel_Accueil;
-            Panel_Meteo_Ville.Visible = false;
-            Panel_Inscription.Visible = false;
-            Panel_Configuration.Visible = false;
-            Panel_Connection.Visible = false;
-            // On indique visuellement à l'utilisateur que l'application se prépare
-            Barre_Recherche.Enabled = false;
-            Barre_Recherche.Text = "Téléchargement des villes de France...";
+            try
+            {
+                //Gestion des Panels
+                Panel_Accueil.Visible = true;
+                FondPanelRandom(Panel_Accueil);
+                Panel_Header.Parent = Panel_Accueil;
+                Panel_Meteo_Ville.Visible = false;
+                Panel_Inscription.Visible = false;
+                Panel_Configuration.Visible = false;
+                Panel_Connection.Visible = false;
+                // On indique visuellement à l'utilisateur que l'application se prépare
+                Barre_Recherche.Enabled = false;
+                Barre_Recherche.Text = "Téléchargement des villes de France...";
 
-            GestionBdd bdd = new GestionBdd();
+                GestionBdd bdd = new GestionBdd();
 
-            //Création de la Bdd
-            GestionBdd.InitialiserBase();
+                //Création de la Bdd
+                GestionBdd.InitialiserBase();
 
-            //Insertion des villes en BDD (si pas déjà fait)
-            await bdd.ImporterVillesDepuisApiGouv();
+                //Insertion des villes en BDD (si pas déjà fait)
+                await bdd.ImporterVillesDepuisApiGouv();
 
-            //Barre de recherche disponible
-            Barre_Recherche.Enabled = true;
-            InitializeSearchBar();
+                //Barre de recherche disponible
+                Barre_Recherche.Enabled = true;
+                InitializeSearchBar();
+            }
+            catch (Exception ex)
+            {
+                // SI QUELQUE CHOSE PLANTE, VOUS LE VERREZ ENFIN ICI !
+                MessageBox.Show("Erreur critique au démarrage : " + ex.Message);
+                Barre_Recherche.Text = "Erreur de base de données";
+            }
         }
         private void InitializeSearchBar()
         {
