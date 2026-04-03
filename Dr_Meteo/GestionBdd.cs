@@ -295,6 +295,27 @@ namespace Dr_Meteo
             }
             return utilisateurs;
         }
+        public static string GetEmail(string nomUtilisateur)
+        {
+            using (var connection = new SQLiteConnection(ConnectionString))
+            {
+                connection.Open();
+                string query = "SELECT EMail FROM Utilisateurs WHERE NomUtilisateur = @nomUtilisateur";
+                using (var command = new SQLiteCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@nomUtilisateur", nomUtilisateur);
+                    object result = command.ExecuteScalar();
+                    if(result != null)
+                    {
+                        return result.ToString();
+                    }
+                    else
+                    {
+                        return null; //Retourne null si l'utilisateur n'existe pas ou n'a pas d'email
+                    }
+                }
+            }
+        }
 
         //Mettre à jour l'e-mail de l'utilisateur qui vient de s'inscrire
         public static void EnregistrerEmail(string pseudo, string email)

@@ -32,7 +32,7 @@ namespace Dr_Meteo
             Lbl_VilleNom.AutoSize = false;
             iconeMeteo.Location = new Point(20, 20);
             iconeMeteo.Size = new Size(100, 100);
-            pictureBox1.Size = new Size(100,100);
+            pictureBox1.Size = new Size(100, 100);
             Lbl_Temperature.Font = new Font("Segoe UI", 14, FontStyle.Bold);
             Lbl_Temperature.AutoSize = true;
             Lbl_MeteoDesc.Font = new Font("Segoe UI", 14);
@@ -255,12 +255,13 @@ namespace Dr_Meteo
                     {
                         //On lance la recherche
                         AfficherMeteo(villeReelle);
+                        ville = villeReelle;
                     }
                     else
                     {
                         MessageBox.Show("Ville non reconnue ! Assurez-vous d'avoir sélectionné une ville dans la liste déroulante.");
                     }
-                    
+
                 }
             };
         }
@@ -450,7 +451,8 @@ namespace Dr_Meteo
             {
                 panel.BackgroundImage = Properties.Resources.ciel_pluvieux;
             }
-            else if (code == 4){
+            else if (code == 4)
+            {
                 panel.BackgroundImage = Properties.Resources.ciel_neige;
             }
             else if (code == 5)
@@ -592,6 +594,10 @@ namespace Dr_Meteo
             Panel_Inscription.Visible = false;
             Panel_Configuration.Visible = false;
             Panel_Connection.Visible = false;
+
+            textBoxMdpConnection.Text = "";
+            textBoxMdp.Text = "";
+            textBoxMdpConf.Text = "";
         }
 
         private void sinscrireToolStripMenuItem_Click(object sender, EventArgs e)
@@ -604,10 +610,16 @@ namespace Dr_Meteo
             Panel_Accueil.Visible = false;
             Panel_Connection.Visible = false;
             Panel_Configuration.Visible = false;
+            bouton_Inscription.Visible = false;
+            textBoxUname.Focus();
             //Gestion des évènements
             textBoxUname.KeyDown += textBoxUname_KeyDown;
             textBoxMdp.KeyDown += textBoxMdp_KeyDown;
             textBoxMdpConf.KeyDown += textBoxMdpConf_KeyDown;
+
+            textBoxMdpConnection.Text = "";
+            textBoxMdp.Text = "";
+            textBoxMdpConf.Text = "";
 
         }
         private void textBoxUname_KeyDown(object sender, KeyEventArgs e)
@@ -672,6 +684,12 @@ namespace Dr_Meteo
                     if (reponse == DialogResult.Yes)
                     {
                         LancerPhaseConfigAlertes();
+                        textBoxMdpConf.Text = ""; // On vide la case pour éviter que le mot de passe soit visible
+                        textBoxMdp.Text = "";
+                    }
+                    else
+                    {
+                        bouton_Inscription.Visible = true;
                     }
                 }
                 else
@@ -691,13 +709,16 @@ namespace Dr_Meteo
             Panel_Meteo_Ville.Visible = false;
             FondPanelRandom(Panel_Configuration);
             Panel_Configuration.Visible = true;
+            Panel_Header.Parent = Panel_Configuration;
             //Gestion des évènements
             textBoxEmail.KeyDown += textBoxEmail_KeyDown;
             textBoxVilleFavorite.KeyDown += textBoxVilleFavorite_KeyDown;
             //Affichage des éléments de configuration
             Lbl_EMail.Visible = true;
             textBoxEmail.Visible = true;
+            textBoxEmail.Text="";
             textBoxVilleFavorite.Visible = false;
+            textBoxVilleFavorite.Text = "";
 
             textBoxEmail.Focus();
         }
@@ -738,9 +759,18 @@ namespace Dr_Meteo
                     GestionBdd.AjouterVilleFavorite(pseudoActuel, villeFav);
 
                     MessageBox.Show("Configuration terminée ! Vous serez alerté en cas de vigilance Orange ou Rouge.");
-
-                    Panel_Configuration.Visible = false;
-                    Panel_Meteo_Ville.Visible = true;
+                    if (string.IsNullOrWhiteSpace(ville))
+                    {
+                        Panel_Configuration.Visible = false;
+                        Panel_Accueil.Visible = true; //Affichez l'interface normale après configuration
+                        Panel_Header.Parent = Panel_Accueil;
+                    }
+                    else
+                    {
+                        Panel_Configuration.Visible = false;
+                        Panel_Meteo_Ville.Visible = true;
+                        Panel_Header.Parent = Panel_Meteo_Ville;
+                    }
                 }
             }
         }
@@ -819,6 +849,11 @@ namespace Dr_Meteo
             FondPanelRandom(Panel_Connection);
             Panel_Header.Parent = Panel_Connection;
             Panel_Connection.Visible = true;
+            textBoxUconnection.Focus();
+
+            textBoxMdpConnection.Text = "";
+            textBoxMdp.Text = "";
+            textBoxMdpConf.Text = "";
         }
         private void textBoxUconnection_KeyDown(object sender, KeyEventArgs e)
         {
@@ -858,8 +893,48 @@ namespace Dr_Meteo
                     if (GestionBdd.VerifierIdentifiants(pseudoActuel, textBoxMdpConnection.Text))
                     {
                         MessageBox.Show($"Bienvenue {pseudoActuel} !");
-                        Panel_Connection.Visible = false;
-                        Panel_Meteo_Ville.Visible = true; //Affichez l'interface normale après connexion
+                        if (!string.IsNullOrEmpty(GestionBdd.GetEmail(pseudoActuel)))
+                        {
+                            if (string.IsNullOrWhiteSpace(ville))
+                            {
+                                Panel_Connection.Visible = false;
+                                Panel_Accueil.Visible = true;
+                                Panel_Header.Parent = Panel_Accueil;
+                            }
+                            else
+                            {
+                                Panel_Connection.Visible = false;
+                                Panel_Meteo_Ville.Visible = true;
+                                Panel_Header.Parent = Panel_Meteo_Ville;
+                            }
+                        }
+                        else
+                        {
+                            DialogResult reponse = MessageBox.Show(
+                            "Voulez-vous renseigner votre e-mail et une ou plusieurs ville(s) favorite(s) afin d'être alerté en cas d'alerte orange ou rouge ?",
+                            "Poursuite d'inscription",
+                            MessageBoxButtons.YesNo,
+                            MessageBoxIcon.Question);
+                            if (reponse == DialogResult.Yes)
+                            {
+                                LancerPhaseConfigAlertes();
+                            }
+                            else
+                            {
+                                if (string.IsNullOrWhiteSpace(ville))
+                                {
+                                    Panel_Connection.Visible = false;
+                                    Panel_Accueil.Visible = true;
+                                    Panel_Header.Parent = Panel_Accueil;
+                                }
+                                else
+                                {
+                                    Panel_Connection.Visible = false;
+                                    Panel_Meteo_Ville.Visible = true;
+                                    Panel_Header.Parent = Panel_Meteo_Ville;
+                                }
+                            }
+                        }
                     }
                     else
                     {
@@ -868,6 +943,7 @@ namespace Dr_Meteo
                         textBoxMdpConnection.Focus();
                     }
                 }
+                textBoxMdpConnection.Text = "";
             }
         }
 
@@ -918,6 +994,18 @@ namespace Dr_Meteo
 
         }
 
+        private void bouton_Inscription_Click(object sender, EventArgs e)
+        {
+            DialogResult reponse = MessageBox.Show(
+                    "Voulez-vous renseigner votre e-mail et une ou plusieurs ville(s) favorite(s) afin d'être alerté en cas d'alerte orange ou rouge ?",
+                    "Poursuite d'inscription",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question);
+            if (reponse == DialogResult.Yes)
+            {
+                LancerPhaseConfigAlertes();
+            }
+        }
     }
 
 
