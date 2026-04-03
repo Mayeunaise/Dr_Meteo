@@ -93,6 +93,7 @@
             sinscrireToolStripMenuItem = new ToolStripMenuItem();
             seConnecterToolStripMenuItem = new ToolStripMenuItem();
             Panel_Inscription = new Panel();
+            bouton_Inscription = new Button();
             Lbl_Uname = new Label();
             Lbl_Conf_Mdp = new Label();
             Lbl_Mdp = new Label();
@@ -109,7 +110,6 @@
             Lbl_Uname_Connection = new Label();
             textBoxMdpConnection = new TextBox();
             textBoxUconnection = new TextBox();
-            bouton_Inscription = new Button();
             Panel_Accueil.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)Loupe).BeginInit();
             Panel_Meteo_Ville.SuspendLayout();
@@ -140,10 +140,10 @@
             Panel_Accueil.Controls.Add(Loupe);
             Panel_Accueil.Controls.Add(Bouton_Loc);
             Panel_Accueil.Dock = DockStyle.Fill;
-            Panel_Accueil.Location = new Point(0, 0);
+            Panel_Accueil.Location = new Point(0, 25);
             Panel_Accueil.Margin = new Padding(2);
             Panel_Accueil.Name = "Panel_Accueil";
-            Panel_Accueil.Size = new Size(1791, 1050);
+            Panel_Accueil.Size = new Size(1791, 1025);
             Panel_Accueil.TabIndex = 0;
             // 
             // Barre_Recherche
@@ -156,17 +156,18 @@
             Barre_Recherche.Name = "Barre_Recherche";
             Barre_Recherche.ScrollBars = ScrollBars.Vertical;
             Barre_Recherche.Size = new Size(1410, 31);
-            Barre_Recherche.TabIndex = 0;
+            Barre_Recherche.TabIndex = 10;
             // 
             // Loupe
             // 
             Loupe.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            Loupe.BackColor = Color.Transparent;
             Loupe.BackgroundImageLayout = ImageLayout.Stretch;
             Loupe.Image = (Image)resources.GetObject("Loupe.Image");
-            Loupe.Location = new Point(1609, 142);
+            Loupe.Location = new Point(1600, 142);
             Loupe.Margin = new Padding(2);
             Loupe.Name = "Loupe";
-            Loupe.Size = new Size(32, 38);
+            Loupe.Size = new Size(31, 31);
             Loupe.TabIndex = 2;
             Loupe.TabStop = false;
             Loupe.Click += Loupe_Click;
@@ -174,13 +175,14 @@
             // Bouton_Loc
             // 
             Bouton_Loc.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            Bouton_Loc.BackColor = Color.Transparent;
             Bouton_Loc.Image = Properties.Resources.gps__3_;
-            Bouton_Loc.Location = new Point(156, 142);
+            Bouton_Loc.Location = new Point(160, 140);
             Bouton_Loc.Margin = new Padding(2);
             Bouton_Loc.Name = "Bouton_Loc";
-            Bouton_Loc.Size = new Size(39, 40);
-            Bouton_Loc.TabIndex = 1;
-            Bouton_Loc.UseVisualStyleBackColor = true;
+            Bouton_Loc.Size = new Size(31, 31);
+            Bouton_Loc.TabIndex = 0;
+            Bouton_Loc.UseVisualStyleBackColor = false;
             Bouton_Loc.Click += Bouton_Loc_Click;
             // 
             // Panel_Meteo_Ville
@@ -568,7 +570,7 @@
             // iconeMeteo
             // 
             iconeMeteo.Location = new Point(240, 4);
-            iconeMeteo.Margin = new Padding(4, 4, 4, 4);
+            iconeMeteo.Margin = new Padding(4);
             iconeMeteo.Name = "iconeMeteo";
             iconeMeteo.Size = new Size(156, 41);
             iconeMeteo.TabIndex = 15;
@@ -619,7 +621,7 @@
             // pictureBox1
             // 
             pictureBox1.Location = new Point(272, 508);
-            pictureBox1.Margin = new Padding(4, 4, 4, 4);
+            pictureBox1.Margin = new Padding(4);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(145, 41);
             pictureBox1.TabIndex = 15;
@@ -628,7 +630,7 @@
             // iconeMeteo_demain
             // 
             iconeMeteo_demain.Location = new Point(272, 4);
-            iconeMeteo_demain.Margin = new Padding(4, 4, 4, 4);
+            iconeMeteo_demain.Margin = new Padding(4);
             iconeMeteo_demain.Name = "iconeMeteo_demain";
             iconeMeteo_demain.Size = new Size(156, 76);
             iconeMeteo_demain.TabIndex = 40;
@@ -795,7 +797,7 @@
             // pictureBox2
             // 
             pictureBox2.Location = new Point(272, 88);
-            pictureBox2.Margin = new Padding(4, 4, 4, 4);
+            pictureBox2.Margin = new Padding(4);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(156, 76);
             pictureBox2.TabIndex = 41;
@@ -869,6 +871,16 @@
             Panel_Inscription.Name = "Panel_Inscription";
             Panel_Inscription.Size = new Size(1791, 1025);
             Panel_Inscription.TabIndex = 38;
+            // 
+            // bouton_Inscription
+            // 
+            bouton_Inscription.Location = new Point(855, 338);
+            bouton_Inscription.Name = "bouton_Inscription";
+            bouton_Inscription.Size = new Size(203, 34);
+            bouton_Inscription.TabIndex = 6;
+            bouton_Inscription.Text = "Continuer inscription";
+            bouton_Inscription.UseVisualStyleBackColor = true;
+            bouton_Inscription.Click += bouton_Inscription_Click;
             // 
             // Lbl_Uname
             // 
@@ -1032,27 +1044,17 @@
             textBoxUconnection.Size = new Size(748, 31);
             textBoxUconnection.TabIndex = 0;
             // 
-            // bouton_Inscription
-            // 
-            bouton_Inscription.Location = new Point(855, 338);
-            bouton_Inscription.Name = "bouton_Inscription";
-            bouton_Inscription.Size = new Size(203, 34);
-            bouton_Inscription.TabIndex = 6;
-            bouton_Inscription.Text = "Continuer inscription";
-            bouton_Inscription.UseVisualStyleBackColor = true;
-            bouton_Inscription.Click += bouton_Inscription_Click;
-            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1791, 1050);
+            Controls.Add(Panel_Accueil);
             Controls.Add(Panel_Inscription);
             Controls.Add(Panel_Header);
             Controls.Add(Panel_Meteo_Ville);
             Controls.Add(Panel_Connection);
             Controls.Add(Panel_Configuration);
-            Controls.Add(Panel_Accueil);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(2);
             Name = "Form1";
