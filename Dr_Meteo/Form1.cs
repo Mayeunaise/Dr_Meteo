@@ -157,7 +157,7 @@ namespace Dr_Meteo
             }
             catch (Exception ex)
             {
-                // SI QUELQUE CHOSE PLANTE, VOUS LE VERREZ ENFIN ICI !
+                //Si ça marche pas, on le verra ici
                 MessageBox.Show("Erreur critique au démarrage : " + ex.Message);
                 Barre_Recherche.Text = "Erreur de base de données";
             }
