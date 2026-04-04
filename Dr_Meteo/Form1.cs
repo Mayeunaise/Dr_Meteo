@@ -767,15 +767,15 @@ namespace Dr_Meteo
                     MessageBox.Show("Configuration terminée ! Vous serez alerté en cas de vigilance Orange ou Rouge.");
                     if (string.IsNullOrWhiteSpace(ville))
                     {
-                        Panel_Configuration.Visible = false;
-                        Panel_Accueil.Visible = true; //Affichez l'interface normale après configuration
-                        Panel_Header.Parent = Panel_Accueil;
+
+                        Panel_Connection.Visible = false;
+                        AfficherMeteo(GestionBdd.GetVilleFavorite(pseudoActuel)); // Affiche la météo de la ville favorite de l'utilisateurPanel_Connection.Visible = false;
                     }
                     else
                     {
-                        Panel_Configuration.Visible = false;
+                        Panel_Connection.Visible = false;
                         Panel_Meteo_Ville.Visible = true;
-                        Panel_Header.Parent = Panel_Meteo_Ville;
+                        Panel_Header.Parent = Panel_Accueil;
                     }
                 }
             }
@@ -903,15 +903,15 @@ namespace Dr_Meteo
                         {
                             if (string.IsNullOrWhiteSpace(ville))
                             {
+
                                 Panel_Connection.Visible = false;
-                                Panel_Accueil.Visible = true;
-                                Panel_Header.Parent = Panel_Accueil;
+                                AfficherMeteo(GestionBdd.GetVilleFavorite(pseudoActuel)); // Affiche la météo de la ville favorite de l'utilisateurPanel_Connection.Visible = false;
                             }
                             else
                             {
                                 Panel_Connection.Visible = false;
                                 Panel_Meteo_Ville.Visible = true;
-                                Panel_Header.Parent = Panel_Meteo_Ville;
+                                Panel_Header.Parent = Panel_Accueil;
                             }
                         }
                         else

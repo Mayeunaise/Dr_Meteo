@@ -218,7 +218,7 @@ namespace Dr_Meteo
                 {
                     command.Parameters.AddWithValue("@nomUtilisateur", nomUtilisateur);
                     object result = command.ExecuteScalar();
-                    return result != null ? result.ToString() : null; //Retourne la ville favorite ou null si l'utilisateur n'existe pas
+                    return ((string) result);
                 }
             }
         }
