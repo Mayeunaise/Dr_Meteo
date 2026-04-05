@@ -29,7 +29,6 @@ namespace Dr_Meteo
             Lbl_VilleNom.AutoSize = false;
             iconeMeteo.Location = new Point(20, 20);
             iconeMeteo.Size = new Size(100, 100);
-            pictureBox1.Size = new Size(100, 100);
             Lbl_Temperature.Font = new Font("Segoe UI", 14, FontStyle.Bold);
             Lbl_Temperature.AutoSize = true;
             Lbl_MeteoDesc.Font = new Font("Segoe UI", 14);
@@ -38,7 +37,7 @@ namespace Dr_Meteo
             Lbl_humidite.AutoSize = true;
             Lbl_Speed_wind.Font = new Font("Segeo UI", 14);
             Lbl_Speed_wind.AutoSize = true;
-            Aujourd_hui.Font = new Font("Segoe UI", 14);
+            Aujourd_hui.Font = new Font("Segoe UI", 14, FontStyle.Bold);
             Aujourd_hui.AutoSize = true;
             Aujourd_hui.Text = "Aujourd'hui";
             Lbl_pressure.Font = new Font("Segoe UI", 14);
@@ -340,7 +339,6 @@ namespace Dr_Meteo
             Lbl_Uv.Text = $"Indice UV : {reponseMeteo.daily.uv_index_max[0]}";
             Lbl_Uv.ForeColor = TraduireCodeUV(reponseMeteo.daily.uv_index_max[0]);
             iconeMeteo.Image = ChoixImage(reponseMeteo.current.code_meteo);
-            pictureBox1.Image = ChoixImage(reponseMeteo.current.code_meteo);
             Lbl_temp_max.Text = $"Max : {reponseMeteo.daily.temperature_max[0]} °C";
             Lbl_temp_min.Text = $"Min : {reponseMeteo.daily.temperature_min[0]} °C";
             Lbl_lever_soleil.Text = "Lever : " + Traduire_heures_soleil(reponseMeteo.daily.sunrise[0]);
@@ -365,8 +363,8 @@ namespace Dr_Meteo
             Lbl_Uv_apres_demain.ForeColor = TraduireCodeUV(reponseMeteo.daily.uv_index_max[2]);
             iconeMeteo_apres_demain_bis.Image = ChoixImage(reponseMeteo.daily.weather_code[2]);
             iconeMeteo_apres_demain_bis.Location = new Point(950, 20);
-            Lbl_temp_max_apres_demain.Text = $"Temperature Max : {reponseMeteo.daily.temperature_max[2]} °C";
-            Lbl_temp_min_apres_demain.Text = $"Temperature Min : {reponseMeteo.daily.temperature_min[2]} °C";
+            Lbl_temp_max_apres_demain.Text = $"Temperature Max :\n{reponseMeteo.daily.temperature_max[2]} °C";
+            Lbl_temp_min_apres_demain.Text = $"Temperature Min :\n{reponseMeteo.daily.temperature_min[2]} °C";
             Lbl_diff_temp_ensoleilement_apres_demain.Text = DiffTempEnsoleilement(reponseMeteo.daily.sunrise[2], reponseMeteo.daily.sunrise[1]);
             Lbl_diff_sunset_apres_demain.Text = Diff_sunset(reponseMeteo.daily.sunset[2], reponseMeteo.daily.sunset[1]);
 

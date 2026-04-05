@@ -68,7 +68,6 @@
             Lbl_pressure = new Label();
             Lbl_Uv = new Label();
             tableLayoutPanel2 = new TableLayoutPanel();
-            pictureBox1 = new PictureBox();
             iconeMeteo_demain = new PictureBox();
             Lbl_Demain = new Label();
             Lbl_diff_sunset_demain = new Label();
@@ -121,7 +120,6 @@
             tableLayoutPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)iconeMeteo).BeginInit();
             tableLayoutPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)iconeMeteo_demain).BeginInit();
             ((System.ComponentModel.ISupportInitialize)iconeMeteo_apres_demain_bis).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
@@ -202,7 +200,7 @@
             // 
             Lbl_conseil.AutoSize = true;
             Lbl_conseil.BackColor = Color.White;
-            Lbl_conseil.Location = new Point(132, 715);
+            Lbl_conseil.Location = new Point(114, 724);
             Lbl_conseil.Margin = new Padding(2, 0, 2, 0);
             Lbl_conseil.Name = "Lbl_conseil";
             Lbl_conseil.Size = new Size(77, 25);
@@ -239,7 +237,7 @@
             tableLayoutPanel1.Controls.Add(iconeMeteo_j4, 3, 0);
             tableLayoutPanel1.Controls.Add(Lbl_min_j5, 4, 1);
             tableLayoutPanel1.Controls.Add(Lbl_j_5, 4, 0);
-            tableLayoutPanel1.Location = new Point(160, 751);
+            tableLayoutPanel1.Location = new Point(160, 790);
             tableLayoutPanel1.Margin = new Padding(4, 2, 4, 2);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 3;
@@ -424,7 +422,7 @@
             tableLayoutPanel3.Controls.Add(Aujourd_hui, 0, 1);
             tableLayoutPanel3.Controls.Add(Lbl_pressure, 0, 8);
             tableLayoutPanel3.Controls.Add(Lbl_Uv, 0, 7);
-            tableLayoutPanel3.Location = new Point(13, 10);
+            tableLayoutPanel3.Location = new Point(13, 21);
             tableLayoutPanel3.Margin = new Padding(4, 5, 4, 5);
             tableLayoutPanel3.Name = "tableLayoutPanel3";
             tableLayoutPanel3.RowCount = 12;
@@ -584,7 +582,6 @@
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 45.13889F));
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 339F));
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 194F));
-            tableLayoutPanel2.Controls.Add(pictureBox1, 1, 6);
             tableLayoutPanel2.Controls.Add(iconeMeteo_demain, 1, 0);
             tableLayoutPanel2.Controls.Add(Lbl_Demain, 0, 0);
             tableLayoutPanel2.Controls.Add(Lbl_diff_sunset_demain, 0, 6);
@@ -602,7 +599,7 @@
             tableLayoutPanel2.Controls.Add(Lbl_diff_temp_ensoleilement_apres_demain, 2, 5);
             tableLayoutPanel2.Controls.Add(Lbl_diff_sunset_apres_demain, 2, 6);
             tableLayoutPanel2.Controls.Add(pictureBox2, 1, 1);
-            tableLayoutPanel2.Location = new Point(799, 96);
+            tableLayoutPanel2.Location = new Point(803, 118);
             tableLayoutPanel2.Margin = new Padding(4, 5, 4, 5);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
             tableLayoutPanel2.RowCount = 7;
@@ -617,15 +614,6 @@
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 32F));
             tableLayoutPanel2.Size = new Size(1022, 590);
             tableLayoutPanel2.TabIndex = 38;
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.Location = new Point(272, 508);
-            pictureBox1.Margin = new Padding(4);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(145, 41);
-            pictureBox1.TabIndex = 15;
-            pictureBox1.TabStop = false;
             // 
             // iconeMeteo_demain
             // 
@@ -1074,7 +1062,6 @@
             ((System.ComponentModel.ISupportInitialize)iconeMeteo).EndInit();
             tableLayoutPanel2.ResumeLayout(false);
             tableLayoutPanel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)iconeMeteo_demain).EndInit();
             ((System.ComponentModel.ISupportInitialize)iconeMeteo_apres_demain_bis).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
@@ -1169,7 +1156,6 @@
         private TableLayoutPanel tableLayoutPanel2;
         private TableLayoutPanel tableLayoutPanel3;
         private PictureBox iconeMeteo_demain;
-        private PictureBox pictureBox1;
         private PictureBox iconeMeteo;
         private PictureBox pictureBox2;
         private Label Lbl_conseil;
