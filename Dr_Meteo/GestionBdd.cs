@@ -383,6 +383,28 @@ namespace Dr_Meteo
 
 
         }
+        public static string GetCodePostal(string nomville)
+        {
+            using (var connection = new SQLiteConnection(ConnectionString))
+            {
+                string query = "SELECT CodePostal FROM TableVille WHERE Nom=@nomville";
+                using (var command = new SQLiteCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@nomville", nomville);
+                    connection.Open();
+                    object result = command.ExecuteScalar();
+                    connection.Close();
+                    if (result != null)
+                    {
+                        return((string)result);
+                    }
+                    else
+                    {
+                        return ""; //Retourne une chaîne vide si la ville n'existe pas ou n'a pas de code postal
+                    }
+                }
+            }
+        } 
     }
 }
 //Classe pour transporter les données de la Bdd

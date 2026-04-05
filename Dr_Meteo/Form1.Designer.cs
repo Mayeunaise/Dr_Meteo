@@ -59,14 +59,14 @@
             Lbl_coucher_soleil = new Label();
             Lbl_lever_soleil = new Label();
             Lbl_humidite = new Label();
-            Lbl_Uv = new Label();
-            Lbl_pressure = new Label();
             Lbl_Speed_wind = new Label();
-            Lbl_MeteoDesc = new Label();
             Lbl_temp_max = new Label();
             Lbl_temp_min = new Label();
-            Aujourd_hui = new Label();
+            Lbl_MeteoDesc = new Label();
             iconeMeteo = new PictureBox();
+            Aujourd_hui = new Label();
+            Lbl_pressure = new Label();
+            Lbl_Uv = new Label();
             tableLayoutPanel2 = new TableLayoutPanel();
             pictureBox1 = new PictureBox();
             iconeMeteo_demain = new PictureBox();
@@ -192,17 +192,17 @@
             Panel_Meteo_Ville.Controls.Add(tableLayoutPanel3);
             Panel_Meteo_Ville.Controls.Add(tableLayoutPanel2);
             Panel_Meteo_Ville.Dock = DockStyle.Fill;
-            Panel_Meteo_Ville.Location = new Point(0, 0);
+            Panel_Meteo_Ville.Location = new Point(0, 25);
             Panel_Meteo_Ville.Margin = new Padding(4, 5, 4, 5);
             Panel_Meteo_Ville.Name = "Panel_Meteo_Ville";
-            Panel_Meteo_Ville.Size = new Size(1791, 1050);
+            Panel_Meteo_Ville.Size = new Size(1791, 1025);
             Panel_Meteo_Ville.TabIndex = 3;
             // 
             // Lbl_conseil
             // 
             Lbl_conseil.AutoSize = true;
             Lbl_conseil.BackColor = Color.White;
-            Lbl_conseil.Location = new Point(60, 635);
+            Lbl_conseil.Location = new Point(132, 715);
             Lbl_conseil.Margin = new Padding(2, 0, 2, 0);
             Lbl_conseil.Name = "Lbl_conseil";
             Lbl_conseil.Size = new Size(77, 25);
@@ -239,7 +239,7 @@
             tableLayoutPanel1.Controls.Add(iconeMeteo_j4, 3, 0);
             tableLayoutPanel1.Controls.Add(Lbl_min_j5, 4, 1);
             tableLayoutPanel1.Controls.Add(Lbl_j_5, 4, 0);
-            tableLayoutPanel1.Location = new Point(69, 682);
+            tableLayoutPanel1.Location = new Point(160, 751);
             tableLayoutPanel1.Margin = new Padding(4, 2, 4, 2);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 3;
@@ -409,38 +409,38 @@
             // 
             tableLayoutPanel3.BackColor = Color.Transparent;
             tableLayoutPanel3.ColumnCount = 2;
-            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 86.445015F));
+            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 13.554987F));
             tableLayoutPanel3.Controls.Add(Lbl_VilleNom, 0, 0);
             tableLayoutPanel3.Controls.Add(Lbl_Temperature, 0, 3);
             tableLayoutPanel3.Controls.Add(Lbl_coucher_soleil, 0, 11);
             tableLayoutPanel3.Controls.Add(Lbl_lever_soleil, 0, 10);
             tableLayoutPanel3.Controls.Add(Lbl_humidite, 0, 9);
-            tableLayoutPanel3.Controls.Add(Lbl_Uv, 0, 8);
-            tableLayoutPanel3.Controls.Add(Lbl_pressure, 0, 7);
             tableLayoutPanel3.Controls.Add(Lbl_Speed_wind, 0, 6);
-            tableLayoutPanel3.Controls.Add(Lbl_MeteoDesc, 0, 5);
             tableLayoutPanel3.Controls.Add(Lbl_temp_max, 0, 4);
-            tableLayoutPanel3.Controls.Add(Lbl_temp_min, 0, 2);
+            tableLayoutPanel3.Controls.Add(Lbl_temp_min, 0, 5);
+            tableLayoutPanel3.Controls.Add(Lbl_MeteoDesc, 0, 2);
+            tableLayoutPanel3.Controls.Add(iconeMeteo, 1, 1);
             tableLayoutPanel3.Controls.Add(Aujourd_hui, 0, 1);
-            tableLayoutPanel3.Controls.Add(iconeMeteo, 1, 0);
-            tableLayoutPanel3.Location = new Point(4, 42);
+            tableLayoutPanel3.Controls.Add(Lbl_pressure, 0, 8);
+            tableLayoutPanel3.Controls.Add(Lbl_Uv, 0, 7);
+            tableLayoutPanel3.Location = new Point(13, 10);
             tableLayoutPanel3.Margin = new Padding(4, 5, 4, 5);
             tableLayoutPanel3.Name = "tableLayoutPanel3";
             tableLayoutPanel3.RowCount = 12;
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 8.333335F));
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 8.333335F));
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 8.333335F));
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 8.333335F));
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 8.333335F));
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 8.333335F));
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 8.333335F));
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 8.333335F));
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 8.333335F));
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 8.333335F));
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 8.333335F));
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 8.333335F));
-            tableLayoutPanel3.Size = new Size(472, 588);
+            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 13.8805971F));
+            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 12.38806F));
+            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 7.46268654F));
+            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 8.5074625F));
+            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 7.16417933F));
+            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 6.857143F));
+            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 7F));
+            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 8F));
+            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 7.571429F));
+            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 5.428571F));
+            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 6.857143F));
+            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 8.571428F));
+            tableLayoutPanel3.Size = new Size(782, 700);
             tableLayoutPanel3.TabIndex = 39;
             // 
             // Lbl_VilleNom
@@ -450,7 +450,7 @@
             Lbl_VilleNom.Location = new Point(2, 0);
             Lbl_VilleNom.Margin = new Padding(2, 0, 2, 0);
             Lbl_VilleNom.Name = "Lbl_VilleNom";
-            Lbl_VilleNom.Size = new Size(232, 49);
+            Lbl_VilleNom.Size = new Size(672, 97);
             Lbl_VilleNom.TabIndex = 2;
             Lbl_VilleNom.Text = "Lbl_VilleNom";
             // 
@@ -459,7 +459,7 @@
             Lbl_Temperature.AutoEllipsis = true;
             Lbl_Temperature.AutoSize = true;
             Lbl_Temperature.BackColor = Color.Transparent;
-            Lbl_Temperature.Location = new Point(4, 147);
+            Lbl_Temperature.Location = new Point(4, 235);
             Lbl_Temperature.Margin = new Padding(4, 0, 4, 0);
             Lbl_Temperature.Name = "Lbl_Temperature";
             Lbl_Temperature.Size = new Size(140, 25);
@@ -470,7 +470,7 @@
             // 
             Lbl_coucher_soleil.AutoSize = true;
             Lbl_coucher_soleil.BackColor = Color.Transparent;
-            Lbl_coucher_soleil.Location = new Point(4, 539);
+            Lbl_coucher_soleil.Location = new Point(4, 636);
             Lbl_coucher_soleil.Margin = new Padding(4, 0, 4, 0);
             Lbl_coucher_soleil.Name = "Lbl_coucher_soleil";
             Lbl_coucher_soleil.Size = new Size(151, 25);
@@ -480,7 +480,7 @@
             // Lbl_lever_soleil
             // 
             Lbl_lever_soleil.AutoSize = true;
-            Lbl_lever_soleil.Location = new Point(4, 490);
+            Lbl_lever_soleil.Location = new Point(4, 588);
             Lbl_lever_soleil.Margin = new Padding(4, 0, 4, 0);
             Lbl_lever_soleil.Name = "Lbl_lever_soleil";
             Lbl_lever_soleil.Size = new Size(126, 25);
@@ -490,91 +490,91 @@
             // Lbl_humidite
             // 
             Lbl_humidite.AutoSize = true;
-            Lbl_humidite.Location = new Point(4, 441);
+            Lbl_humidite.Location = new Point(4, 550);
             Lbl_humidite.Margin = new Padding(4, 0, 4, 0);
             Lbl_humidite.Name = "Lbl_humidite";
             Lbl_humidite.Size = new Size(112, 25);
             Lbl_humidite.TabIndex = 0;
             Lbl_humidite.Text = "Lbl_humidite";
             // 
-            // Lbl_Uv
-            // 
-            Lbl_Uv.AutoSize = true;
-            Lbl_Uv.Location = new Point(4, 392);
-            Lbl_Uv.Margin = new Padding(4, 0, 4, 0);
-            Lbl_Uv.Name = "Lbl_Uv";
-            Lbl_Uv.Size = new Size(63, 25);
-            Lbl_Uv.TabIndex = 0;
-            Lbl_Uv.Text = "Lbl_Uv";
-            // 
-            // Lbl_pressure
-            // 
-            Lbl_pressure.AutoSize = true;
-            Lbl_pressure.Location = new Point(4, 343);
-            Lbl_pressure.Margin = new Padding(4, 0, 4, 0);
-            Lbl_pressure.Name = "Lbl_pressure";
-            Lbl_pressure.Size = new Size(109, 25);
-            Lbl_pressure.TabIndex = 0;
-            Lbl_pressure.Text = "Lbl_pressure";
-            // 
             // Lbl_Speed_wind
             // 
             Lbl_Speed_wind.AutoSize = true;
-            Lbl_Speed_wind.Location = new Point(4, 294);
+            Lbl_Speed_wind.Location = new Point(4, 392);
             Lbl_Speed_wind.Margin = new Padding(4, 0, 4, 0);
             Lbl_Speed_wind.Name = "Lbl_Speed_wind";
             Lbl_Speed_wind.Size = new Size(137, 25);
             Lbl_Speed_wind.TabIndex = 0;
             Lbl_Speed_wind.Text = "Lbl_Speed_wind";
             // 
-            // Lbl_MeteoDesc
-            // 
-            Lbl_MeteoDesc.AutoSize = true;
-            Lbl_MeteoDesc.Location = new Point(4, 245);
-            Lbl_MeteoDesc.Margin = new Padding(4, 0, 4, 0);
-            Lbl_MeteoDesc.Name = "Lbl_MeteoDesc";
-            Lbl_MeteoDesc.Size = new Size(131, 25);
-            Lbl_MeteoDesc.TabIndex = 0;
-            Lbl_MeteoDesc.Text = "Lbl_MeteoDesc";
-            // 
             // Lbl_temp_max
             // 
             Lbl_temp_max.AutoSize = true;
-            Lbl_temp_max.Location = new Point(4, 196);
+            Lbl_temp_max.Location = new Point(4, 294);
             Lbl_temp_max.Margin = new Padding(4, 0, 4, 25);
             Lbl_temp_max.Name = "Lbl_temp_max";
-            Lbl_temp_max.Size = new Size(124, 24);
+            Lbl_temp_max.Size = new Size(124, 25);
             Lbl_temp_max.TabIndex = 11;
             Lbl_temp_max.Text = "Lbl_temp_max";
             // 
             // Lbl_temp_min
             // 
             Lbl_temp_min.AutoSize = true;
-            Lbl_temp_min.Location = new Point(4, 98);
+            Lbl_temp_min.Location = new Point(4, 344);
             Lbl_temp_min.Margin = new Padding(4, 0, 4, 25);
             Lbl_temp_min.Name = "Lbl_temp_min";
-            Lbl_temp_min.Size = new Size(121, 24);
+            Lbl_temp_min.Size = new Size(121, 23);
             Lbl_temp_min.TabIndex = 12;
             Lbl_temp_min.Text = "Lbl_temp_min";
+            // 
+            // Lbl_MeteoDesc
+            // 
+            Lbl_MeteoDesc.AutoSize = true;
+            Lbl_MeteoDesc.Location = new Point(4, 183);
+            Lbl_MeteoDesc.Margin = new Padding(4, 0, 4, 0);
+            Lbl_MeteoDesc.Name = "Lbl_MeteoDesc";
+            Lbl_MeteoDesc.Size = new Size(131, 25);
+            Lbl_MeteoDesc.TabIndex = 0;
+            Lbl_MeteoDesc.Text = "Lbl_MeteoDesc";
+            // 
+            // iconeMeteo
+            // 
+            iconeMeteo.Location = new Point(680, 101);
+            iconeMeteo.Margin = new Padding(4);
+            iconeMeteo.Name = "iconeMeteo";
+            iconeMeteo.Size = new Size(98, 25);
+            iconeMeteo.TabIndex = 15;
+            iconeMeteo.TabStop = false;
             // 
             // Aujourd_hui
             // 
             Aujourd_hui.AutoSize = true;
-            Aujourd_hui.Location = new Point(4, 49);
+            Aujourd_hui.Location = new Point(4, 97);
             Aujourd_hui.Margin = new Padding(4, 0, 4, 0);
             Aujourd_hui.Name = "Aujourd_hui";
             Aujourd_hui.Size = new Size(107, 25);
             Aujourd_hui.TabIndex = 0;
             Aujourd_hui.Text = "Aujourd_hui";
             // 
-            // iconeMeteo
+            // Lbl_pressure
             // 
-            iconeMeteo.Location = new Point(240, 4);
-            iconeMeteo.Margin = new Padding(4);
-            iconeMeteo.Name = "iconeMeteo";
-            iconeMeteo.Size = new Size(156, 41);
-            iconeMeteo.TabIndex = 15;
-            iconeMeteo.TabStop = false;
+            Lbl_pressure.AutoSize = true;
+            Lbl_pressure.Location = new Point(4, 497);
+            Lbl_pressure.Margin = new Padding(4, 0, 4, 0);
+            Lbl_pressure.Name = "Lbl_pressure";
+            Lbl_pressure.Size = new Size(109, 25);
+            Lbl_pressure.TabIndex = 0;
+            Lbl_pressure.Text = "Lbl_pressure";
+            // 
+            // Lbl_Uv
+            // 
+            Lbl_Uv.AutoSize = true;
+            Lbl_Uv.Location = new Point(4, 441);
+            Lbl_Uv.Margin = new Padding(4, 0, 4, 0);
+            Lbl_Uv.Name = "Lbl_Uv";
+            Lbl_Uv.Size = new Size(63, 25);
+            Lbl_Uv.TabIndex = 0;
+            Lbl_Uv.Text = "Lbl_Uv";
             // 
             // tableLayoutPanel2
             // 
@@ -602,7 +602,7 @@
             tableLayoutPanel2.Controls.Add(Lbl_diff_temp_ensoleilement_apres_demain, 2, 5);
             tableLayoutPanel2.Controls.Add(Lbl_diff_sunset_apres_demain, 2, 6);
             tableLayoutPanel2.Controls.Add(pictureBox2, 1, 1);
-            tableLayoutPanel2.Location = new Point(478, 42);
+            tableLayoutPanel2.Location = new Point(799, 96);
             tableLayoutPanel2.Margin = new Padding(4, 5, 4, 5);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
             tableLayoutPanel2.RowCount = 7;
@@ -1049,10 +1049,10 @@
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1791, 1050);
+            Controls.Add(Panel_Meteo_Ville);
             Controls.Add(Panel_Accueil);
             Controls.Add(Panel_Inscription);
             Controls.Add(Panel_Header);
-            Controls.Add(Panel_Meteo_Ville);
             Controls.Add(Panel_Connection);
             Controls.Add(Panel_Configuration);
             Icon = (Icon)resources.GetObject("$this.Icon");

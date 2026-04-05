@@ -331,7 +331,7 @@ namespace Dr_Meteo
             Panel_Header.Parent = Panel_Meteo_Ville;
             Panel_Meteo_Ville.Visible = true;
             // Les propriétés (current_weather.temperature, etc.) sont à adapter selon comment tu as nommé les variables dans ta classe ReponseMeteo
-            Lbl_VilleNom.Text = ville;
+            Lbl_VilleNom.Text = ville+"\n"+GestionBdd.GetCodePostal(ville);
             Lbl_Temperature.Text = $"{reponseMeteo.current.temperature} °C";
             Lbl_MeteoDesc.Text = TraduireCodeMeteo(reponseMeteo.current.code_meteo);
             Lbl_humidite.Text = $"{reponseMeteo.current.humidity} % d'humidité";

@@ -1,0 +1,1 @@
+SELECT LENGTH(Nom) AS "Nb caractères", string_agg(Nom,', ') AS Nom, CodePostal FROM TableVille GROUP BY(Nom) ORDER BY(LENGTH(Nom)) DESC;
