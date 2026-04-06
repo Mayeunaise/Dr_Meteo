@@ -330,7 +330,7 @@ namespace Dr_Meteo
             Panel_Header.Parent = Panel_Meteo_Ville;
             Panel_Meteo_Ville.Visible = true;
             // Les propriétés (current_weather.temperature, etc.) sont à adapter selon comment tu as nommé les variables dans ta classe ReponseMeteo
-            Lbl_VilleNom.Text = ville+"\n"+GestionBdd.GetCodePostal(ville);
+            Lbl_VilleNom.Text = ville + "\n" + GestionBdd.GetCodePostal(ville);
             Lbl_Temperature.Text = $"{reponseMeteo.current.temperature} °C";
             Lbl_MeteoDesc.Text = TraduireCodeMeteo(reponseMeteo.current.code_meteo);
             Lbl_humidite.Text = $"{reponseMeteo.current.humidity} % d'humidité";
@@ -496,20 +496,20 @@ namespace Dr_Meteo
             {
                 if (min_j1 <= min_j2)
                 {
-                    rep = $"Lever de soleil plus tard de {min_j2 - min_j1} min";
+                    rep = $"Lever de soleil plus tot de {min_j2 - min_j1} min";
                 }
                 else
                 {
-                    rep = $"Lever de soleil plus tot de {min_j1 - min_j2} min";
+                    rep = $"Lever de soleil plus tard de {min_j1 - min_j2} min";
                 }
             }
             else if (h_j1 < h_j2)
             {
-                rep = $"Lever de soleil plus tard de {60 - (min_j1 - min_j2)} min";
+                rep = $"Lever de soleil plus tot de {60 - (min_j1 - min_j2)} min";
             }
             else
             {
-                rep = $"Lever de soleil plus tot de {60 - (min_j2 - min_j1)} min";
+                rep = $"Lever de soleil plus tard de {60 - (min_j2 - min_j1)} min";
             }
             return rep;
         }
@@ -720,7 +720,7 @@ namespace Dr_Meteo
             //Affichage des éléments de configuration
             Lbl_EMail.Visible = true;
             textBoxEmail.Visible = true;
-            textBoxEmail.Text="";
+            textBoxEmail.Text = "";
             textBoxVilleFavorite.Visible = false;
             textBoxVilleFavorite.Text = "";
 
@@ -1009,6 +1009,11 @@ namespace Dr_Meteo
             {
                 LancerPhaseConfigAlertes();
             }
+        }
+
+        private void tableLayoutPanel3_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 
